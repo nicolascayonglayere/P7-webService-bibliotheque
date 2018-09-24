@@ -12,6 +12,9 @@
         <dependent-module archiveName="bibliothequeWS-Technical-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bibliothequeWS-Technical/bibliothequeWS-Technical">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="bibliothequeWS-Model-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bibliothequeWS-Model/bibliothequeWS-Model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="bibliothequeWS-Webapp"/>
         <property name="java-output-path" value="/bibliothequeWS-Webapp/target/classes"/>
     </wb-module>

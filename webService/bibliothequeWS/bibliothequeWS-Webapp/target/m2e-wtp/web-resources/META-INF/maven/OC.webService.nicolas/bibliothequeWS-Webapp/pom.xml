@@ -37,6 +37,10 @@
     	<groupId>OC.webService.nicolas</groupId>
     	<artifactId>bibliothequeWS-Technical</artifactId>
     </dependency>
+    <dependency>
+    	<groupId>OC.webService.nicolas</groupId>
+    	<artifactId>bibliothequeWS-Model</artifactId>
+    </dependency>    
   </dependencies>
 
   <build>

@@ -7,14 +7,17 @@
     <artifactId>bibliothequeWS</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
+  
   <groupId>${project.parent.groupId}</groupId>
   <artifactId>bibliothequeWS-Business</artifactId>
   <version>${project.parent.version}</version>
   <name>bibliothequeWS-Business</name>
   <url>http://maven.apache.org</url>
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -30,5 +33,9 @@
     	<groupId>OC.webService.nicolas</groupId>
     	<artifactId>bibliothequeWS-Technical</artifactId>
     </dependency>
+    <dependency>
+    	<groupId>OC.webService.nicolas</groupId>
+    	<artifactId>bibliothequeWS-Model</artifactId>
+    </dependency>    
   </dependencies>
 </project>

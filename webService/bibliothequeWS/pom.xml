@@ -27,7 +27,6 @@
     <module>bibliothequeWS-Technical</module>
     <module>bibliothequeWS-Consumer</module>
     <module>bibliothequeWS-Business</module>
-    <module>bibliothequeWS-Webapp</module>
     <module>bibliothequeWS-Model</module>
     <module>bibliothequeWS-AppSpringBoot</module>
   </modules>
@@ -35,11 +34,6 @@
   
   <dependencyManagement>
   	<dependencies>
-  		<dependency>
-  			<groupId>OC.webService.nicolas</groupId>
-  			<artifactId>bibliothequeWS-Webapp</artifactId>
-  			<version>1.0-SNAPSHOT</version>
-  		</dependency>
   		<dependency>
   			<groupId>OC.webService.nicolas</groupId>
   			<artifactId>bibliothequeWS-Technical</artifactId>

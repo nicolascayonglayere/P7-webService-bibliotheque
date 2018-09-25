@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
-import fr.yogj.bibliows.types.LivreEmprunt;
+import fr.yogj.bibliows.types.LivreEmpruntType;
 
 
 /**
@@ -21,7 +21,7 @@ import fr.yogj.bibliows.types.LivreEmprunt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="livre" type="{http://www.yogj.fr/biblioWS/types}LivreEmprunt"/&gt;
+ *         &lt;element name="livre" type="{http://www.yogj.fr/biblioWS/types}LivreEmpruntType"/&gt;
  *         &lt;element name="dateRetour" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -40,7 +40,7 @@ import fr.yogj.bibliows.types.LivreEmprunt;
 public class EmpruntOuvrageResponse {
 
     @XmlElement(required = true)
-    protected LivreEmprunt livre;
+    protected LivreEmpruntType livre;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar dateRetour;
@@ -50,10 +50,10 @@ public class EmpruntOuvrageResponse {
      * 
      * @return
      *     possible object is
-     *     {@link LivreEmprunt }
+     *     {@link LivreEmpruntType }
      *     
      */
-    public LivreEmprunt getLivre() {
+    public LivreEmpruntType getLivre() {
         return livre;
     }
 
@@ -62,10 +62,10 @@ public class EmpruntOuvrageResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link LivreEmprunt }
+     *     {@link LivreEmpruntType }
      *     
      */
-    public void setLivre(LivreEmprunt value) {
+    public void setLivre(LivreEmpruntType value) {
         this.livre = value;
     }
 

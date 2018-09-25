@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import fr.yogj.bibliows.types.Utilisateur;
+import fr.yogj.bibliows.types.UtilisateurType;
 
 
 /**
@@ -18,7 +18,7 @@ import fr.yogj.bibliows.types.Utilisateur;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="utilisateur" type="{http://www.yogj.fr/biblioWS/types}Utilisateur" minOccurs="0"/&gt;
+ *         &lt;element name="utilisateur" type="{http://www.yogj.fr/biblioWS/types}UtilisateurType" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -34,17 +34,17 @@ import fr.yogj.bibliows.types.Utilisateur;
 @XmlRootElement(name = "loginResponse")
 public class LoginResponse {
 
-    protected Utilisateur utilisateur;
+    protected UtilisateurType utilisateur;
 
     /**
      * Obtient la valeur de la propriété utilisateur.
      * 
      * @return
      *     possible object is
-     *     {@link Utilisateur }
+     *     {@link UtilisateurType }
      *     
      */
-    public Utilisateur getUtilisateur() {
+    public UtilisateurType getUtilisateur() {
         return utilisateur;
     }
 
@@ -53,10 +53,10 @@ public class LoginResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link Utilisateur }
+     *     {@link UtilisateurType }
      *     
      */
-    public void setUtilisateur(Utilisateur value) {
+    public void setUtilisateur(UtilisateurType value) {
         this.utilisateur = value;
     }
 

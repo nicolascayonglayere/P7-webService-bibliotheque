@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import fr.yogj.bibliows.types.Livre;
+import fr.yogj.bibliows.types.LivreType;
 
 
 /**
@@ -21,7 +21,7 @@ import fr.yogj.bibliows.types.Livre;
  *         &lt;choice&gt;
  *           &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *           &lt;element name="titre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *           &lt;element name="ouvrage" type="{http://www.yogj.fr/biblioWS/types}Livre"/&gt;
+ *           &lt;element name="ouvrage" type="{http://www.yogj.fr/biblioWS/types}LivreType"/&gt;
  *         &lt;/choice&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -42,7 +42,7 @@ public class EmpruntOuvrage {
 
     protected Integer id;
     protected String titre;
-    protected Livre ouvrage;
+    protected LivreType ouvrage;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -97,10 +97,10 @@ public class EmpruntOuvrage {
      * 
      * @return
      *     possible object is
-     *     {@link Livre }
+     *     {@link LivreType }
      *     
      */
-    public Livre getOuvrage() {
+    public LivreType getOuvrage() {
         return ouvrage;
     }
 
@@ -109,10 +109,10 @@ public class EmpruntOuvrage {
      * 
      * @param value
      *     allowed object is
-     *     {@link Livre }
+     *     {@link LivreType }
      *     
      */
-    public void setOuvrage(Livre value) {
+    public void setOuvrage(LivreType value) {
         this.ouvrage = value;
     }
 

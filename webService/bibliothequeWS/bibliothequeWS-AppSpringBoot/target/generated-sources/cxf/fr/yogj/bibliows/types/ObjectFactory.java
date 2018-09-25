@@ -30,51 +30,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Utilisateur }
+     * Create an instance of {@link UtilisateurType }
      * 
      */
-    public Utilisateur createUtilisateur() {
-        return new Utilisateur();
+    public UtilisateurType createUtilisateurType() {
+        return new UtilisateurType();
     }
 
     /**
-     * Create an instance of {@link CoordonneeUtilisateur }
+     * Create an instance of {@link CoordonneeUtilisateurType }
      * 
      */
-    public CoordonneeUtilisateur createCoordonneeUtilisateur() {
-        return new CoordonneeUtilisateur();
+    public CoordonneeUtilisateurType createCoordonneeUtilisateurType() {
+        return new CoordonneeUtilisateurType();
     }
 
     /**
-     * Create an instance of {@link LivreEmprunt }
+     * Create an instance of {@link LivreEmpruntType }
      * 
      */
-    public LivreEmprunt createLivreEmprunt() {
-        return new LivreEmprunt();
+    public LivreEmpruntType createLivreEmpruntType() {
+        return new LivreEmpruntType();
     }
 
     /**
-     * Create an instance of {@link Livre }
+     * Create an instance of {@link LivreType }
      * 
      */
-    public Livre createLivre() {
-        return new Livre();
+    public LivreType createLivreType() {
+        return new LivreType();
     }
 
     /**
-     * Create an instance of {@link Auteur }
+     * Create an instance of {@link AuteurType }
      * 
      */
-    public Auteur createAuteur() {
-        return new Auteur();
+    public AuteurType createAuteurType() {
+        return new AuteurType();
     }
 
     /**
-     * Create an instance of {@link Editeur }
+     * Create an instance of {@link EditeurType }
      * 
      */
-    public Editeur createEditeur() {
-        return new Editeur();
+    public EditeurType createEditeurType() {
+        return new EditeurType();
     }
 
 }

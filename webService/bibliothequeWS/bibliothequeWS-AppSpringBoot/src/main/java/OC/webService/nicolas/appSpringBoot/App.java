@@ -2,15 +2,31 @@ package OC.webService.nicolas.appSpringBoot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Hello world!
  *
  */
 @SpringBootApplication
-public class App {
+@ComponentScan("OC.webService.nicolas")
+public class App extends SpringBootServletInitializer{
+    
+   // @Override 
+   // protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+   //     return builder.sources(App.class);
+   // }    
+
     public static void main( String[] args ){
         System.out.println( "Hello World!" );
         SpringApplication.run(App.class);
-    }
+    }    
+    
+    //@Bean
+    //public ServletRegistrationBean<CXFServlet> dispatcherServlet() {
+    //    return new ServletRegistrationBean<CXFServlet>(new CXFServlet(), "/soap-api/*");
+    //}
+ 
+   
 }

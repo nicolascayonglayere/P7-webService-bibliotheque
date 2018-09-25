@@ -7,8 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
-import fr.yogj.bibliows.types.Livre;
-import fr.yogj.bibliows.types.LivreEmprunt;
+import fr.yogj.bibliows.types.LivreEmpruntType;
+import fr.yogj.bibliows.types.LivreType;
 
 
 /**
@@ -28,10 +28,10 @@ import fr.yogj.bibliows.types.LivreEmprunt;
  *             &lt;choice&gt;
  *               &lt;element name="idLivre" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *               &lt;element name="titre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *               &lt;element name="ouvrage" type="{http://www.yogj.fr/biblioWS/types}Livre"/&gt;
+ *               &lt;element name="ouvrage" type="{http://www.yogj.fr/biblioWS/types}LivreType"/&gt;
  *             &lt;/choice&gt;
  *           &lt;/sequence&gt;
- *           &lt;element name="emprunt" type="{http://www.yogj.fr/biblioWS/types}LivreEmprunt"/&gt;
+ *           &lt;element name="emprunt" type="{http://www.yogj.fr/biblioWS/types}LivreEmpruntType"/&gt;
  *         &lt;/choice&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -58,8 +58,8 @@ public class ProlongationOuvrage {
     protected XMLGregorianCalendar dateEmprunt;
     protected Integer idLivre;
     protected String titre;
-    protected Livre ouvrage;
-    protected LivreEmprunt emprunt;
+    protected LivreType ouvrage;
+    protected LivreEmpruntType emprunt;
 
     /**
      * Obtient la valeur de la propriété idEmprunt.
@@ -162,10 +162,10 @@ public class ProlongationOuvrage {
      * 
      * @return
      *     possible object is
-     *     {@link Livre }
+     *     {@link LivreType }
      *     
      */
-    public Livre getOuvrage() {
+    public LivreType getOuvrage() {
         return ouvrage;
     }
 
@@ -174,10 +174,10 @@ public class ProlongationOuvrage {
      * 
      * @param value
      *     allowed object is
-     *     {@link Livre }
+     *     {@link LivreType }
      *     
      */
-    public void setOuvrage(Livre value) {
+    public void setOuvrage(LivreType value) {
         this.ouvrage = value;
     }
 
@@ -186,10 +186,10 @@ public class ProlongationOuvrage {
      * 
      * @return
      *     possible object is
-     *     {@link LivreEmprunt }
+     *     {@link LivreEmpruntType }
      *     
      */
-    public LivreEmprunt getEmprunt() {
+    public LivreEmpruntType getEmprunt() {
         return emprunt;
     }
 
@@ -198,10 +198,10 @@ public class ProlongationOuvrage {
      * 
      * @param value
      *     allowed object is
-     *     {@link LivreEmprunt }
+     *     {@link LivreEmpruntType }
      *     
      */
-    public void setEmprunt(LivreEmprunt value) {
+    public void setEmprunt(LivreEmpruntType value) {
         this.emprunt = value;
     }
 

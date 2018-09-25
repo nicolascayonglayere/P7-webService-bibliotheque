@@ -18,7 +18,7 @@
     <property name="user.country" value="FR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\env\java\jdk1.8.0_161\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\nicolas\AppData\Local\Temp\surefire3390318460167756709\surefirebooter2788220308363965396.jar C:\Users\nicolas\AppData\Local\Temp\surefire3390318460167756709 2018-09-24T16-02-29_076-jvmRun1 surefire4604851331620514112tmp surefire_16362755236326777031tmp"/>
+    <property name="sun.java.command" value="C:\Users\nicolas\AppData\Local\Temp\surefire3834265733536802569\surefirebooter8922345569157909579.jar C:\Users\nicolas\AppData\Local\Temp\surefire3834265733536802569 2018-09-25T09-26-04_495-jvmRun1 surefire4776430826942910353tmp surefire_16814085038140143092tmp"/>
     <property name="surefire.test.class.path" value="I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\test-classes;I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\classes;C:\env\maven\repositary\junit\junit\3.8.1\junit-3.8.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\nicolas"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\nicolas\AppData\Local\Temp\surefire3390318460167756709\surefirebooter2788220308363965396.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\nicolas\AppData\Local\Temp\surefire3834265733536802569\surefirebooter8922345569157909579.jar"/>
     <property name="sun.boot.class.path" value="C:\env\java\jdk1.8.0_161\jre\lib\resources.jar;C:\env\java\jdk1.8.0_161\jre\lib\rt.jar;C:\env\java\jdk1.8.0_161\jre\lib\sunrsasign.jar;C:\env\java\jdk1.8.0_161\jre\lib\jsse.jar;C:\env\java\jdk1.8.0_161\jre\lib\jce.jar;C:\env\java\jdk1.8.0_161\jre\lib\charsets.jar;C:\env\java\jdk1.8.0_161\jre\lib\jfr.jar;C:\env\java\jdk1.8.0_161\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>

@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import fr.yogj.bibliows.types.Livre;
+import fr.yogj.bibliows.types.LivreType;
 
 
 /**
@@ -19,7 +19,7 @@ import fr.yogj.bibliows.types.Livre;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="livre" type="{http://www.yogj.fr/biblioWS/types}Livre"/&gt;
+ *         &lt;element name="livre" type="{http://www.yogj.fr/biblioWS/types}LivreType"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,17 +36,17 @@ import fr.yogj.bibliows.types.Livre;
 public class RetourOuvrageResponse {
 
     @XmlElement(required = true)
-    protected Livre livre;
+    protected LivreType livre;
 
     /**
      * Obtient la valeur de la propriété livre.
      * 
      * @return
      *     possible object is
-     *     {@link Livre }
+     *     {@link LivreType }
      *     
      */
-    public Livre getLivre() {
+    public LivreType getLivre() {
         return livre;
     }
 
@@ -55,10 +55,10 @@ public class RetourOuvrageResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link Livre }
+     *     {@link LivreType }
      *     
      */
-    public void setLivre(Livre value) {
+    public void setLivre(LivreType value) {
         this.livre = value;
     }
 

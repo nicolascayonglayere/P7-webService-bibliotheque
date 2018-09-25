@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import fr.yogj.bibliows.types.LivreEmprunt;
+import fr.yogj.bibliows.types.LivreEmpruntType;
 
 
 /**
@@ -19,7 +19,7 @@ import fr.yogj.bibliows.types.LivreEmprunt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="emprunt" type="{http://www.yogj.fr/biblioWS/types}LivreEmprunt"/&gt;
+ *         &lt;element name="emprunt" type="{http://www.yogj.fr/biblioWS/types}LivreEmpruntType"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,17 +36,17 @@ import fr.yogj.bibliows.types.LivreEmprunt;
 public class ProlongationOuvrageResponse {
 
     @XmlElement(required = true)
-    protected LivreEmprunt emprunt;
+    protected LivreEmpruntType emprunt;
 
     /**
      * Obtient la valeur de la propriété emprunt.
      * 
      * @return
      *     possible object is
-     *     {@link LivreEmprunt }
+     *     {@link LivreEmpruntType }
      *     
      */
-    public LivreEmprunt getEmprunt() {
+    public LivreEmpruntType getEmprunt() {
         return emprunt;
     }
 
@@ -55,10 +55,10 @@ public class ProlongationOuvrageResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link LivreEmprunt }
+     *     {@link LivreEmpruntType }
      *     
      */
-    public void setEmprunt(LivreEmprunt value) {
+    public void setEmprunt(LivreEmpruntType value) {
         this.emprunt = value;
     }
 

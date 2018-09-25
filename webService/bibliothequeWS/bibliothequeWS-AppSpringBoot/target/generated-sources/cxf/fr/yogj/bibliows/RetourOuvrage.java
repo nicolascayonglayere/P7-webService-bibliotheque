@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import fr.yogj.bibliows.types.Livre;
+import fr.yogj.bibliows.types.LivreType;
 
 
 /**
@@ -20,7 +20,7 @@ import fr.yogj.bibliows.types.Livre;
  *       &lt;sequence&gt;
  *         &lt;choice&gt;
  *           &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *           &lt;element name="livre" type="{http://www.yogj.fr/biblioWS/types}Livre"/&gt;
+ *           &lt;element name="livre" type="{http://www.yogj.fr/biblioWS/types}LivreType"/&gt;
  *         &lt;/choice&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -39,7 +39,7 @@ import fr.yogj.bibliows.types.Livre;
 public class RetourOuvrage {
 
     protected Integer id;
-    protected Livre livre;
+    protected LivreType livre;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -70,10 +70,10 @@ public class RetourOuvrage {
      * 
      * @return
      *     possible object is
-     *     {@link Livre }
+     *     {@link LivreType }
      *     
      */
-    public Livre getLivre() {
+    public LivreType getLivre() {
         return livre;
     }
 
@@ -82,10 +82,10 @@ public class RetourOuvrage {
      * 
      * @param value
      *     allowed object is
-     *     {@link Livre }
+     *     {@link LivreType }
      *     
      */
-    public void setLivre(Livre value) {
+    public void setLivre(LivreType value) {
         this.livre = value;
     }
 

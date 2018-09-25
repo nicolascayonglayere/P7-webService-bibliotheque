@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="OC.webService.nicolas.consumer.AppTest" time="0.008" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="OC.webService.nicolas.consumer.AppTest" time="0.006" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="FR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\env\java\jdk1.8.0_161\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\nicolas\AppData\Local\Temp\surefire2433743258725410317\surefirebooter8498767728032577308.jar C:\Users\nicolas\AppData\Local\Temp\surefire2433743258725410317 2018-09-24T16-02-29_076-jvmRun1 surefire5204288050928874439tmp surefire_25851565253823692835tmp"/>
+    <property name="sun.java.command" value="C:\Users\nicolas\AppData\Local\Temp\surefire1310141191723033901\surefirebooter9199894652595194501.jar C:\Users\nicolas\AppData\Local\Temp\surefire1310141191723033901 2018-09-25T09-26-04_495-jvmRun1 surefire6546290733968878477tmp surefire_21926843497689212965tmp"/>
     <property name="surefire.test.class.path" value="I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Consumer\target\test-classes;I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Consumer\target\classes;C:\env\maven\repositary\junit\junit\3.8.1\junit-3.8.1.jar;I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Technical\target\bibliothequeWS-Technical-1.0-SNAPSHOT.jar;C:\env\maven\repositary\org\apache\logging\log4j\log4j-core\2.11.1\log4j-core-2.11.1.jar;C:\env\maven\repositary\org\apache\logging\log4j\log4j-api\2.10.0\log4j-api-2.10.0.jar;I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\bibliothequeWS-Model-1.0-SNAPSHOT.jar;C:\env\maven\repositary\org\postgresql\postgresql\42.2.2\postgresql-42.2.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\nicolas"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\nicolas\AppData\Local\Temp\surefire2433743258725410317\surefirebooter8498767728032577308.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\nicolas\AppData\Local\Temp\surefire1310141191723033901\surefirebooter9199894652595194501.jar"/>
     <property name="sun.boot.class.path" value="C:\env\java\jdk1.8.0_161\jre\lib\resources.jar;C:\env\java\jdk1.8.0_161\jre\lib\rt.jar;C:\env\java\jdk1.8.0_161\jre\lib\sunrsasign.jar;C:\env\java\jdk1.8.0_161\jre\lib\jsse.jar;C:\env\java\jdk1.8.0_161\jre\lib\jce.jar;C:\env\java\jdk1.8.0_161\jre\lib\charsets.jar;C:\env\java\jdk1.8.0_161\jre\lib\jfr.jar;C:\env\java\jdk1.8.0_161\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>

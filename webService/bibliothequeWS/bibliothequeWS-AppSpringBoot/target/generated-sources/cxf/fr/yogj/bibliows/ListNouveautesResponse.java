@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import fr.yogj.bibliows.types.Livre;
+import fr.yogj.bibliows.types.LivreType;
 
 
 /**
@@ -21,7 +21,7 @@ import fr.yogj.bibliows.types.Livre;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="nouveautes" type="{http://www.yogj.fr/biblioWS/types}Livre" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="nouveautes" type="{http://www.yogj.fr/biblioWS/types}LivreType" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,7 +38,7 @@ import fr.yogj.bibliows.types.Livre;
 public class ListNouveautesResponse {
 
     @XmlElement(required = true)
-    protected List<Livre> nouveautes;
+    protected List<LivreType> nouveautes;
 
     /**
      * Gets the value of the nouveautes property.
@@ -58,13 +58,13 @@ public class ListNouveautesResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Livre }
+     * {@link LivreType }
      * 
      * 
      */
-    public List<Livre> getNouveautes() {
+    public List<LivreType> getNouveautes() {
         if (nouveautes == null) {
-            nouveautes = new ArrayList<Livre>();
+            nouveautes = new ArrayList<LivreType>();
         }
         return this.nouveautes;
     }

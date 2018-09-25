@@ -8,8 +8,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import fr.yogj.bibliows.types.CoordonneeUtilisateur;
-import fr.yogj.bibliows.types.Utilisateur;
+import fr.yogj.bibliows.types.CoordonneeUtilisateurType;
+import fr.yogj.bibliows.types.UtilisateurType;
 
 
 /**
@@ -22,8 +22,8 @@ import fr.yogj.bibliows.types.Utilisateur;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="utilisateur" type="{http://www.yogj.fr/biblioWS/types}Utilisateur" maxOccurs="unbounded"/&gt;
- *         &lt;element name="coordonnee" type="{http://www.yogj.fr/biblioWS/types}CoordonneeUtilisateur"/&gt;
+ *         &lt;element name="utilisateur" type="{http://www.yogj.fr/biblioWS/types}UtilisateurType" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="coordonnee" type="{http://www.yogj.fr/biblioWS/types}CoordonneeUtilisateurType"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -41,9 +41,9 @@ import fr.yogj.bibliows.types.Utilisateur;
 public class ListRetardatairesResponse {
 
     @XmlElement(required = true)
-    protected List<Utilisateur> utilisateur;
+    protected List<UtilisateurType> utilisateur;
     @XmlElement(required = true)
-    protected CoordonneeUtilisateur coordonnee;
+    protected CoordonneeUtilisateurType coordonnee;
 
     /**
      * Gets the value of the utilisateur property.
@@ -63,13 +63,13 @@ public class ListRetardatairesResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Utilisateur }
+     * {@link UtilisateurType }
      * 
      * 
      */
-    public List<Utilisateur> getUtilisateur() {
+    public List<UtilisateurType> getUtilisateur() {
         if (utilisateur == null) {
-            utilisateur = new ArrayList<Utilisateur>();
+            utilisateur = new ArrayList<UtilisateurType>();
         }
         return this.utilisateur;
     }
@@ -79,10 +79,10 @@ public class ListRetardatairesResponse {
      * 
      * @return
      *     possible object is
-     *     {@link CoordonneeUtilisateur }
+     *     {@link CoordonneeUtilisateurType }
      *     
      */
-    public CoordonneeUtilisateur getCoordonnee() {
+    public CoordonneeUtilisateurType getCoordonnee() {
         return coordonnee;
     }
 
@@ -91,10 +91,10 @@ public class ListRetardatairesResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link CoordonneeUtilisateur }
+     *     {@link CoordonneeUtilisateurType }
      *     
      */
-    public void setCoordonnee(CoordonneeUtilisateur value) {
+    public void setCoordonnee(CoordonneeUtilisateurType value) {
         this.coordonnee = value;
     }
 

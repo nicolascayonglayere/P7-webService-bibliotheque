@@ -55,6 +55,23 @@
     	<artifactId>cxf-rt-transports-http-jetty</artifactId>
     	<version>3.2.5</version>
     </dependency>
+    <dependency>
+    	<groupId>OC.webService.nicolas</groupId>
+    	<artifactId>bibliothequeWS-Business</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>OC.webService.nicolas</groupId>
+    	<artifactId>bibliothequeWS-Technical</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>OC.webService.nicolas</groupId>
+    	<artifactId>bibliothequeWS-Model</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-tomcat</artifactId>
+    	<scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>

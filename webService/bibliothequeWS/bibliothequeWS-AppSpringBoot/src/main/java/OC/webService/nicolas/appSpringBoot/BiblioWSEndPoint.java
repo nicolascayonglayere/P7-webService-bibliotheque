@@ -32,8 +32,7 @@ import fr.yogj.bibliows.types.UtilisateurType;
 public class BiblioWSEndPoint implements BiblioWS {
 
 	@Override
-	public void listRetardataires(XMLGregorianCalendar dateDuJour, Holder<List<UtilisateurType>> utilisateur,
-			Holder<CoordonneeUtilisateurType> coordonnee) {
+	public void listRetardataires(XMLGregorianCalendar dateDuJour, Holder<List<UtilisateurType>> utilisateur, Holder<CoordonneeUtilisateurType> coordonnee) {
 		// TODO Auto-generated method stub
 
 	}

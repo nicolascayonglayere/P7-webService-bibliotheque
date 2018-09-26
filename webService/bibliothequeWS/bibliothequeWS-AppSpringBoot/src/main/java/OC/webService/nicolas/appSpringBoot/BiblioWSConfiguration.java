@@ -29,5 +29,5 @@ public class BiblioWSConfiguration {
         endpoint.publish("/biblioWS");
         endpoint.setWsdlLocation("biblioWS.wsdl");
         return endpoint;
-}
+    }
 }

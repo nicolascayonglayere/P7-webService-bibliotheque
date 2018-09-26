@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import fr.yogj.bibliows.types.LivreType;
+import fr.yogj.bibliows.types.UtilisateurType;
 
 
 /**
@@ -23,6 +24,11 @@ import fr.yogj.bibliows.types.LivreType;
  *           &lt;element name="titre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *           &lt;element name="ouvrage" type="{http://www.yogj.fr/biblioWS/types}LivreType"/&gt;
  *         &lt;/choice&gt;
+ *         &lt;choice&gt;
+ *           &lt;element name="idEmprunteur" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *           &lt;element name="pseudo" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *           &lt;element name="utilisateur" type="{http://www.yogj.fr/biblioWS/types}UtilisateurType"/&gt;
+ *         &lt;/choice&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,7 +41,10 @@ import fr.yogj.bibliows.types.LivreType;
 @XmlType(name = "", propOrder = {
     "id",
     "titre",
-    "ouvrage"
+    "ouvrage",
+    "idEmprunteur",
+    "pseudo",
+    "utilisateur"
 })
 @XmlRootElement(name = "empruntOuvrage")
 public class EmpruntOuvrage {
@@ -43,6 +52,9 @@ public class EmpruntOuvrage {
     protected Integer id;
     protected String titre;
     protected LivreType ouvrage;
+    protected Integer idEmprunteur;
+    protected String pseudo;
+    protected UtilisateurType utilisateur;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -114,6 +126,78 @@ public class EmpruntOuvrage {
      */
     public void setOuvrage(LivreType value) {
         this.ouvrage = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété idEmprunteur.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getIdEmprunteur() {
+        return idEmprunteur;
+    }
+
+    /**
+     * Définit la valeur de la propriété idEmprunteur.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setIdEmprunteur(Integer value) {
+        this.idEmprunteur = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété pseudo.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    /**
+     * Définit la valeur de la propriété pseudo.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPseudo(String value) {
+        this.pseudo = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété utilisateur.
+     * 
+     * @return
+     *     possible object is
+     *     {@link UtilisateurType }
+     *     
+     */
+    public UtilisateurType getUtilisateur() {
+        return utilisateur;
+    }
+
+    /**
+     * Définit la valeur de la propriété utilisateur.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link UtilisateurType }
+     *     
+     */
+    public void setUtilisateur(UtilisateurType value) {
+        this.utilisateur = value;
     }
 
 }

@@ -15,6 +15,7 @@ fr\yogj\bibliows\RetourOuvrageFault.class
 fr\yogj\bibliows\ListNouveautesResponse.class
 fr\yogj\bibliows\RetourOuvrageFault1.class
 fr\yogj\bibliows\types\AuteurType.class
+OC\webService\nicolas\appSpringBoot\BiblioWSEndPoint.class
 fr\yogj\bibliows\Recherche.class
 fr\yogj\bibliows\LoginResponse.class
 fr\yogj\bibliows\DeconnexionResponse.class
@@ -43,6 +44,7 @@ fr\yogj\bibliows\RetourOuvrage.class
 fr\yogj\bibliows\types\EditeurType.class
 fr\yogj\bibliows\RetourOuvrageFault_Exception.class
 fr\yogj\bibliows\ProlongationOuvrageFault_Exception.class
+OC\webService\nicolas\appSpringBoot\BiblioWSConfiguration.class
 fr\yogj\bibliows\types\package-info.class
 fr\yogj\bibliows\RechercheResponse.class
 fr\yogj\bibliows\DeconnexionFault_Exception.class

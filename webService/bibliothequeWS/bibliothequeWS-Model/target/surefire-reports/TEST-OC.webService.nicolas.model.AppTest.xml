@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="OC.webService.nicolas.model.AppTest" time="0.007" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="OC.webService.nicolas.model.AppTest" time="0.008" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -7,7 +7,7 @@
     <property name="java.specification.version" value="1.8"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\test-classes;I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\classes;C:\env\maven\repositary\junit\junit\3.8.1\junit-3.8.1.jar;"/>
+    <property name="java.class.path" value="I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\test-classes;I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\classes;C:\env\maven\repositary\junit\junit\3.8.1\junit-3.8.1.jar;C:\env\maven\repositary\org\hibernate\javax\persistence\hibernate-jpa-2.1-api\1.0.2.Final\hibernate-jpa-2.1-api-1.0.2.Final.jar;C:\env\maven\repositary\org\springframework\boot\spring-boot-devtools\2.0.5.RELEASE\spring-boot-devtools-2.0.5.RELEASE.jar;C:\env\maven\repositary\org\springframework\boot\spring-boot\2.0.5.RELEASE\spring-boot-2.0.5.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-core\5.0.9.RELEASE\spring-core-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-jcl\5.0.9.RELEASE\spring-jcl-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-context\5.0.9.RELEASE\spring-context-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-aop\5.0.9.RELEASE\spring-aop-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-beans\5.0.9.RELEASE\spring-beans-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-expression\5.0.9.RELEASE\spring-expression-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\boot\spring-boot-autoconfigure\2.0.5.RELEASE\spring-boot-autoconfigure-2.0.5.RELEASE.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -18,8 +18,8 @@
     <property name="user.country" value="FR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\env\java\jdk1.8.0_161\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\nicolas\AppData\Local\Temp\surefire3834265733536802569\surefirebooter8922345569157909579.jar C:\Users\nicolas\AppData\Local\Temp\surefire3834265733536802569 2018-09-25T09-26-04_495-jvmRun1 surefire4776430826942910353tmp surefire_16814085038140143092tmp"/>
-    <property name="surefire.test.class.path" value="I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\test-classes;I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\classes;C:\env\maven\repositary\junit\junit\3.8.1\junit-3.8.1.jar;"/>
+    <property name="sun.java.command" value="C:\Users\nicolas\AppData\Local\Temp\surefire6198289557864001171\surefirebooter5268136376467382248.jar C:\Users\nicolas\AppData\Local\Temp\surefire6198289557864001171 2018-09-26T10-17-55_261-jvmRun1 surefire8956467332899545972tmp surefire_15556736079321885085tmp"/>
+    <property name="surefire.test.class.path" value="I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\test-classes;I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-Model\target\classes;C:\env\maven\repositary\junit\junit\3.8.1\junit-3.8.1.jar;C:\env\maven\repositary\org\hibernate\javax\persistence\hibernate-jpa-2.1-api\1.0.2.Final\hibernate-jpa-2.1-api-1.0.2.Final.jar;C:\env\maven\repositary\org\springframework\boot\spring-boot-devtools\2.0.5.RELEASE\spring-boot-devtools-2.0.5.RELEASE.jar;C:\env\maven\repositary\org\springframework\boot\spring-boot\2.0.5.RELEASE\spring-boot-2.0.5.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-core\5.0.9.RELEASE\spring-core-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-jcl\5.0.9.RELEASE\spring-jcl-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-context\5.0.9.RELEASE\spring-context-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-aop\5.0.9.RELEASE\spring-aop-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-beans\5.0.9.RELEASE\spring-beans-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\spring-expression\5.0.9.RELEASE\spring-expression-5.0.9.RELEASE.jar;C:\env\maven\repositary\org\springframework\boot\spring-boot-autoconfigure\2.0.5.RELEASE\spring-boot-autoconfigure-2.0.5.RELEASE.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\nicolas"/>
     <property name="user.language" value="fr"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\nicolas\AppData\Local\Temp\surefire3834265733536802569\surefirebooter8922345569157909579.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\nicolas\AppData\Local\Temp\surefire6198289557864001171\surefirebooter5268136376467382248.jar"/>
     <property name="sun.boot.class.path" value="C:\env\java\jdk1.8.0_161\jre\lib\resources.jar;C:\env\java\jdk1.8.0_161\jre\lib\rt.jar;C:\env\java\jdk1.8.0_161\jre\lib\sunrsasign.jar;C:\env\java\jdk1.8.0_161\jre\lib\jsse.jar;C:\env\java\jdk1.8.0_161\jre\lib\jce.jar;C:\env\java\jdk1.8.0_161\jre\lib\charsets.jar;C:\env\java\jdk1.8.0_161\jre\lib\jfr.jar;C:\env\java\jdk1.8.0_161\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>

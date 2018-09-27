@@ -7,10 +7,12 @@ import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.ws.config.annotation.EnableWs;
 
 import fr.yogj.bibliows.BiblioWS;
 
 @Configuration
+@EnableWs
 public class BiblioWSConfiguration {
 
     @Bean(name=Bus.DEFAULT_BUS_ID)

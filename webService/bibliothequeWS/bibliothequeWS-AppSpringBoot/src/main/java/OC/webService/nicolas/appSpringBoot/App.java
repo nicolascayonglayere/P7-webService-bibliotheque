@@ -7,16 +7,19 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * Hello world!
  *
  */
 @SpringBootApplication(scanBasePackages={"OC.webService.nicolas"})
+@EnableJpaAuditing
 @Configuration
 @ComponentScan(basePackages="OC.webService.nicolas.*")
 @EnableAutoConfiguration
 @EntityScan(basePackages="OC.webService.nicolas")
+//@RepositoryScan(basePackages="OC.webService.nicolas")
 public class App extends SpringBootServletInitializer{
     
    // @Override 

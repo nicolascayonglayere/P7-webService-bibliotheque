@@ -1,5 +1,6 @@
 package OC.webService.nicolas.model.entites;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,9 +17,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-@Entity
-public class Livre {
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+@Entity
+@EntityListeners(AuditingEntityListener.class)
+public class Livre implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	@Column(name="id_livre")
@@ -42,7 +48,7 @@ public class Livre {
 	@OneToMany(mappedBy="livre", cascade= {CascadeType.ALL})
 	private List<LivreEmprunt>emprunts;
 
-	public Livre() {}
+	protected Livre() {}
 
 	public Livre(String titre, Genre genre, Date dateParution, int nbExemplaire) {
 		this.titre = titre;

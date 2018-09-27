@@ -5,6 +5,10 @@ import java.util.List;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Holder;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import OC.webService.nicolas.business.contract.LivreManager;
 import fr.yogj.bibliows.BiblioWS;
 import fr.yogj.bibliows.Deconnexion;
 import fr.yogj.bibliows.DeconnexionFault_Exception;
@@ -29,8 +33,12 @@ import fr.yogj.bibliows.RetourOuvrageResponse;
 import fr.yogj.bibliows.types.CoordonneeUtilisateurType;
 import fr.yogj.bibliows.types.UtilisateurType;
 
+@Service
 public class BiblioWSEndPoint implements BiblioWS {
 
+	@Autowired
+	LivreManager lm;
+	
 	@Override
 	public void listRetardataires(XMLGregorianCalendar dateDuJour, Holder<List<UtilisateurType>> utilisateur, Holder<CoordonneeUtilisateurType> coordonnee) {
 		// TODO Auto-generated method stub
@@ -40,7 +48,8 @@ public class BiblioWSEndPoint implements BiblioWS {
 	@Override
 	public ListNouveautesResponse listNouveautes(ListNouveautes parameters) {
 		// TODO Auto-generated method stub
-		return null;
+
+		return (ListNouveautesResponse) lm.obtenirNouveautes();
 	}
 
 	@Override

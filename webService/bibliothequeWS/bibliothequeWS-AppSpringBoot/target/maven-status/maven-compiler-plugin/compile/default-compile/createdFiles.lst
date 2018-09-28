@@ -19,7 +19,6 @@ OC\webService\nicolas\appSpringBoot\BiblioWSEndPoint.class
 fr\yogj\bibliows\Recherche.class
 fr\yogj\bibliows\LoginResponse.class
 fr\yogj\bibliows\DeconnexionResponse.class
-fr\yogj\bibliows\ListNouveautes.class
 fr\yogj\bibliows\DetailsOuvrageResponse.class
 fr\yogj\bibliows\RetourOuvrageFault1_Exception.class
 fr\yogj\bibliows\types\CoordonneeUtilisateurType.class

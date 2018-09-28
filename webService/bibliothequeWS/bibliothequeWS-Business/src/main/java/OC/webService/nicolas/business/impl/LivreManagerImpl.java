@@ -31,6 +31,7 @@ public class LivreManagerImpl implements LivreManager {
 		return livreDao;
 	}
 
+	
 	public void setLivreDao(ILivreDao livreDao) {
 		this.livreDao = livreDao;
 	}

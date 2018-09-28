@@ -19,7 +19,7 @@ import fr.yogj.bibliows.DetailsOuvrageResponse;
 import fr.yogj.bibliows.EmpruntOuvrage;
 import fr.yogj.bibliows.EmpruntOuvrageFault_Exception;
 import fr.yogj.bibliows.EmpruntOuvrageResponse;
-import fr.yogj.bibliows.ListNouveautes;
+//import fr.yogj.bibliows.ListNouveautes;
 import fr.yogj.bibliows.ListNouveautesResponse;
 import fr.yogj.bibliows.LoginFault_Exception;
 import fr.yogj.bibliows.ProlongationOuvrage;
@@ -43,13 +43,6 @@ public class BiblioWSEndPoint implements BiblioWS {
 	public void listRetardataires(XMLGregorianCalendar dateDuJour, Holder<List<UtilisateurType>> utilisateur, Holder<CoordonneeUtilisateurType> coordonnee) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public ListNouveautesResponse listNouveautes(ListNouveautes parameters) {
-		// TODO Auto-generated method stub
-
-		return (ListNouveautesResponse) lm.obtenirNouveautes();
 	}
 
 	@Override
@@ -90,4 +83,20 @@ public class BiblioWSEndPoint implements BiblioWS {
 		return null;
 	}
 
+	@Override
+	public ListNouveautesResponse listNouveautes(String parameters) {
+		// TODO Auto-generated method stub
+		ListNouveautesResponse nouveautes = new ListNouveautesResponse();
+		//nouveautes;
+		return nouveautes;
+	}
+
+	public LivreManager getLm() {
+		return lm;
+	}
+
+	public void setLm(LivreManager lm) {
+		this.lm = lm;
+	}
+	
 }

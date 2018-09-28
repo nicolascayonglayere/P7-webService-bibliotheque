@@ -1,1 +1,3 @@
+OC\webService\nicolas\business\impl\LivreManagerImpl.class
 OC\webService\nicolas\business\App.class
+OC\webService\nicolas\business\contract\LivreManager.class

@@ -1,7 +1,10 @@
 
 package fr.yogj.bibliows;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -21,6 +24,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _ListNouveautes_QNAME = new QName("http://yogj.fr/biblioWS/", "listNouveautes");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: fr.yogj.bibliows
@@ -75,14 +79,6 @@ public class ObjectFactory {
      */
     public DeconnexionFault createDeconnexionFault() {
         return new DeconnexionFault();
-    }
-
-    /**
-     * Create an instance of {@link ListNouveautes }
-     * 
-     */
-    public ListNouveautes createListNouveautes() {
-        return new ListNouveautes();
     }
 
     /**
@@ -235,6 +231,15 @@ public class ObjectFactory {
      */
     public ListRetardatairesResponse createListRetardatairesResponse() {
         return new ListRetardatairesResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://yogj.fr/biblioWS/", name = "listNouveautes")
+    public JAXBElement<String> createListNouveautes(String value) {
+        return new JAXBElement<String>(_ListNouveautes_QNAME, String.class, null, value);
     }
 
 }

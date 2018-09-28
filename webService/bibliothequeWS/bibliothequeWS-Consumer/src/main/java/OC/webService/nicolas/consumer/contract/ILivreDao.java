@@ -15,5 +15,5 @@ public interface ILivreDao extends JpaRepository<Livre, Integer> {
 	
 	//public Livre obtenirDetailsLivre(int pId);
 	
-	public Livre trouverLivre(String pTitre, Auteur pAuteur);
+	//public Livre trouverLivre(String pTitre, Auteur pAuteur);
 }

@@ -62,17 +62,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="listNouveautes">
-      	<xsd:complexType>
-      		<xsd:sequence>
-
-      			<xsd:choice>
-      				<xsd:element name="dateDuJour" type="xsd:date" minOccurs="1">
-      				</xsd:element>
-      				<xsd:element name="dateChoisie" type="xsd:date" minOccurs="1"></xsd:element>
-      			</xsd:choice>
-      		</xsd:sequence>
-      	</xsd:complexType>
+      <xsd:element name="listNouveautes" type="xsd:string">
       </xsd:element>
       <xsd:element name="listNouveautesResponse">
       	<xsd:complexType>

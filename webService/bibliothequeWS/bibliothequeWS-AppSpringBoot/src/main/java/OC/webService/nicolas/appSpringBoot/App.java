@@ -8,18 +8,19 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * Hello world!
  *
  */
-@SpringBootApplication(scanBasePackages={"OC.webService.nicolas"})
-@EnableJpaAuditing
-@Configuration
-@ComponentScan(basePackages="OC.webService.nicolas.*")
-@EnableAutoConfiguration
+@SpringBootApplication//(scanBasePackages={"OC.webService.nicolas"})
+//@EnableJpaAuditing
+//@Configuration
+@ComponentScan(basePackages="OC.webService.nicolas")
+//@EnableAutoConfiguration
 @EntityScan(basePackages="OC.webService.nicolas")
-//@RepositoryScan(basePackages="OC.webService.nicolas")
+@EnableJpaRepositories
 public class App extends SpringBootServletInitializer{
     
    // @Override 

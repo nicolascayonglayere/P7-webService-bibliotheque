@@ -25,6 +25,7 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _ListNouveautes_QNAME = new QName("http://yogj.fr/biblioWS/", "listNouveautes");
+    private final static QName _ListRetardataires_QNAME = new QName("http://yogj.fr/biblioWS/", "listRetardataires");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: fr.yogj.bibliows
@@ -90,19 +91,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DetailsOuvrage }
+     * Create an instance of {@link RechercheOuvrage }
      * 
      */
-    public DetailsOuvrage createDetailsOuvrage() {
-        return new DetailsOuvrage();
+    public RechercheOuvrage createRechercheOuvrage() {
+        return new RechercheOuvrage();
     }
 
     /**
-     * Create an instance of {@link DetailsOuvrageResponse }
+     * Create an instance of {@link RechercheOuvrageResponse }
      * 
      */
-    public DetailsOuvrageResponse createDetailsOuvrageResponse() {
-        return new DetailsOuvrageResponse();
+    public RechercheOuvrageResponse createRechercheOuvrageResponse() {
+        return new RechercheOuvrageResponse();
     }
 
     /**
@@ -218,14 +219,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ListRetardataires }
-     * 
-     */
-    public ListRetardataires createListRetardataires() {
-        return new ListRetardataires();
-    }
-
-    /**
      * Create an instance of {@link ListRetardatairesResponse }
      * 
      */
@@ -240,6 +233,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://yogj.fr/biblioWS/", name = "listNouveautes")
     public JAXBElement<String> createListNouveautes(String value) {
         return new JAXBElement<String>(_ListNouveautes_QNAME, String.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://yogj.fr/biblioWS/", name = "listRetardataires")
+    public JAXBElement<String> createListRetardataires(String value) {
+        return new JAXBElement<String>(_ListRetardataires_QNAME, String.class, null, value);
     }
 
 }

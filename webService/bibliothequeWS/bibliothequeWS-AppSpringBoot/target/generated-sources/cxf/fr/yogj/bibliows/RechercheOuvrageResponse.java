@@ -5,9 +5,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
+import fr.yogj.bibliows.types.LivreType;
 
 
 /**
@@ -20,7 +19,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="dateDuJour" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="ouvrage" type="{http://www.yogj.fr/biblioWS/types}LivreType"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -31,37 +30,36 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "dateDuJour"
+    "ouvrage"
 })
-@XmlRootElement(name = "listRetardataires")
-public class ListRetardataires {
+@XmlRootElement(name = "rechercheOuvrageResponse")
+public class RechercheOuvrageResponse {
 
     @XmlElement(required = true)
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar dateDuJour;
+    protected LivreType ouvrage;
 
     /**
-     * Obtient la valeur de la propriété dateDuJour.
+     * Obtient la valeur de la propriété ouvrage.
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link LivreType }
      *     
      */
-    public XMLGregorianCalendar getDateDuJour() {
-        return dateDuJour;
+    public LivreType getOuvrage() {
+        return ouvrage;
     }
 
     /**
-     * Définit la valeur de la propriété dateDuJour.
+     * Définit la valeur de la propriété ouvrage.
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link LivreType }
      *     
      */
-    public void setDateDuJour(XMLGregorianCalendar value) {
-        this.dateDuJour = value;
+    public void setOuvrage(LivreType value) {
+        this.ouvrage = value;
     }
 
 }

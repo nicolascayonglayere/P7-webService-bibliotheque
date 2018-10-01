@@ -1,7 +1,5 @@
 package OC.webService.nicolas.appSpringBoot;
 
-import java.util.List;
-
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Holder;
@@ -13,31 +11,28 @@ import org.springframework.stereotype.Service;
 
 import OC.webService.nicolas.appSpringBoot.helpers.ConversionDate;
 import OC.webService.nicolas.business.contract.LivreManager;
+import OC.webService.nicolas.business.contract.UtilisateurManager;
 import OC.webService.nicolas.model.entites.Auteur;
 import OC.webService.nicolas.model.entites.Livre;
+import OC.webService.nicolas.model.entites.Utilisateur;
 import fr.yogj.bibliows.BiblioWS;
 import fr.yogj.bibliows.Deconnexion;
 import fr.yogj.bibliows.DeconnexionFault_Exception;
 import fr.yogj.bibliows.DeconnexionResponse;
-import fr.yogj.bibliows.DetailsOuvrage;
 import fr.yogj.bibliows.DetailsOuvrageFault_Exception;
-import fr.yogj.bibliows.DetailsOuvrageResponse;
-import fr.yogj.bibliows.EmpruntOuvrage;
 import fr.yogj.bibliows.EmpruntOuvrageFault_Exception;
-import fr.yogj.bibliows.EmpruntOuvrageResponse;
 
 import fr.yogj.bibliows.ListNouveautesResponse;
+import fr.yogj.bibliows.ListRetardatairesResponse;
 import fr.yogj.bibliows.LoginFault_Exception;
-import fr.yogj.bibliows.ProlongationOuvrage;
 import fr.yogj.bibliows.ProlongationOuvrageFault1_Exception;
 import fr.yogj.bibliows.ProlongationOuvrageFault_Exception;
-import fr.yogj.bibliows.ProlongationOuvrageResponse;
-import fr.yogj.bibliows.RetourOuvrage;
+import fr.yogj.bibliows.RechercheOuvrage;
+import fr.yogj.bibliows.RechercheOuvrageResponse;
 import fr.yogj.bibliows.RetourOuvrageFault1_Exception;
 import fr.yogj.bibliows.RetourOuvrageFault_Exception;
-import fr.yogj.bibliows.RetourOuvrageResponse;
 import fr.yogj.bibliows.types.AuteurType;
-import fr.yogj.bibliows.types.CoordonneeUtilisateurType;
+import fr.yogj.bibliows.types.LivreEmpruntType;
 import fr.yogj.bibliows.types.LivreType;
 import fr.yogj.bibliows.types.UtilisateurType;
 
@@ -47,15 +42,11 @@ public class BiblioWSEndPoint implements BiblioWS {
 	static final Logger logger = LogManager.getLogger();
 	@Autowired
 	LivreManager lm;
+	@Autowired
+	UtilisateurManager um;
 	
 	//@Autowired
 	ConversionDate convDate  = new ConversionDate();
-
-	@Override
-	public void listRetardataires(XMLGregorianCalendar dateDuJour, Holder<List<UtilisateurType>> utilisateur, Holder<CoordonneeUtilisateurType> coordonnee) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public DeconnexionResponse deconnexion(Deconnexion parameters) throws DeconnexionFault_Exception {
@@ -64,35 +55,17 @@ public class BiblioWSEndPoint implements BiblioWS {
 	}
 
 	@Override
-	public EmpruntOuvrageResponse empruntOuvrage(EmpruntOuvrage parameters) throws EmpruntOuvrageFault_Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public RetourOuvrageResponse retourOuvrage(RetourOuvrage parameters)
-			throws RetourOuvrageFault_Exception, RetourOuvrageFault1_Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ProlongationOuvrageResponse prolongationOuvrage(ProlongationOuvrage parameters)
-			throws ProlongationOuvrageFault_Exception, ProlongationOuvrageFault1_Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public UtilisateurType login(String pseudo, String motDePasse) throws LoginFault_Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DetailsOuvrageResponse detailsOuvrage(DetailsOuvrage parameters) throws DetailsOuvrageFault_Exception {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub on vérifie les login
+		Utilisateur u = um.getUtilisateur(pseudo, motDePasse);
+		UtilisateurType user = new UtilisateurType();
+		user.setId(u.getId());
+		user.setPseudo(u.getPseudo());
+		user.setMotDePasse(u.getMotDePasse());
+		user.setNom(u.getNom());
+		user.setPrenom(u.getPrenom());
+		
+		return user;
 	}
 
 	@Override
@@ -136,6 +109,36 @@ public class BiblioWSEndPoint implements BiblioWS {
 		}
 		//nouveautes.getNouveautes().addAll((LivreType)lm.obtenirNouveautes());
 		return nouveautes;
+	}
+
+	@Override
+	public ListRetardatairesResponse listRetardataires(String parameters) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RechercheOuvrageResponse rechercheOuvrage(RechercheOuvrage parameters) throws DetailsOuvrageFault_Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void empruntOuvrage(int id, int idEmprunteur, Holder<LivreEmpruntType> livre, Holder<XMLGregorianCalendar> dateRetour) throws EmpruntOuvrageFault_Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public LivreType retourOuvrage(int id, int idEmprunteur) throws RetourOuvrageFault_Exception, RetourOuvrageFault1_Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LivreEmpruntType prolongationOuvrage(int idEmprunt) throws ProlongationOuvrageFault_Exception, ProlongationOuvrageFault1_Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -51,7 +51,11 @@ public class BiblioWSEndPoint implements BiblioWS {
 	@Override
 	public DeconnexionResponse deconnexion(Deconnexion parameters) throws DeconnexionFault_Exception {
 		// TODO Auto-generated method stub
-		return null;
+		Utilisateur u = um.getUtilisateur(parameters.getId());
+		//verif nullite pour exception
+		DeconnexionResponse dr = new DeconnexionResponse();
+		dr.setMessageDeconnexion("DECO OK");
+		return dr;
 	}
 
 	@Override

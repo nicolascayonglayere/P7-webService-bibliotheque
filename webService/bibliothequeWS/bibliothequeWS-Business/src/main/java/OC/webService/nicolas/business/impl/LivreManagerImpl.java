@@ -11,10 +11,6 @@ import OC.webService.nicolas.model.entites.Livre;
 @Component
 public class LivreManagerImpl extends AbstractManager implements LivreManager {
 
-//	@Autowired
-//	ILivreDao livreDao;
-
-	//private DaoFactory daoFactory;
 
 	@Override
 	public List<Livre> obtenirNouveautes() {
@@ -29,13 +25,12 @@ public class LivreManagerImpl extends AbstractManager implements LivreManager {
 		return nouveautes;
 	}
 
-//	public ILivreDao getLivreDao() {
-//		return livreDao;
-//	}
-//
-//	@Autowired
-//	public void setLivreDao(ILivreDao livreDao) {
-//		this.livreDao = livreDao;
-//	}
+	@Override
+	public Livre trouverParTitreEtAuteur(String pTitre, String pNom) {
+		Livre livre = getDaoFactory().getLivreDao().findByTitreAndAuteurs(pTitre, pNom);
+		int nbEx = getDaoFactory().getLivreEmpruntDao().findByLivreId(livre.getId()).size();
+		livre.setNbExemplaire(livre.getNbExemplaire() - nbEx);//verifier la difference
+		return livre;
+	}
 
 }

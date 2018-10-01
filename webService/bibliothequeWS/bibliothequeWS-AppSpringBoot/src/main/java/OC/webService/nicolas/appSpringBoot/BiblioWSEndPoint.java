@@ -124,7 +124,37 @@ public class BiblioWSEndPoint implements BiblioWS {
 	@Override
 	public RechercheOuvrageResponse rechercheOuvrage(RechercheOuvrage parameters) throws DetailsOuvrageFault_Exception {
 		// TODO Auto-generated method stub
-		return null;
+		RechercheOuvrageResponse rop = new RechercheOuvrageResponse();
+		Livre livre = lm.trouverParTitreEtAuteur(parameters.getTitre(), parameters.getAuteurNom());
+		LivreType lt = new LivreType();
+		lt.setId(livre.getId());
+		lt.setTitre(livre.getTitre());
+		lt.setGenre(livre.getGenre());
+		lt.setNbExemplaire(livre.getNbExemplaire());
+		try {
+			lt.setDate(convDate.convertirDateXML(livre.getDateParution()));
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for(Auteur a : livre.getAuteurs()) {
+			AuteurType auteurT = new AuteurType();
+			auteurT.setId(a.getId());
+			auteurT.setNationalite(a.getNationalite());
+			try {
+				auteurT.setDateDeNaissance(convDate.convertirDateXML(a.getDateNaissance()));
+			} catch (DatatypeConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			auteurT.getNom().add(a.getNom());
+			auteurT.getPrenom().add(a.getPrenom());
+			lt.getAuteurs().add(auteurT);
+		}
+		
+		rop.setOuvrage(lt);
+		return rop;
 	}
 
 	@Override

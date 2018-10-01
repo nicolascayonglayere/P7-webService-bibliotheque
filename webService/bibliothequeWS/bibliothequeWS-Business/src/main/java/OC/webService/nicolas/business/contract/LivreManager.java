@@ -8,6 +8,8 @@ import OC.webService.nicolas.model.entites.Livre;
 public interface LivreManager   {
 
 	public List<Livre> obtenirNouveautes();
+	
+	public Livre trouverParTitreEtAuteur(String pTitre, String pNom);
 
 
 

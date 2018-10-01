@@ -4,7 +4,7 @@ import OC.webService.nicolas.consumer.DaoFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public abstract class AbstractManager {
 
 	private DaoFactory daoFactory;

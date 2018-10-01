@@ -1,6 +1,7 @@
 package OC.webService.nicolas.consumer;
 
 import OC.webService.nicolas.consumer.contract.ILivreDao;
+import OC.webService.nicolas.consumer.contract.ILivreEmpruntDao;
 import OC.webService.nicolas.consumer.contract.IUtilisateurDao;
 
 public interface DaoFactory {
@@ -9,4 +10,7 @@ public interface DaoFactory {
 	
 	IUtilisateurDao getUtilisateurDao();
 	void setUtilisateurDao(IUtilisateurDao pUtilisateurDao);
+	
+	ILivreEmpruntDao getLivreEmpruntDao();
+	void setLivreEmpruntDao(ILivreEmpruntDao pLivreEmpruntDao);
 }

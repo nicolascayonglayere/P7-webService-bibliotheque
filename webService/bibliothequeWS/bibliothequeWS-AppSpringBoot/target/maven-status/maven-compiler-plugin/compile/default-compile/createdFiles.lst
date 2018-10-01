@@ -34,6 +34,7 @@ fr\yogj\bibliows\LoginFault_Exception.class
 fr\yogj\bibliows\BiblioWS_BiblioWSSOAP_Server.class
 fr\yogj\bibliows\types\ObjectFactory.class
 fr\yogj\bibliows\DetailsOuvrage.class
+OC\webService\nicolas\appSpringBoot\helpers\ConversionDate.class
 fr\yogj\bibliows\BiblioWSSOAPImpl.class
 fr\yogj\bibliows\Login.class
 fr\yogj\bibliows\BiblioWS.class

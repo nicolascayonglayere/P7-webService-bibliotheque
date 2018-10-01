@@ -16,15 +16,15 @@ import fr.yogj.bibliows.BiblioWS;
 public class BiblioWSConfiguration {
 
     @Bean(name=Bus.DEFAULT_BUS_ID)
-    public SpringBus springBus() {      
+    public SpringBus springBus() {
         return new SpringBus();
-    } 
+    }
 
     @Bean
     public BiblioWS biblioService() {
     	return new BiblioWSEndPoint();
     }
-    
+
     @Bean
     public Endpoint endpoint() {
         EndpointImpl endpoint = new EndpointImpl(springBus(), biblioService());

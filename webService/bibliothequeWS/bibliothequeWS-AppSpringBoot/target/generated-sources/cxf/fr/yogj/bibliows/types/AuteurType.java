@@ -6,7 +6,9 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -22,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="nom" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="prenom" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="dateDeNaissance" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="dateDeNaissance" type="{http://www.w3.org/2001/XMLSchema}date" minOccurs="0"/&gt;
  *         &lt;element name="nationalite" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="manuscrits" type="{http://www.yogj.fr/biblioWS/types}LivreType" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
@@ -47,7 +49,8 @@ public class AuteurType {
     protected int id;
     protected List<String> nom;
     protected List<String> prenom;
-    protected String dateDeNaissance;
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar dateDeNaissance;
     @XmlElement(required = true)
     protected String nationalite;
     @XmlElement(required = true)
@@ -132,10 +135,10 @@ public class AuteurType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public String getDateDeNaissance() {
+    public XMLGregorianCalendar getDateDeNaissance() {
         return dateDeNaissance;
     }
 
@@ -144,10 +147,10 @@ public class AuteurType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDateDeNaissance(String value) {
+    public void setDateDeNaissance(XMLGregorianCalendar value) {
         this.dateDeNaissance = value;
     }
 

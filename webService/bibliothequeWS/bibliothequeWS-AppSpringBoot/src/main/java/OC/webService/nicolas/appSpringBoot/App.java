@@ -14,13 +14,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * Hello world!
  *
  */
-@SpringBootApplication//(scanBasePackages={"OC.webService.nicolas"})
+@SpringBootApplication/*(scanBasePackages={"OC.webService.nicolas"})*/
 //@EnableJpaAuditing
 //@Configuration
+@EnableJpaRepositories(basePackages="OC.webService.nicolas")
 @ComponentScan(basePackages="OC.webService.nicolas")
 //@EnableAutoConfiguration
 @EntityScan(basePackages="OC.webService.nicolas")
-@EnableJpaRepositories
+//@RepositoryScan(basePackages="OC.webService.nicolas")
 public class App extends SpringBootServletInitializer{
     
    // @Override 

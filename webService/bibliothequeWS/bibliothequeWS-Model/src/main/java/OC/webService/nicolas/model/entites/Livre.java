@@ -16,13 +16,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 //@EntityListeners(AuditingEntityListener.class)
-@Table(name="Livre")
 public class Livre implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +30,7 @@ public class Livre implements Serializable{
 	private Integer id;
 	@Column(length=60)
 	private String titre;
-	private Genre genre;
+	private String genre;
 	@Column(name="date_parution")
 	private Date dateParution;
 	@Column(name="nb_exemplaire")
@@ -52,7 +50,7 @@ public class Livre implements Serializable{
 
 	protected Livre() {}
 
-	public Livre(String titre, Genre genre, Date dateParution, int nbExemplaire) {
+	public Livre(String titre, String genre, Date dateParution, int nbExemplaire) {
 		this.titre = titre;
 		this.genre = genre;
 		this.dateParution = dateParution;
@@ -75,11 +73,11 @@ public class Livre implements Serializable{
 		this.titre = titre;
 	}
 
-	public Genre getGenre() {
+	public String getGenre() {
 		return genre;
 	}
 
-	public void setGenre(Genre genre) {
+	public void setGenre(String genre) {
 		this.genre = genre;
 	}
 

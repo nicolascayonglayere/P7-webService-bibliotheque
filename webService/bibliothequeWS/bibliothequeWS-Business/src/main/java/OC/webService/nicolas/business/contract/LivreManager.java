@@ -6,9 +6,9 @@ import java.util.List;
 import OC.webService.nicolas.model.entites.Livre;
 
 public interface LivreManager   {
-	
+
 	public List<Livre> obtenirNouveautes();
-	
-	
+
+
 
 }

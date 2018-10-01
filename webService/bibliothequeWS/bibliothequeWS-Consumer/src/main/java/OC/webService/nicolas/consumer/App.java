@@ -10,13 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Hello world!
  *
  */
-//@SpringBootApplication(scanBasePackages={"OC.webService.nicolas.consumer.contract"})
-//@EnableAutoConfiguration
-public class App 
+@SpringBootApplication(scanBasePackages={"OC.webService.nicolas.consumer.contract"})
+public class App
 {
     public static void main( String[] args )
     {
-    	//SpringApplication.run(App.class);
+    	SpringApplication.run(App.class);
         System.out.println( "Hello World!" );
     }
 }

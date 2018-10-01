@@ -57,7 +57,7 @@
     		<element name="id" type="int" minOccurs="1"></element>
     		<element name="nom" type="string" minOccurs="0" maxOccurs="unbounded"></element>
     		<element name="prenom" type="string" minOccurs="0" maxOccurs="unbounded"></element>
-    		<element name="dateDeNaissance" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="dateDeNaissance" type="date" minOccurs="0" maxOccurs="1"></element>
     		<element name="nationalite" type="string" minOccurs="1"></element>
     		<element name="manuscrits" type="ybst:LivreType" minOccurs="1" maxOccurs="unbounded"></element>
     	</sequence>

@@ -1,9 +1,9 @@
 package OC.webService.nicolas.business.impl;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Optional;
-
-import javax.persistence.Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	LivreEmprunt livreEmprunte;
 
 	@Override
-	public LivreEmprunt getLivreEmprunt(int pIdLivre, int pIdEmprunteur) {
+	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur) {
 		Optional<Livre> myOptional = getDaoFactory().getLivreDao().findById(pIdLivre); 
 		Livre l = myOptional.get();
 		Optional<Utilisateur> myUserOptional = getDaoFactory().getUtilisateurDao().findById(pIdEmprunteur);
@@ -32,6 +32,39 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		return livreEmprunte;
 	}
 
+	@Override
+	public Livre retournerOuvrage(int pIdLivre, int pIdEmprunteur) {
+		livreEmprunte = getDaoFactory().getLivreEmpruntDao().findByLivreIdAndUtilisateurId(pIdLivre, pIdEmprunteur);
+		this.getDaoFactory().getLivreEmpruntDao().delete(livreEmprunte);
+		Optional<Livre> myOptional = getDaoFactory().getLivreDao().findById(pIdLivre); 
+		Livre l = myOptional.get();
+		return l;
+		
+	}
+	
+	@Override
+	public LivreEmprunt prolongerEmprunt(int pIdEmprunt) {
+		livreEmprunte = this.findByIdEmprunt(pIdEmprunt); 
+		livreEmprunte.setProlongation(true);
+		livreEmprunte.setDateEmprunt(Calendar.getInstance().getTime());
+		this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(livreEmprunte);
+		return livreEmprunte;
+	}
+	
+	@Override
+	public LivreEmprunt findByIdEmprunt(int pIdEmprunt) {
+		Optional<LivreEmprunt> myOptional = getDaoFactory().getLivreEmpruntDao().findById(pIdEmprunt); 
+		livreEmprunte = myOptional.get();
+		return livreEmprunte;
+	}
+
+	@Override
+	public List<Utilisateur> obtenirRetardataires() {
+		List<Utilisateur> retardataires = new ArrayList<Utilisateur>();
+		retardataires = getDaoFactory().getLivreEmpruntDao().findRetardataires(Calendar.getInstance().getTime());
+		return retardataires;
+	}
+	
 	public LivreEmprunt getLivreEmprunte() {
 		return livreEmprunte;
 	}
@@ -40,6 +73,13 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	public void setLivreEmprunte(LivreEmprunt livreEmprunte) {
 		this.livreEmprunte = livreEmprunte;
 	}
+
+
+
+
+
+
+
 
 	
 }

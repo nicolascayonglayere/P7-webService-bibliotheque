@@ -3,14 +3,19 @@ package OC.webService.nicolas.business.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import OC.webService.nicolas.business.contract.LivreManager;
 import OC.webService.nicolas.model.entites.Livre;
 
+@Transactional
 @Component
 public class LivreManagerImpl extends AbstractManager implements LivreManager {
 
+	static final Logger logger = LogManager.getLogger();
 
 	@Override
 	public List<Livre> obtenirNouveautes() {
@@ -27,6 +32,7 @@ public class LivreManagerImpl extends AbstractManager implements LivreManager {
 
 	@Override
 	public Livre trouverParTitreEtAuteur(String pTitre, String pNom) {
+		logger.debug(pTitre, pNom);
 		Livre livre = getDaoFactory().getLivreDao().findByTitreAndAuteurs(pTitre, pNom);
 		int nbEx = getDaoFactory().getLivreEmpruntDao().findByLivreId(livre.getId()).size();
 		livre.setNbExemplaire(livre.getNbExemplaire() - nbEx);//verifier la difference

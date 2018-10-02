@@ -7,16 +7,18 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import OC.webService.nicolas.business.contract.LivreEmpruntManager;
 import OC.webService.nicolas.model.entites.Livre;
 import OC.webService.nicolas.model.entites.LivreEmprunt;
 import OC.webService.nicolas.model.entites.Utilisateur;
 
+@Transactional
 @Component
 public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmpruntManager {
 
-	LivreEmprunt livreEmprunte;
+	private LivreEmprunt livreEmprunt = new LivreEmprunt();
 
 	@Override
 	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur) {
@@ -24,18 +26,18 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		Livre l = myOptional.get();
 		Optional<Utilisateur> myUserOptional = getDaoFactory().getUtilisateurDao().findById(pIdEmprunteur);
 		Utilisateur user = myUserOptional.get();
-		livreEmprunte.setLivre(l);  
-		livreEmprunte.setProlongation(false);
-		livreEmprunte.setDateEmprunt(Calendar.getInstance().getTime());
-		livreEmprunte.setUtilisateur(user);
-		this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(livreEmprunte);
-		return livreEmprunte;
+		livreEmprunt.setLivre(l);  
+		livreEmprunt.setProlongation(false);
+		livreEmprunt.setDateEmprunt(Calendar.getInstance().getTime());
+		livreEmprunt.setUtilisateur(user);
+		this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(livreEmprunt);
+		return livreEmprunt;
 	}
 
 	@Override
 	public Livre retournerOuvrage(int pIdLivre, int pIdEmprunteur) {
-		livreEmprunte = getDaoFactory().getLivreEmpruntDao().findByLivreIdAndUtilisateurId(pIdLivre, pIdEmprunteur);
-		this.getDaoFactory().getLivreEmpruntDao().delete(livreEmprunte);
+		livreEmprunt = getDaoFactory().getLivreEmpruntDao().findByLivreIdAndUtilisateurId(pIdLivre, pIdEmprunteur);
+		this.getDaoFactory().getLivreEmpruntDao().delete(livreEmprunt);
 		Optional<Livre> myOptional = getDaoFactory().getLivreDao().findById(pIdLivre); 
 		Livre l = myOptional.get();
 		return l;
@@ -44,18 +46,18 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	
 	@Override
 	public LivreEmprunt prolongerEmprunt(int pIdEmprunt) {
-		livreEmprunte = this.findByIdEmprunt(pIdEmprunt); 
-		livreEmprunte.setProlongation(true);
-		livreEmprunte.setDateEmprunt(Calendar.getInstance().getTime());
-		this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(livreEmprunte);
-		return livreEmprunte;
+		livreEmprunt = this.findByIdEmprunt(pIdEmprunt); 
+		livreEmprunt.setProlongation(true);
+		livreEmprunt.setDateEmprunt(Calendar.getInstance().getTime());
+		this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(livreEmprunt);
+		return livreEmprunt;
 	}
 	
 	@Override
 	public LivreEmprunt findByIdEmprunt(int pIdEmprunt) {
 		Optional<LivreEmprunt> myOptional = getDaoFactory().getLivreEmpruntDao().findById(pIdEmprunt); 
-		livreEmprunte = myOptional.get();
-		return livreEmprunte;
+		livreEmprunt = myOptional.get();
+		return livreEmprunt;
 	}
 
 	@Override
@@ -65,15 +67,15 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		return retardataires;
 	}
 	
-	public LivreEmprunt getLivreEmprunte() {
-		return livreEmprunte;
-	}
-	
-	@Autowired
-	public void setLivreEmprunte(LivreEmprunt livreEmprunte) {
-		this.livreEmprunte = livreEmprunte;
-	}
-
+	///public LivreEmprunt getLivreEmprunt() {
+	//	return livreEmprunt;
+	//}
+	//
+	//@Autowired
+	//public void setLivreEmprunt(LivreEmprunt livreEmprunt) {
+	//	this.livreEmprunt = livreEmprunt;
+	//}
+    //
 
 
 

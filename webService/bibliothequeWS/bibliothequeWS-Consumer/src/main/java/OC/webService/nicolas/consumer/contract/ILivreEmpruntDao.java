@@ -14,12 +14,12 @@ import OC.webService.nicolas.model.entites.Utilisateur;
 @Repository
 public interface ILivreEmpruntDao extends JpaRepository<LivreEmprunt, Integer> {
 
-	@Query("SELECT l FROM LivreEmprunt WHERE l.id_livre =: idLivre")
-	public List<LivreEmprunt> findByLivreId(@Param("idLivre")int pId);
+	@Query("SELECT l FROM LivreEmprunt l WHERE l.livre.id =:idLivre")
+	public List<LivreEmprunt> findByLivreId(@Param("idLivre")Integer pId);
 	
-	@Query("SELECT l FROM LivreEmprunt WHERE l.id_livre =:idLivre AND l.id_utilisateur =: idUtilisateur")
+	@Query("SELECT l FROM LivreEmprunt l WHERE l.livre.id =:idLivre AND l.utilisateur.id =:idUtilisateur")
 	public LivreEmprunt findByLivreIdAndUtilisateurId(@Param("idLivre")int pIdLivre, @Param("idUtilisateur")int pIdUtilisateur);
 	
-	@Query ("SELECT u FROM Utilisateur u JOIN u.coordonnee c JOIN u.emprunts e WHERE e.date_emprunt >= :date AND u.id_utilisateur = c.id_utilisateur")
+	@Query ("SELECT u FROM Utilisateur u JOIN u.coordonnee c JOIN u.emprunts e WHERE e.dateEmprunt >=:date AND u.id = c.utilisateur.id")
 	public List<Utilisateur> findRetardataires(@Param("date")Date pDate);
 }

@@ -19,13 +19,13 @@ OC\webService\nicolas\appSpringBoot\BiblioWSEndPoint.class
 fr\yogj\bibliows\Recherche.class
 fr\yogj\bibliows\LoginResponse.class
 fr\yogj\bibliows\DeconnexionResponse.class
-fr\yogj\bibliows\DetailsOuvrageResponse.class
 fr\yogj\bibliows\RetourOuvrageFault1_Exception.class
+fr\yogj\bibliows\UneOperation.class
 fr\yogj\bibliows\types\CoordonneeUtilisateurType.class
 fr\yogj\bibliows\package-info.class
 fr\yogj\bibliows\ProlongationOuvrageFault.class
 fr\yogj\bibliows\LoginFault.class
-fr\yogj\bibliows\ListRetardataires.class
+fr\yogj\bibliows\RechercheOuvrage.class
 fr\yogj\bibliows\Deconnexion.class
 fr\yogj\bibliows\ProlongationOuvrageFault1.class
 fr\yogj\bibliows\EmpruntOuvrageFault.class
@@ -33,12 +33,12 @@ fr\yogj\bibliows\RetourOuvrageResponse.class
 fr\yogj\bibliows\LoginFault_Exception.class
 fr\yogj\bibliows\BiblioWS_BiblioWSSOAP_Server.class
 fr\yogj\bibliows\types\ObjectFactory.class
-fr\yogj\bibliows\DetailsOuvrage.class
 OC\webService\nicolas\appSpringBoot\helpers\ConversionDate.class
 fr\yogj\bibliows\BiblioWSSOAPImpl.class
 fr\yogj\bibliows\Login.class
 fr\yogj\bibliows\BiblioWS.class
 fr\yogj\bibliows\types\UtilisateurType.class
+fr\yogj\bibliows\RechercheOuvrageResponse.class
 fr\yogj\bibliows\EmpruntOuvrageResponse.class
 fr\yogj\bibliows\RetourOuvrage.class
 fr\yogj\bibliows\types\EditeurType.class
@@ -46,6 +46,7 @@ fr\yogj\bibliows\RetourOuvrageFault_Exception.class
 fr\yogj\bibliows\ProlongationOuvrageFault_Exception.class
 OC\webService\nicolas\appSpringBoot\BiblioWSConfiguration.class
 fr\yogj\bibliows\types\package-info.class
+fr\yogj\bibliows\UneOperationResponse.class
 fr\yogj\bibliows\RechercheResponse.class
 fr\yogj\bibliows\DeconnexionFault_Exception.class
 fr\yogj\bibliows\types\LivreType.class

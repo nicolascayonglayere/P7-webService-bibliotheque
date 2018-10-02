@@ -45,25 +45,15 @@ public class BiblioWSEndPoint implements BiblioWS {
 
 	static final Logger logger = LogManager.getLogger();
 	@Autowired
-	LivreManager lm;
+	private LivreManager lm;
 	@Autowired
-	UtilisateurManager um;
+	private UtilisateurManager um;
 	@Autowired
-	LivreEmpruntManager lem;
+	private LivreEmpruntManager lem;
 	
 	
 	//@Autowired
 	ConversionDate convDate  = new ConversionDate();
-
-	@Override
-	public DeconnexionResponse deconnexion(Deconnexion parameters) throws DeconnexionFault_Exception {
-		// TODO Auto-generated method stub
-		Utilisateur u = um.getUtilisateur(parameters.getId());
-		//verif nullite pour exception
-		DeconnexionResponse dr = new DeconnexionResponse();
-		dr.setMessageDeconnexion("DECO OK");
-		return dr;
-	}
 
 	@Override
 	public UtilisateurType login(String pseudo, String motDePasse) throws LoginFault_Exception {
@@ -180,15 +170,8 @@ public class BiblioWSEndPoint implements BiblioWS {
 			lt.getAuteurs().add(auteurT);
 		}
 		
-		rop.setOuvrage(lt);
+		rop.setOuvrage(lt);//il faut une liste comme retour de recherche
 		return rop;
-	}
-
-	@Override
-	public void empruntOuvrage(int id, int idEmprunteur, Holder<LivreEmpruntType> livre, Holder<XMLGregorianCalendar> dateRetour) throws EmpruntOuvrageFault_Exception {
-		//TODO Auto-generated method stub try catch pour gerer EmpruntOuvrgaeFault_Exception
-		this.lem.emprunterOuvrage(id, idEmprunteur);
-		
 	}
 
 	@Override
@@ -273,6 +256,20 @@ public class BiblioWSEndPoint implements BiblioWS {
 		
 		let.setEmprunteur(userType);
 		return let;
+	}
+
+	@Override
+	public String deconnexion(Deconnexion parameters) throws DeconnexionFault_Exception {
+		// TODO Auto-generated method stub
+		Utilisateur u = um.getUtilisateur(parameters.getId());
+		return "DECO OK";
+	}
+
+	@Override
+	public LivreEmpruntType empruntOuvrage(int idLivre, int idEmprunteur) throws EmpruntOuvrageFault_Exception {
+		// TODO Auto-generated method stub Mapper le LivreEmprunt au livreEmpruntType
+		this.lem.emprunterOuvrage(idLivre, idEmprunteur);
+		return null;
 	}
 
 }

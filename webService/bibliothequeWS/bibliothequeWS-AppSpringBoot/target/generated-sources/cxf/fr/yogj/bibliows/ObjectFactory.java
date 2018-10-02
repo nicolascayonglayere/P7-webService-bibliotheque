@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _DeconnexionResponse_QNAME = new QName("http://yogj.fr/biblioWS/", "deconnexionResponse");
     private final static QName _ListNouveautes_QNAME = new QName("http://yogj.fr/biblioWS/", "listNouveautes");
     private final static QName _ListRetardataires_QNAME = new QName("http://yogj.fr/biblioWS/", "listRetardataires");
 
@@ -64,14 +65,6 @@ public class ObjectFactory {
      */
     public Deconnexion createDeconnexion() {
         return new Deconnexion();
-    }
-
-    /**
-     * Create an instance of {@link DeconnexionResponse }
-     * 
-     */
-    public DeconnexionResponse createDeconnexionResponse() {
-        return new DeconnexionResponse();
     }
 
     /**
@@ -224,6 +217,31 @@ public class ObjectFactory {
      */
     public ListRetardatairesResponse createListRetardatairesResponse() {
         return new ListRetardatairesResponse();
+    }
+
+    /**
+     * Create an instance of {@link UneOperation }
+     * 
+     */
+    public UneOperation createUneOperation() {
+        return new UneOperation();
+    }
+
+    /**
+     * Create an instance of {@link UneOperationResponse }
+     * 
+     */
+    public UneOperationResponse createUneOperationResponse() {
+        return new UneOperationResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://yogj.fr/biblioWS/", name = "deconnexionResponse")
+    public JAXBElement<String> createDeconnexionResponse(String value) {
+        return new JAXBElement<String>(_DeconnexionResponse_QNAME, String.class, null, value);
     }
 
     /**

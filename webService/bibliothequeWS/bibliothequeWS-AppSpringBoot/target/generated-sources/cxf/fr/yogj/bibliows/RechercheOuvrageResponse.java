@@ -1,9 +1,10 @@
 
 package fr.yogj.bibliows;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import fr.yogj.bibliows.types.LivreType;
@@ -19,7 +20,7 @@ import fr.yogj.bibliows.types.LivreType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="ouvrage" type="{http://www.yogj.fr/biblioWS/types}LivreType"/&gt;
+ *         &lt;element name="ouvrages" type="{http://www.yogj.fr/biblioWS/types}LivreType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,36 +31,40 @@ import fr.yogj.bibliows.types.LivreType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "ouvrage"
+    "ouvrages"
 })
 @XmlRootElement(name = "rechercheOuvrageResponse")
 public class RechercheOuvrageResponse {
 
-    @XmlElement(required = true)
-    protected LivreType ouvrage;
+    protected List<LivreType> ouvrages;
 
     /**
-     * Obtient la valeur de la propriété ouvrage.
+     * Gets the value of the ouvrages property.
      * 
-     * @return
-     *     possible object is
-     *     {@link LivreType }
-     *     
-     */
-    public LivreType getOuvrage() {
-        return ouvrage;
-    }
-
-    /**
-     * Définit la valeur de la propriété ouvrage.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the ouvrages property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link LivreType }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getOuvrages().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link LivreType }
+     * 
+     * 
      */
-    public void setOuvrage(LivreType value) {
-        this.ouvrage = value;
+    public List<LivreType> getOuvrages() {
+        if (ouvrages == null) {
+            ouvrages = new ArrayList<LivreType>();
+        }
+        return this.ouvrages;
     }
 
 }

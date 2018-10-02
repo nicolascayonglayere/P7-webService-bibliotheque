@@ -16,10 +16,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
+@Table(name="livre")
 //@EntityListeners(AuditingEntityListener.class)
 public class Livre implements Serializable{
 

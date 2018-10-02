@@ -3,10 +3,12 @@ package OC.webService.nicolas.business.impl;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import OC.webService.nicolas.business.contract.UtilisateurManager;
 import OC.webService.nicolas.model.entites.Utilisateur;
 
+@Transactional
 @Component
 public class UtilisateurManagerImpl extends AbstractManager implements UtilisateurManager {
 

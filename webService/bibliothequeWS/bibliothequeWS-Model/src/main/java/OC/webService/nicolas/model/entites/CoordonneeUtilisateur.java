@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="coordonnee_utilisateur")
 public class CoordonneeUtilisateur {
 
 	@Id 

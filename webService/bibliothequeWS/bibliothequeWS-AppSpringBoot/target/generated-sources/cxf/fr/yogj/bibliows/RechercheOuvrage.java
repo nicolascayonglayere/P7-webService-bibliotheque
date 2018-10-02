@@ -18,11 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;choice&gt;
- *           &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *           &lt;element name="titre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *           &lt;element name="genre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *           &lt;element name="auteurId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *           &lt;element name="auteurNom" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *           &lt;element name="titre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *           &lt;element name="genre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *           &lt;element name="auteurNom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;/choice&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -34,44 +32,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id",
     "titre",
     "genre",
-    "auteurId",
     "auteurNom"
 })
 @XmlRootElement(name = "rechercheOuvrage")
 public class RechercheOuvrage {
 
-    protected Integer id;
     protected String titre;
     protected String genre;
-    protected Integer auteurId;
     protected String auteurNom;
-
-    /**
-     * Obtient la valeur de la propriété id.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * Définit la valeur de la propriété id.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setId(Integer value) {
-        this.id = value;
-    }
 
     /**
      * Obtient la valeur de la propriété titre.
@@ -119,30 +89,6 @@ public class RechercheOuvrage {
      */
     public void setGenre(String value) {
         this.genre = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété auteurId.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getAuteurId() {
-        return auteurId;
-    }
-
-    /**
-     * Définit la valeur de la propriété auteurId.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setAuteurId(Integer value) {
-        this.auteurId = value;
     }
 
     /**

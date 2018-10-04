@@ -10,11 +10,13 @@ public interface LivreEmpruntManager {
 
 	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur);
 	
-	public Livre retournerOuvrage(int pIdLivre, int pIdEmprunteur);
+	public Livre retournerOuvrage(int pIdEmprunt);
 	
 	public LivreEmprunt prolongerEmprunt(int pIdEmprunt);
 	
 	public LivreEmprunt findByIdEmprunt(int pIdEmprunt);
 	
 	public List<Utilisateur> obtenirRetardataires();
+	
+	public List<LivreEmprunt> obtenirEmpruntUtilisateur(int pIdUtilisateur);
 }

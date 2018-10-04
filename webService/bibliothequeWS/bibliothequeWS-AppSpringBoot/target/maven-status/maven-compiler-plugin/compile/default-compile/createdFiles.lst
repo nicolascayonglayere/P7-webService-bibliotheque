@@ -1,3 +1,4 @@
+fr\yogj\bibliows\ObtenirEmpruntUtilisateur.class
 fr\yogj\bibliows\ProlongationOuvrage.class
 fr\yogj\bibliows\DetailsOuvrageFault_Exception.class
 fr\yogj\bibliows\ListRetardatairesResponse.class
@@ -7,18 +8,20 @@ fr\yogj\bibliows\types\LivreEmpruntType.class
 fr\yogj\bibliows\ObjectFactory.class
 fr\yogj\bibliows\BiblioWS_Service.class
 fr\yogj\bibliows\ProlongationOuvrageFault1_Exception.class
+fr\yogj\bibliows\ObtenirEmpruntUtilisateurFault_Exception.class
 fr\yogj\bibliows\ProlongationOuvrageResponse.class
 fr\yogj\bibliows\DetailsOuvrageFault.class
 fr\yogj\bibliows\EmpruntOuvrageFault_Exception.class
 OC\webService\nicolas\appSpringBoot\App.class
 fr\yogj\bibliows\RetourOuvrageFault.class
+fr\yogj\bibliows\ObtenirEmpruntUtilisateurResponse.class
 fr\yogj\bibliows\ListNouveautesResponse.class
 fr\yogj\bibliows\RetourOuvrageFault1.class
 fr\yogj\bibliows\types\AuteurType.class
 OC\webService\nicolas\appSpringBoot\BiblioWSEndPoint.class
 fr\yogj\bibliows\Recherche.class
+fr\yogj\bibliows\ObtenirEmpruntUtilisateurFault.class
 fr\yogj\bibliows\LoginResponse.class
-fr\yogj\bibliows\DeconnexionResponse.class
 fr\yogj\bibliows\RetourOuvrageFault1_Exception.class
 fr\yogj\bibliows\UneOperation.class
 fr\yogj\bibliows\types\CoordonneeUtilisateurType.class

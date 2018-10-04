@@ -8,6 +8,7 @@ I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\b
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\src\main\java\OC\webService\nicolas\appSpringBoot\helpers\ConversionDate.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\src\main\java\OC\webService\nicolas\appSpringBoot\BiblioWSConfiguration.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\LoginResponse.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\ObtenirEmpruntUtilisateurFault.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\ProlongationOuvrageResponse.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\ProlongationOuvrageFault1_Exception.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\ProlongationOuvrageFault1.java
@@ -19,6 +20,7 @@ I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\b
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\types\CoordonneeUtilisateurType.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\ProlongationOuvrageFault.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\src\main\java\OC\webService\nicolas\appSpringBoot\App.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\ObtenirEmpruntUtilisateurResponse.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\BiblioWS_Service.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\types\EditeurType.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\UneOperationResponse.java
@@ -26,6 +28,7 @@ I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\b
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\DeconnexionFault_Exception.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\DetailsOuvrageFault.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\RetourOuvrageFault.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\ObtenirEmpruntUtilisateurFault_Exception.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\Recherche.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\RechercheOuvrage.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\RechercheOuvrageResponse.java
@@ -44,8 +47,8 @@ I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\b
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\LoginFault.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\package-info.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\EmpruntOuvrageFault_Exception.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\ObtenirEmpruntUtilisateur.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\RetourOuvrage.java
-I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\DeconnexionResponse.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\EmpruntOuvrageFault.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\RetourOuvrageFault1.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\webService\bibliothequeWS\bibliothequeWS-AppSpringBoot\target\generated-sources\cxf\fr\yogj\bibliows\ListNouveautesResponse.java

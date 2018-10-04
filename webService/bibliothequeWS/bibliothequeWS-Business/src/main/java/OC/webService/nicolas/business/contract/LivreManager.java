@@ -9,7 +9,7 @@ public interface LivreManager   {
 
 	public List<Livre> obtenirNouveautes();
 	
-	public Livre trouverParTitreEtAuteur(String pTitre, String pNom);
+	public List<Livre> trouverParTitreEtAuteur(String pTitre, String pNom);
 
 
 

@@ -35,11 +35,11 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	}
 
 	@Override
-	public Livre retournerOuvrage(int pIdLivre, int pIdEmprunteur) {
-		livreEmprunt = getDaoFactory().getLivreEmpruntDao().findByLivreIdAndUtilisateurId(pIdLivre, pIdEmprunteur);
-		this.getDaoFactory().getLivreEmpruntDao().delete(livreEmprunt);
-		Optional<Livre> myOptional = getDaoFactory().getLivreDao().findById(pIdLivre); 
+	public Livre retournerOuvrage(int pIdEmprunt) {
+		livreEmprunt = this.findByIdEmprunt(pIdEmprunt);		
+		Optional<Livre> myOptional = getDaoFactory().getLivreDao().findById(livreEmprunt.getLivre().getId()); 
 		Livre l = myOptional.get();
+		this.getDaoFactory().getLivreEmpruntDao().delete(livreEmprunt);
 		return l;
 		
 	}
@@ -65,6 +65,12 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		List<Utilisateur> retardataires = new ArrayList<Utilisateur>();
 		retardataires = getDaoFactory().getLivreEmpruntDao().findRetardataires(Calendar.getInstance().getTime());
 		return retardataires;
+	}
+
+	@Override
+	public List<LivreEmprunt> obtenirEmpruntUtilisateur(int pIdUtilisateur) {
+		List<LivreEmprunt> empruntsUtilisateur = getDaoFactory().getLivreEmpruntDao().findByUtilisateurId(pIdUtilisateur);
+		return empruntsUtilisateur;
 	}
 	
 	///public LivreEmprunt getLivreEmprunt() {

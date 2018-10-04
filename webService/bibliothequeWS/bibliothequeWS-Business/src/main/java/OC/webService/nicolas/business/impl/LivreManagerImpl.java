@@ -31,12 +31,14 @@ public class LivreManagerImpl extends AbstractManager implements LivreManager {
 	}
 
 	@Override
-	public Livre trouverParTitreEtAuteur(String pTitre, String pNom) {
-		logger.debug(pTitre, pNom);
-		Livre livre = getDaoFactory().getLivreDao().findByTitreAndAuteurs(pTitre, pNom);
-		int nbEx = getDaoFactory().getLivreEmpruntDao().findByLivreId(livre.getId()).size();
-		livre.setNbExemplaire(livre.getNbExemplaire() - nbEx);//verifier la difference
-		return livre;
+	public List<Livre> trouverParTitreEtAuteur(String pTitre, String pNom) {
+		logger.debug(pTitre+pNom);
+		List<Livre> livres = getDaoFactory().getLivreDao().findByTitreAndAuteurs(pTitre, pNom);
+		for (Livre l:livres) {
+			int nbEx = getDaoFactory().getLivreEmpruntDao().findByLivreId(l.getId()).size();
+			l.setNbExemplaire(l.getNbExemplaire() - nbEx);//verifier la difference
+		}
+		return livres;
 	}
 
 }

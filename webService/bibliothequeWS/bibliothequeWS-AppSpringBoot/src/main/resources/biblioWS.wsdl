@@ -153,9 +153,7 @@
       	<xsd:complexType>
       		<xsd:sequence>
 
-                        <xsd:element name="id" type="xsd:int" minOccurs="1">
-      				</xsd:element>
-                        <xsd:element name="idEmprunteur" type="xsd:int" minOccurs="1">
+                        <xsd:element name="idLivreEmprunt" type="xsd:int" minOccurs="1">
       				</xsd:element>
                     </xsd:sequence>
       	</xsd:complexType>
@@ -254,6 +252,30 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
+      <xsd:element name="obtenirEmpruntUtilisateur">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="idUtilisateur" type="xsd:int" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="obtenirEmpruntUtilisateurResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="livreEmprunt" type="Q1:LivreEmpruntType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="obtenirEmpruntUtilisateurFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="idUtilisateur" type="xsd:int" minOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="loginRequest">
@@ -340,6 +362,15 @@
   <wsdl:message name="uneOperationResponse">
   	<wsdl:part name="parameters" element="ybs:uneOperationResponse"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="obtenirEmpruntUtilisateurRequest">
+  	<wsdl:part name="parameters" element="ybs:obtenirEmpruntUtilisateur"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtenirEmpruntUtilisateurResponse">
+  	<wsdl:part name="parameters" element="ybs:obtenirEmpruntUtilisateurResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtenirEmpruntUtilisateurFault">
+  	<wsdl:part name="parameters" element="ybs:obtenirEmpruntUtilisateurFault"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="biblioWS">
     <wsdl:operation name="login">
       <wsdl:input message="ybs:loginRequest"/>
@@ -380,7 +411,13 @@
     <wsdl:operation name="listRetardataires">
     	<wsdl:input message="ybs:listRetardatairesRequest"></wsdl:input>
     	<wsdl:output message="ybs:listRetardatairesResponse"></wsdl:output>
-    </wsdl:operation>
+    </wsdl:operation>
+
+    <wsdl:operation name="obtenirEmpruntUtilisateur">
+    	<wsdl:input message="ybs:obtenirEmpruntUtilisateurRequest"></wsdl:input>
+    	<wsdl:output message="ybs:obtenirEmpruntUtilisateurResponse"></wsdl:output>
+            <wsdl:fault name="UtilisateurNotFoundFault" message="ybs:obtenirEmpruntUtilisateurFault"></wsdl:fault>
+        </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="biblioWSSOAP" type="ybs:biblioWS">
   	<soap:binding style="document"

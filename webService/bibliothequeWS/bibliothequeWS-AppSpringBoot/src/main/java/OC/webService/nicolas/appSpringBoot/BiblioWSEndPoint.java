@@ -1,5 +1,8 @@
 package OC.webService.nicolas.appSpringBoot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Holder;
@@ -21,13 +24,13 @@ import OC.webService.nicolas.model.entites.Utilisateur;
 import fr.yogj.bibliows.BiblioWS;
 import fr.yogj.bibliows.Deconnexion;
 import fr.yogj.bibliows.DeconnexionFault_Exception;
-import fr.yogj.bibliows.DeconnexionResponse;
 import fr.yogj.bibliows.DetailsOuvrageFault_Exception;
 import fr.yogj.bibliows.EmpruntOuvrageFault_Exception;
 
 import fr.yogj.bibliows.ListNouveautesResponse;
 import fr.yogj.bibliows.ListRetardatairesResponse;
 import fr.yogj.bibliows.LoginFault_Exception;
+import fr.yogj.bibliows.ObtenirEmpruntUtilisateurFault_Exception;
 import fr.yogj.bibliows.ProlongationOuvrageFault1_Exception;
 import fr.yogj.bibliows.ProlongationOuvrageFault_Exception;
 import fr.yogj.bibliows.RechercheOuvrage;
@@ -142,69 +145,38 @@ public class BiblioWSEndPoint implements BiblioWS {
 	public RechercheOuvrageResponse rechercheOuvrage(RechercheOuvrage parameters) throws DetailsOuvrageFault_Exception {
 		// TODO Auto-generated method stub
 		RechercheOuvrageResponse rop = new RechercheOuvrageResponse();
-		Livre livre = lm.trouverParTitreEtAuteur(parameters.getTitre(), parameters.getAuteurNom());
-		LivreType lt = new LivreType();
-		lt.setId(livre.getId());
-		lt.setTitre(livre.getTitre());
-		lt.setGenre(livre.getGenre());
-		lt.setNbExemplaire(livre.getNbExemplaire());
-		try {
-			lt.setDate(convDate.convertirDateXML(livre.getDateParution()));
-		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		for(Auteur a : livre.getAuteurs()) {
-			AuteurType auteurT = new AuteurType();
-			auteurT.setId(a.getId());
-			auteurT.setNationalite(a.getNationalite());
+		List<Livre> livres = lm.trouverParTitreEtAuteur(parameters.getTitre(), parameters.getAuteurNom());
+		for (Livre l:livres) {
+			LivreType lt = new LivreType();
+			lt.setId(l.getId());
+			lt.setTitre(l.getTitre());
+			lt.setGenre(l.getGenre());
+			lt.setNbExemplaire(l.getNbExemplaire());
 			try {
-				auteurT.setDateDeNaissance(convDate.convertirDateXML(a.getDateNaissance()));
+				lt.setDate(convDate.convertirDateXML(l.getDateParution()));
 			} catch (DatatypeConfigurationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			auteurT.getNom().add(a.getNom());
-			auteurT.getPrenom().add(a.getPrenom());
-			lt.getAuteurs().add(auteurT);
+			
+			for(Auteur a : l.getAuteurs()) {
+				AuteurType auteurT = new AuteurType();
+				auteurT.setId(a.getId());
+				auteurT.setNationalite(a.getNationalite());
+				try {
+					auteurT.setDateDeNaissance(convDate.convertirDateXML(a.getDateNaissance()));
+				} catch (DatatypeConfigurationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				auteurT.getNom().add(a.getNom());
+				auteurT.getPrenom().add(a.getPrenom());
+				lt.getAuteurs().add(auteurT);
+			}	
+			rop.getOuvrages().add(lt);
 		}
-		
-		rop.setOuvrage(lt);//il faut une liste comme retour de recherche
-		return rop;
-	}
 
-	@Override
-	public LivreType retourOuvrage(int id, int idEmprunteur) throws RetourOuvrageFault_Exception, RetourOuvrageFault1_Exception {
-		// TODO Auto-generated method stub
-		LivreType lt = new LivreType();
-		Livre livreEmprunte = lem.retournerOuvrage(id, idEmprunteur);
-		lt.setId(livreEmprunte.getId());
-		lt.setGenre(livreEmprunte.getGenre());
-		lt.setTitre(livreEmprunte.getTitre());
-		lt.setNbExemplaire(livreEmprunte.getNbExemplaire());//A checker
-		try {
-			lt.setDate(convDate.convertirDateXML(livreEmprunte.getDateParution()));
-		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for (Auteur a : livreEmprunte.getAuteurs()) {
-			AuteurType auteurT = new AuteurType();
-			auteurT.setId(a.getId());
-			auteurT.setNationalite(a.getNationalite());
-			try {
-				auteurT.setDateDeNaissance(convDate.convertirDateXML(a.getDateNaissance()));
-			} catch (DatatypeConfigurationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			auteurT.getNom().add(a.getNom());
-			auteurT.getPrenom().add(a.getPrenom());
-			lt.getAuteurs().add(auteurT);
-		}
-		
-		return lt;
+		return rop;
 	}
 
 	@Override
@@ -270,6 +242,96 @@ public class BiblioWSEndPoint implements BiblioWS {
 		// TODO Auto-generated method stub Mapper le LivreEmprunt au livreEmpruntType
 		this.lem.emprunterOuvrage(idLivre, idEmprunteur);
 		return null;
+	}
+
+	@Override
+	public List<LivreEmpruntType> obtenirEmpruntUtilisateur(int idUtilisateur) throws ObtenirEmpruntUtilisateurFault_Exception {
+		// TODO Auto-generated method stub
+		List<LivreEmprunt> livresEmpruntes = this.lem.obtenirEmpruntUtilisateur(idUtilisateur);
+		List<LivreEmpruntType> ouvrages = new ArrayList<LivreEmpruntType>();
+		for(LivreEmprunt le : livresEmpruntes) {
+			LivreEmpruntType let = new LivreEmpruntType();
+			let.setId(le.getId());
+			try {
+				let.setDateEmprunt(convDate.convertirDateXML(le.getDateEmprunt()));
+			} catch (DatatypeConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			LivreType lt = new LivreType();
+			lt.setId(le.getLivre().getId());
+			lt.setTitre(le.getLivre().getTitre());
+			lt.setGenre(le.getLivre().getGenre());
+			lt.setNbExemplaire(le.getLivre().getNbExemplaire());
+			try {
+				lt.setDate(convDate.convertirDateXML(le.getLivre().getDateParution()));
+			} catch (DatatypeConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			for (Auteur a : le.getLivre().getAuteurs()) {
+				AuteurType auteurT = new AuteurType();
+				auteurT.setId(a.getId());
+				auteurT.setNationalite(a.getNationalite());
+				try {
+					auteurT.setDateDeNaissance(convDate.convertirDateXML(a.getDateNaissance()));
+				} catch (DatatypeConfigurationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				auteurT.getNom().add(a.getNom());
+				auteurT.getPrenom().add(a.getPrenom());
+				lt.getAuteurs().add(auteurT);
+			}
+
+			let.setOuvrage(lt); 
+			
+			UtilisateurType userType = new UtilisateurType();
+			userType.setId(le.getUtilisateur().getId());
+			userType.setNom(le.getUtilisateur().getNom());
+			userType.setPrenom(le.getUtilisateur().getPrenom());
+			userType.setPseudo(le.getUtilisateur().getPseudo());
+			userType.setMotDePasse(le.getUtilisateur().getMotDePasse());
+			
+			let.setEmprunteur(userType);	
+			
+			ouvrages.add(let);
+		}
+
+		return ouvrages;
+	}
+
+	@Override
+	public LivreType retourOuvrage(int idLivreEmprunt) throws RetourOuvrageFault_Exception, RetourOuvrageFault1_Exception {
+		// TODO Auto-generated method stub
+		LivreType lt = new LivreType();
+		Livre livreEmprunte = lem.retournerOuvrage(idLivreEmprunt);
+		lt.setId(livreEmprunte.getId());
+		lt.setGenre(livreEmprunte.getGenre());
+		lt.setTitre(livreEmprunte.getTitre());
+		lt.setNbExemplaire(livreEmprunte.getNbExemplaire());//A checker
+		try {
+			lt.setDate(convDate.convertirDateXML(livreEmprunte.getDateParution()));
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (Auteur a : livreEmprunte.getAuteurs()) {
+			AuteurType auteurT = new AuteurType();
+			auteurT.setId(a.getId());
+			auteurT.setNationalite(a.getNationalite());
+			try {
+				auteurT.setDateDeNaissance(convDate.convertirDateXML(a.getDateNaissance()));
+			} catch (DatatypeConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			auteurT.getNom().add(a.getNom());
+			auteurT.getPrenom().add(a.getPrenom());
+			lt.getAuteurs().add(auteurT);
+		}
+		
+		return lt;		
 	}
 
 }

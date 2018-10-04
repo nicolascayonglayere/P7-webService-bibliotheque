@@ -236,6 +236,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ObtenirEmpruntUtilisateur }
+     * 
+     */
+    public ObtenirEmpruntUtilisateur createObtenirEmpruntUtilisateur() {
+        return new ObtenirEmpruntUtilisateur();
+    }
+
+    /**
+     * Create an instance of {@link ObtenirEmpruntUtilisateurResponse }
+     * 
+     */
+    public ObtenirEmpruntUtilisateurResponse createObtenirEmpruntUtilisateurResponse() {
+        return new ObtenirEmpruntUtilisateurResponse();
+    }
+
+    /**
+     * Create an instance of {@link ObtenirEmpruntUtilisateurFault }
+     * 
+     */
+    public ObtenirEmpruntUtilisateurFault createObtenirEmpruntUtilisateurFault() {
+        return new ObtenirEmpruntUtilisateurFault();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */

@@ -10,13 +10,13 @@ public interface LivreEmpruntManager {
 
 	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur) throws RuntimeException;
 	
-	public Livre retournerOuvrage(int pIdEmprunt);
+	public Livre retournerOuvrage(int pIdEmprunt) throws RuntimeException;
 	
-	public LivreEmprunt prolongerEmprunt(int pIdEmprunt);
+	public LivreEmprunt prolongerEmprunt(int pIdEmprunt) throws RuntimeException;
 	
 	public LivreEmprunt findByIdEmprunt(int pIdEmprunt);
 	
 	public List<Utilisateur> obtenirRetardataires();
 	
-	public List<LivreEmprunt> obtenirEmpruntUtilisateur(int pIdUtilisateur);
+	public List<LivreEmprunt> obtenirEmpruntUtilisateur(int pIdUtilisateur) throws RuntimeException;
 }

@@ -23,6 +23,6 @@ public interface ILivreEmpruntDao extends JpaRepository<LivreEmprunt, Integer> {
 	@Query ("SELECT u FROM Utilisateur u JOIN u.coordonnee c JOIN u.emprunts e WHERE e.dateEmprunt >=:date AND u.id = c.utilisateur.id")
 	public List<Utilisateur> findRetardataires(@Param("date")Date pDate);
 	
-	@Query("SELECT l FROM LivreEmprunt l WHERE l.utilisateur.id =:idUtilisateur")
+	@Query("SELECT l FROM LivreEmprunt l JOIN l.livre JOIN l.utilisateur WHERE l.utilisateur.id =:idUtilisateur")
 	public List<LivreEmprunt> findByUtilisateurId(@Param("idUtilisateur")int pIdUtilisateur);
 }

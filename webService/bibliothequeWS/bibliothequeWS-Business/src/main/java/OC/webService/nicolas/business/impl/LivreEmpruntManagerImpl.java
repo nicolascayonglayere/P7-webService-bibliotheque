@@ -21,6 +21,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 
 	private LivreEmprunt livreEmprunt = new LivreEmprunt();
 
+	@Transactional
 	@Override
 	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur) throws RuntimeException {
 		Optional<Livre> myOptional = getDaoFactory().getLivreDao().findById(pIdLivre); 
@@ -36,6 +37,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 			livreEmprunt.setDateEmprunt(Calendar.getInstance().getTime());
 			livreEmprunt.setUtilisateur(user);
 			this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(livreEmprunt);
+			return livreEmprunt;
 		}
 		else {
 			//recupérer la date de retour la plus proche
@@ -50,30 +52,38 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 				}
 			}
 			throw new RuntimeException ("Pas d'exemplaire disponible avant "+dateRetour);
-		}
-
-		return livreEmprunt;
+		}		
 	}
 
+	@Transactional
 	@Override
-	public Livre retournerOuvrage(int pIdEmprunt) {
+	public Livre retournerOuvrage(int pIdEmprunt) throws RuntimeException{
 		livreEmprunt = this.findByIdEmprunt(pIdEmprunt);		
 		Optional<Livre> myOptional = getDaoFactory().getLivreDao().findById(livreEmprunt.getLivre().getId()); 
 		Livre l = myOptional.get();
-		this.getDaoFactory().getLivreEmpruntDao().delete(livreEmprunt);
-		return l;
+		if (l.getId() != 0) {
+			this.getDaoFactory().getLivreEmpruntDao().delete(livreEmprunt);
+			return l;			
+		}
+		else {
+			throw new RuntimeException("Vous n'avez pas emprunte cet ouvrage.");
+		}
 		
 	}
-	
+	@Transactional
 	@Override
-	public LivreEmprunt prolongerEmprunt(int pIdEmprunt) {
-		livreEmprunt = this.findByIdEmprunt(pIdEmprunt); 
-		livreEmprunt.setProlongation(true);
-		livreEmprunt.setDateEmprunt(Calendar.getInstance().getTime());
-		this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(livreEmprunt);
-		return livreEmprunt;
+	public LivreEmprunt prolongerEmprunt(int pIdEmprunt) throws RuntimeException{
+		if(this.findByIdEmprunt(pIdEmprunt).getId() != 0) {
+			livreEmprunt = this.findByIdEmprunt(pIdEmprunt); 
+			livreEmprunt.setProlongation(true);
+			livreEmprunt.setDateEmprunt(Calendar.getInstance().getTime());
+			this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(livreEmprunt);
+			return livreEmprunt;
+		}else {
+			throw new RuntimeException("Vous n'avez pas emprunté ce livre.");
+		}			
 	}
-	
+	@Transactional
 	@Override
 	public LivreEmprunt findByIdEmprunt(int pIdEmprunt) {
 		Optional<LivreEmprunt> myOptional = getDaoFactory().getLivreEmpruntDao().findById(pIdEmprunt); 
@@ -81,6 +91,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		return livreEmprunt;
 	}
 
+	@Transactional
 	@Override
 	public List<Utilisateur> obtenirRetardataires() {
 		List<Utilisateur> retardataires = new ArrayList<Utilisateur>();
@@ -88,13 +99,19 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		return retardataires;
 	}
 
+	@Transactional
 	@Override
-	public List<LivreEmprunt> obtenirEmpruntUtilisateur(int pIdUtilisateur) {
+	public List<LivreEmprunt> obtenirEmpruntUtilisateur(int pIdUtilisateur) throws RuntimeException{
 		List<LivreEmprunt> empruntsUtilisateur = getDaoFactory().getLivreEmpruntDao().findByUtilisateurId(pIdUtilisateur);
-		return empruntsUtilisateur;
+		if (empruntsUtilisateur.size() > 0) {
+			return empruntsUtilisateur;
+		}
+		else {
+			throw new RuntimeException ("L'utilisateur n'a pas d'emprunt en cours.");
+		}
 	}
 	
-	///public LivreEmprunt getLivreEmprunt() {
+	//public LivreEmprunt getLivreEmprunt() {
 	//	return livreEmprunt;
 	//}
 	//
@@ -102,7 +119,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	//public void setLivreEmprunt(LivreEmprunt livreEmprunt) {
 	//	this.livreEmprunt = livreEmprunt;
 	//}
-    //
+    
 
 
 

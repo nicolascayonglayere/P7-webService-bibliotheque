@@ -50,8 +50,6 @@ fr\yogj\bibliows\EmpruntOuvrageResponse.class
 fr\yogj\bibliows\RetourOuvrage.class
 fr\yogj\bibliows\types\EditeurType.class
 OC\webService\nicolas\appSpringBoot\helpers\MapperAuteur.class
-fr\yogj\bibliows\RetourOuvrageFault_Exception.class
-fr\yogj\bibliows\ProlongationOuvrageFault_Exception.class
 OC\webService\nicolas\appSpringBoot\BiblioWSConfiguration.class
 fr\yogj\bibliows\types\package-info.class
 fr\yogj\bibliows\UneOperationResponse.class

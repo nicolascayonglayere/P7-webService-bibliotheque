@@ -399,13 +399,11 @@
     <wsdl:operation name="retourOuvrage">
     	<wsdl:input message="ybs:retourOuvrageRequest"></wsdl:input>
     	<wsdl:output message="ybs:retourOuvrageResponse"></wsdl:output>
-            <wsdl:fault name="LivreNotFoundFault" message="ybs:retourOuvrageFault"></wsdl:fault>
             <wsdl:fault name="EmpruntLivreNotFoundFault" message="ybs:retourOuvrageFault1"></wsdl:fault>
         </wsdl:operation>
     <wsdl:operation name="prolongationOuvrage">
     	<wsdl:input message="ybs:prolongationOuvrageRequest"></wsdl:input>
     	<wsdl:output message="ybs:prolongationOuvrageResponse"></wsdl:output>
-            <wsdl:fault name="LivreNotFoundFault" message="ybs:prolongationOuvrageFault"></wsdl:fault>
             <wsdl:fault name="EmpruntLivreNotFoundFault" message="ybs:prolongationOuvrageFault1"></wsdl:fault>
         </wsdl:operation>
     <wsdl:operation name="listRetardataires">
@@ -483,9 +481,6 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
-  		<wsdl:fault name="LivreNotFoundFault">
-  			<soap:fault use="literal" name="LivreNotFoundFault" />
-  		</wsdl:fault>
   		<wsdl:fault name="EmpruntLivreNotFoundFault">
   			<soap:fault use="literal" name="EmpruntLivreNotFoundFault" />
   		</wsdl:fault>
@@ -498,9 +493,6 @@
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
-  		<wsdl:fault name="LivreNotFoundFault">
-  			<soap:fault use="literal" name="LivreNotFoundFault" />
-  		</wsdl:fault>
   		<wsdl:fault name="EmpruntLivreNotFoundFault">
   			<soap:fault use="literal" name="EmpruntLivreNotFoundFault" />
   		</wsdl:fault>

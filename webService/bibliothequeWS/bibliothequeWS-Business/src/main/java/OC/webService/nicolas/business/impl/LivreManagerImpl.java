@@ -16,28 +16,34 @@ import OC.webService.nicolas.model.entites.Livre;
 public class LivreManagerImpl extends AbstractManager implements LivreManager {
 
 	static final Logger logger = LogManager.getLogger();
-
+	private List<Livre>livres = new ArrayList<Livre>();
+	
+	@Transactional
 	@Override
 	public List<Livre> obtenirNouveautes() {
 
 		List<Livre> livresBiblio = getDaoFactory().getLivreDao().findAll();
-		List<Livre> nouveautes = new ArrayList<Livre>();
-
 		for (int i=livresBiblio.size(); i==(livresBiblio.size())-6; i--) {
-			nouveautes.add(livresBiblio.get(i));
+			livres.add(livresBiblio.get(i));
 		}
 
-		return nouveautes;
+		return livres;
 	}
 
+	@Transactional
 	@Override
-	public List<Livre> trouverParTitreEtAuteur(String pTitre, String pNom) {
+	public List<Livre> trouverParTitreEtAuteur(String pTitre, String pNom) throws RuntimeException {
 		logger.debug(pTitre+pNom);
-		List<Livre> livres = getDaoFactory().getLivreDao().findByTitreAndAuteurs(pTitre, pNom);
-		for (Livre l:livres) {
-			int nbEx = getDaoFactory().getLivreEmpruntDao().findByLivreId(l.getId()).size();
-			l.setNbExemplaire(l.getNbExemplaire() - nbEx);//verifier la difference
+		if (getDaoFactory().getLivreDao().findByTitreAndAuteurs(pTitre, pNom).size() > 0) {
+			livres = getDaoFactory().getLivreDao().findByTitreAndAuteurs(pTitre, pNom);
+			for (Livre l:livres) {
+				int nbEx = getDaoFactory().getLivreEmpruntDao().findByLivreId(l.getId()).size();
+				l.setNbExemplaire(l.getNbExemplaire() - nbEx);//verifier la difference
+			}
+		}else {
+			throw new RuntimeException("ouvrage non trouvé : titre = "+pTitre+" - auteur = "+pNom);
 		}
+
 		return livres;
 	}
 

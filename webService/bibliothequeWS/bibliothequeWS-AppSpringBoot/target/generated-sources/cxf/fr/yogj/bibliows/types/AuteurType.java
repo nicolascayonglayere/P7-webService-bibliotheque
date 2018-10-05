@@ -22,8 +22,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="nom" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="prenom" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="nom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="prenom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="dateDeNaissance" type="{http://www.w3.org/2001/XMLSchema}date" minOccurs="0"/&gt;
  *         &lt;element name="nationalite" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="manuscrits" type="{http://www.yogj.fr/biblioWS/types}LivreType" maxOccurs="unbounded"/&gt;
@@ -47,8 +47,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class AuteurType {
 
     protected int id;
-    protected List<String> nom;
-    protected List<String> prenom;
+    protected String nom;
+    protected String prenom;
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar dateDeNaissance;
     @XmlElement(required = true)
@@ -73,61 +73,51 @@ public class AuteurType {
     }
 
     /**
-     * Gets the value of the nom property.
+     * Obtient la valeur de la propriété nom.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nom property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getNom().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getNom() {
-        if (nom == null) {
-            nom = new ArrayList<String>();
-        }
-        return this.nom;
+    public String getNom() {
+        return nom;
     }
 
     /**
-     * Gets the value of the prenom property.
+     * Définit la valeur de la propriété nom.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the prenom property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPrenom().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getPrenom() {
-        if (prenom == null) {
-            prenom = new ArrayList<String>();
-        }
-        return this.prenom;
+    public void setNom(String value) {
+        this.nom = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété prenom.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPrenom() {
+        return prenom;
+    }
+
+    /**
+     * Définit la valeur de la propriété prenom.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPrenom(String value) {
+        this.prenom = value;
     }
 
     /**

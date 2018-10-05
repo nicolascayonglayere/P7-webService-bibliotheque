@@ -1,5 +1,6 @@
 package OC.webService.nicolas.appSpringBoot.helpers;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -22,6 +23,11 @@ public class ConversionDate {
 		calendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(gregory);
 
 		return calendar;
+	}
+	
+	public Date convertirXMLGregorianCalendar(XMLGregorianCalendar pGregory) {
+		Date maDate = pGregory.toGregorianCalendar().getTime();
+		return maDate;
 	}
 }
 

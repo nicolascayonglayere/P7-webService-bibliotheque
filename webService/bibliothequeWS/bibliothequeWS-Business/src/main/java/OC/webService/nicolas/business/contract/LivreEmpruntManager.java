@@ -8,7 +8,7 @@ import OC.webService.nicolas.model.entites.Utilisateur;
 
 public interface LivreEmpruntManager {
 
-	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur);
+	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur) throws RuntimeException;
 	
 	public Livre retournerOuvrage(int pIdEmprunt);
 	

@@ -2,6 +2,7 @@ package OC.webService.nicolas.business.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,16 +22,36 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	private LivreEmprunt livreEmprunt = new LivreEmprunt();
 
 	@Override
-	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur) {
+	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur) throws RuntimeException {
 		Optional<Livre> myOptional = getDaoFactory().getLivreDao().findById(pIdLivre); 
 		Livre l = myOptional.get();
-		Optional<Utilisateur> myUserOptional = getDaoFactory().getUtilisateurDao().findById(pIdEmprunteur);
-		Utilisateur user = myUserOptional.get();
-		livreEmprunt.setLivre(l);  
-		livreEmprunt.setProlongation(false);
-		livreEmprunt.setDateEmprunt(Calendar.getInstance().getTime());
-		livreEmprunt.setUtilisateur(user);
-		this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(livreEmprunt);
+		List<LivreEmprunt> ouvragesEmpruntes = this.getDaoFactory().getLivreEmpruntDao().findByLivreId(pIdLivre);
+		int nbEx = l.getNbExemplaire() - ouvragesEmpruntes.size();
+		
+		if(nbEx > 0) {
+			Optional<Utilisateur> myUserOptional = getDaoFactory().getUtilisateurDao().findById(pIdEmprunteur);
+			Utilisateur user = myUserOptional.get();
+			livreEmprunt.setLivre(l);  
+			livreEmprunt.setProlongation(false);
+			livreEmprunt.setDateEmprunt(Calendar.getInstance().getTime());
+			livreEmprunt.setUtilisateur(user);
+			this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(livreEmprunt);
+		}
+		else {
+			//recupérer la date de retour la plus proche
+			Calendar cal = Calendar.getInstance();
+			Date dateRetour = ouvragesEmpruntes.get(0).getDateEmprunt();
+			cal.add(Calendar.DATE, 28);
+			for (LivreEmprunt le : ouvragesEmpruntes) {
+				cal.setTime(le.getDateEmprunt());
+				cal.add(Calendar.DATE, 28);
+				if ( cal.getTime().getTime() > dateRetour.getTime()) {
+					dateRetour = cal.getTime();
+				}
+			}
+			throw new RuntimeException ("Pas d'exemplaire disponible avant "+dateRetour);
+		}
+
 		return livreEmprunt;
 	}
 

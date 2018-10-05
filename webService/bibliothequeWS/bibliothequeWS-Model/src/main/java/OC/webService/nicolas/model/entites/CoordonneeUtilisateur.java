@@ -3,6 +3,7 @@ package OC.webService.nicolas.model.entites;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,16 +23,15 @@ public class CoordonneeUtilisateur {
 	@Column(length=60, unique=true)
 	private String email;
 	
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}) 
+	@ManyToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}) 
 	@JoinColumn(name="id_utilisateur")
 	private Utilisateur utilisateur;
 
 	public CoordonneeUtilisateur() {}
 
-	public CoordonneeUtilisateur(String adresse, String email, Utilisateur utilisateur) {
+	public CoordonneeUtilisateur(String adresse, String email) {
 		this.adresse = adresse;
 		this.email = email;
-		this.utilisateur = utilisateur;
 	}
 
 	public Integer getId() {

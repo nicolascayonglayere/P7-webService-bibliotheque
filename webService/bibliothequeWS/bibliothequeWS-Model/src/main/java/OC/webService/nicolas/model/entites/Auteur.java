@@ -15,6 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Table(name="auteur")
 public class Auteur {
@@ -32,6 +35,7 @@ public class Auteur {
 	@Column(length=60)
 	private String nationalite;
 	@ManyToMany(fetch=FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+	@Fetch(value = FetchMode.SUBSELECT)
 	@JoinTable(name="livre_manuscrit", 
 				joinColumns=@JoinColumn(name="id_auteur"),
 				inverseJoinColumns=@JoinColumn(name="id_livre"))

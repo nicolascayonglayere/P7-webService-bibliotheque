@@ -18,6 +18,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
@@ -41,6 +43,7 @@ public class Livre implements Serializable{
 	@JoinTable(name="livre_manuscrit", 
 				joinColumns=@JoinColumn(name="id_livre"),
 				inverseJoinColumns=@JoinColumn(name="id_auteur"))
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Auteur> auteurs;
 	@ManyToMany(fetch=FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinTable(name="livre_edition", 
@@ -48,6 +51,7 @@ public class Livre implements Serializable{
 				inverseJoinColumns=@JoinColumn(name="id_editeur"))	
 	private List<Editeur>editeurs;
 	@OneToMany(mappedBy="livre", cascade= {CascadeType.ALL})
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<LivreEmprunt>emprunts;
 
 	protected Livre() {}

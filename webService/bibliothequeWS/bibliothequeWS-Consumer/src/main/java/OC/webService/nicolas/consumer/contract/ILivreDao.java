@@ -16,5 +16,8 @@ public interface ILivreDao extends JpaRepository<Livre, Integer> {
 
 	@Query("SELECT l FROM Livre l JOIN FETCH l.auteurs a WHERE l.titre LIKE %:titre% AND a.nom LIKE %:nom%")
 	public List<Livre> findByTitreAndAuteurs(@Param("titre")String pTitre, @Param("nom")String pNom);
+	
+	@Query("SELECT l FROM Livre l JOIN FETCH l.auteurs WHERE l.id = :id")
+	public Livre findByIdLivre(@Param("id")Integer pId);
 
 }

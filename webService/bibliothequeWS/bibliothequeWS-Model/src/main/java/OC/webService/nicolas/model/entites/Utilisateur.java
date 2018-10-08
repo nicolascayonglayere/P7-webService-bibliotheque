@@ -6,10 +6,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="utilisateur")
@@ -27,9 +31,11 @@ public class Utilisateur {
 	private String pseudo;
 	@Column(name="mot_de_passe", length=100)
 	private String motDePasse;
-	@OneToMany(mappedBy="utilisateur", cascade= {CascadeType.ALL})
+	@OneToMany(mappedBy="utilisateur", fetch=FetchType.LAZY, cascade= {CascadeType.ALL})
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<CoordonneeUtilisateur> coordonnee;
 	@OneToMany(mappedBy="utilisateur", cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<LivreEmprunt> emprunts;
 	
 

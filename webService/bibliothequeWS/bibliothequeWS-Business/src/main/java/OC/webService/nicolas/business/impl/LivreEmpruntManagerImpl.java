@@ -24,8 +24,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	@Transactional
 	@Override
 	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur) throws RuntimeException {
-		Optional<Livre> myOptional = getDaoFactory().getLivreDao().findById(pIdLivre); 
-		Livre l = myOptional.get();
+		Livre l = getDaoFactory().getLivreDao().findByIdLivre(pIdLivre); 
 		List<LivreEmprunt> ouvragesEmpruntes = this.getDaoFactory().getLivreEmpruntDao().findByLivreId(pIdLivre);
 		int nbEx = l.getNbExemplaire() - ouvragesEmpruntes.size();
 		
@@ -59,8 +58,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	@Override
 	public Livre retournerOuvrage(int pIdEmprunt) throws RuntimeException{
 		livreEmprunt = this.findByIdEmprunt(pIdEmprunt);		
-		Optional<Livre> myOptional = getDaoFactory().getLivreDao().findById(livreEmprunt.getLivre().getId()); 
-		Livre l = myOptional.get();
+		Livre l = this.getDaoFactory().getLivreDao().findByIdLivre((livreEmprunt.getLivre()).getId()); 
 		if (l.getId() != 0) {
 			this.getDaoFactory().getLivreEmpruntDao().delete(livreEmprunt);
 			return l;			
@@ -86,8 +84,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	@Transactional
 	@Override
 	public LivreEmprunt findByIdEmprunt(int pIdEmprunt) {
-		Optional<LivreEmprunt> myOptional = getDaoFactory().getLivreEmpruntDao().findById(pIdEmprunt); 
-		livreEmprunt = myOptional.get();
+		livreEmprunt = getDaoFactory().getLivreEmpruntDao().findByIdEmprunt(pIdEmprunt);
 		return livreEmprunt;
 	}
 

@@ -1,0 +1,11 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "oc.webApp.nicolas.BiblioWebAppConfiguration",
+      "name": "cxf",
+      "type": "oc.webApp.nicolas.BiblioWebAppConfiguration"
+    }
+  ],
+  "properties": []
+}

@@ -1,5 +1,7 @@
 package OC.webService.nicolas.model.entites;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,23 +13,26 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="coordonnee_utilisateur")
-public class CoordonneeUtilisateur {
+@Table(name = "coordonnee_utilisateur")
+public class CoordonneeUtilisateur implements Serializable {
 
-	@Id 
-	@GeneratedValue 
-	@Column(name="id_coordonnee")
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue
+	@Column(name = "id_coordonnee")
 	private Integer id;
-	@Column(length=100)
+	@Column(length = 100)
 	private String adresse;
-	@Column(length=60, unique=true)
+	@Column(length = 60, unique = true)
 	private String email;
-	
-	@ManyToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}) 
-	@JoinColumn(name="id_utilisateur")
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinColumn(name = "id_utilisateur")
 	private Utilisateur utilisateur;
 
-	public CoordonneeUtilisateur() {}
+	public CoordonneeUtilisateur() {
+	}
 
 	public CoordonneeUtilisateur(String adresse, String email) {
 		this.adresse = adresse;
@@ -35,7 +40,7 @@ public class CoordonneeUtilisateur {
 	}
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -43,7 +48,7 @@ public class CoordonneeUtilisateur {
 	}
 
 	public String getAdresse() {
-		return adresse;
+		return this.adresse;
 	}
 
 	public void setAdresse(String adresse) {
@@ -51,7 +56,7 @@ public class CoordonneeUtilisateur {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -59,12 +64,11 @@ public class CoordonneeUtilisateur {
 	}
 
 	public Utilisateur getUtilisateur() {
-		return utilisateur;
+		return this.utilisateur;
 	}
 
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	
-	
+
 }

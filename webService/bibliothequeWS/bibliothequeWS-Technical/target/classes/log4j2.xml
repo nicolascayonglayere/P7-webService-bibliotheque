@@ -17,7 +17,7 @@
 			<AppenderRef ref="MyFile" />
 		</Logger>
 		<!-- == Logger par module == -->
-		<Logger name="oc.P6.escalade" level="debug">
+		<Logger name="OC.webService.nicolas.*" level="debug">
 			<AppenderRef ref="MyFile" />
 			<AppenderRef ref="Console"/>
 		</Logger>

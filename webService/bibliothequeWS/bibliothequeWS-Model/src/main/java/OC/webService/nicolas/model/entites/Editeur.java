@@ -1,5 +1,6 @@
 package OC.webService.nicolas.model.entites;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,24 +16,25 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="editeur")
-public class Editeur {
+@Table(name = "editeur")
+public class Editeur implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-	@Column(name="id_editeur")
+	@Column(name = "id_editeur")
 	private Integer id;
-	@Column(length=60, unique=true)
+	@Column(length = 60, unique = true)
 	private String nom;
-	@Column(length=60)
+	@Column(length = 60)
 	private String adresse;
-	@ManyToMany(fetch=FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-	@JoinTable(name="livre_edition", 
-				joinColumns=@JoinColumn(name="id_editeur"),
-				inverseJoinColumns=@JoinColumn(name="id_livre"))
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinTable(name = "livre_edition", joinColumns = @JoinColumn(name = "id_editeur"), inverseJoinColumns = @JoinColumn(name = "id_livre"))
 	private List<Livre> livreEdites;
-	
-	public Editeur() {}
+
+	public Editeur() {
+	}
 
 	public Editeur(String nom, String adresse) {
 		this.nom = nom;
@@ -40,7 +42,7 @@ public class Editeur {
 	}
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -48,7 +50,7 @@ public class Editeur {
 	}
 
 	public String getNom() {
-		return nom;
+		return this.nom;
 	}
 
 	public void setNom(String nom) {
@@ -56,7 +58,7 @@ public class Editeur {
 	}
 
 	public String getAdresse() {
-		return adresse;
+		return this.adresse;
 	}
 
 	public void setAdresse(String adresse) {
@@ -64,20 +66,19 @@ public class Editeur {
 	}
 
 	public List<Livre> getLivreEdites() {
-		return livreEdites;
+		return this.livreEdites;
 	}
 
 	public void setLivreEdites(List<Livre> livreEdites) {
 		this.livreEdites = livreEdites;
 	}
-	
+
 	public void addLivresEdites(Livre pLivre) {
-		if(this.livreEdites == null) {
+		if (this.livreEdites == null) {
 			this.livreEdites = new ArrayList<Livre>();
 		}
 		this.livreEdites.add(pLivre);
 		pLivre.addEditeurs(this);
 	}
-	
-	
+
 }

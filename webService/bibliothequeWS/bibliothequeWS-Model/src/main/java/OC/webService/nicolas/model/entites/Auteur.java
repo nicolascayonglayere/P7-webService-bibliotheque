@@ -1,5 +1,6 @@
 package OC.webService.nicolas.model.entites;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,29 +20,30 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 @Entity
-@Table(name="auteur")
-public class Auteur {
+@Table(name = "auteur")
+public class Auteur implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-	@Column(name="id_auteur")
+	@Column(name = "id_auteur")
 	private Integer id;
-	@Column(length=60)
+	@Column(length = 60)
 	private String nom;
-	@Column(length=60)
+	@Column(length = 60)
 	private String prenom;
-	@Column(name="naissance")
+	@Column(name = "naissance")
 	private Date dateNaissance;
-	@Column(length=60)
+	@Column(length = 60)
 	private String nationalite;
-	@ManyToMany(fetch=FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.REFRESH })
 	@Fetch(value = FetchMode.SUBSELECT)
-	@JoinTable(name="livre_manuscrit", 
-				joinColumns=@JoinColumn(name="id_auteur"),
-				inverseJoinColumns=@JoinColumn(name="id_livre"))
+	@JoinTable(name = "livre_manuscrit", joinColumns = @JoinColumn(name = "id_auteur"), inverseJoinColumns = @JoinColumn(name = "id_livre"))
 	private List<Livre> manuscrits;
-	
-	public Auteur() {}
+
+	public Auteur() {
+	}
 
 	public Auteur(String nom, String prenom, Date dateNaissance, String nationalite) {
 		this.nom = nom;
@@ -51,7 +53,7 @@ public class Auteur {
 	}
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -59,7 +61,7 @@ public class Auteur {
 	}
 
 	public String getNom() {
-		return nom;
+		return this.nom;
 	}
 
 	public void setNom(String nom) {
@@ -67,7 +69,7 @@ public class Auteur {
 	}
 
 	public String getPrenom() {
-		return prenom;
+		return this.prenom;
 	}
 
 	public void setPrenom(String prenom) {
@@ -75,7 +77,7 @@ public class Auteur {
 	}
 
 	public Date getDateNaissance() {
-		return dateNaissance;
+		return this.dateNaissance;
 	}
 
 	public void setDateNaissance(Date dateNaissance) {
@@ -83,7 +85,7 @@ public class Auteur {
 	}
 
 	public String getNationalite() {
-		return nationalite;
+		return this.nationalite;
 	}
 
 	public void setNationalite(String nationalite) {
@@ -91,20 +93,19 @@ public class Auteur {
 	}
 
 	public List<Livre> getManuscrits() {
-		return manuscrits;
+		return this.manuscrits;
 	}
 
 	public void setManuscrits(List<Livre> manuscrits) {
 		this.manuscrits = manuscrits;
 	}
-	
+
 	public void addManuscrits(Livre pManuscrit) {
-		if(this.manuscrits == null) {
+		if (this.manuscrits == null) {
 			this.manuscrits = new ArrayList<Livre>();
 		}
 		this.manuscrits.add(pManuscrit);
 		pManuscrit.addAuteurs(this);
 	}
-	
-	
+
 }

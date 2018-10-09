@@ -8,53 +8,44 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 @Entity
-@Table(name="livre")
-//@EntityListeners(AuditingEntityListener.class)
-public class Livre implements Serializable{
+@Table(name = "livre")
+public class Livre implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-	@Column(name="id_livre")
+	@Column(name = "id_livre")
 	private Integer id;
-	@Column(length=60)
+	@Column(length = 60)
 	private String titre;
 	private String genre;
-	@Column(name="date_parution")
+	@Column(name = "date_parution")
 	private Date dateParution;
-	@Column(name="nb_exemplaire")
+	@Column(name = "nb_exemplaire")
 	private int nbExemplaire;
-	@ManyToMany(fetch=FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-	@JoinTable(name="livre_manuscrit", 
-				joinColumns=@JoinColumn(name="id_livre"),
-				inverseJoinColumns=@JoinColumn(name="id_auteur"))
-	@Fetch(value = FetchMode.SUBSELECT)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinTable(name = "livre_manuscrit", joinColumns = @JoinColumn(name = "id_livre"), inverseJoinColumns = @JoinColumn(name = "id_auteur"))
 	private List<Auteur> auteurs;
-	@ManyToMany(fetch=FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-	@JoinTable(name="livre_edition", 
-				joinColumns=@JoinColumn(name="id_livre"),
-				inverseJoinColumns=@JoinColumn(name="id_editeur"))	
-	private List<Editeur>editeurs;
-	@OneToMany(mappedBy="livre", cascade= {CascadeType.ALL})
-	@Fetch(value = FetchMode.SUBSELECT)
-	private List<LivreEmprunt>emprunts;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinTable(name = "livre_edition", joinColumns = @JoinColumn(name = "id_livre"), inverseJoinColumns = @JoinColumn(name = "id_editeur"))
+	private List<Editeur> editeurs;
+	@OneToMany(mappedBy = "livre", cascade = { CascadeType.ALL })
+	private List<LivreEmprunt> emprunts;
 
-	protected Livre() {}
+	protected Livre() {
+	}
 
 	public Livre(String titre, String genre, Date dateParution, int nbExemplaire) {
 		this.titre = titre;
@@ -64,7 +55,7 @@ public class Livre implements Serializable{
 	}
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -72,7 +63,7 @@ public class Livre implements Serializable{
 	}
 
 	public String getTitre() {
-		return titre;
+		return this.titre;
 	}
 
 	public void setTitre(String titre) {
@@ -80,7 +71,7 @@ public class Livre implements Serializable{
 	}
 
 	public String getGenre() {
-		return genre;
+		return this.genre;
 	}
 
 	public void setGenre(String genre) {
@@ -88,7 +79,7 @@ public class Livre implements Serializable{
 	}
 
 	public Date getDateParution() {
-		return dateParution;
+		return this.dateParution;
 	}
 
 	public void setDateParution(Date dateParution) {
@@ -96,7 +87,7 @@ public class Livre implements Serializable{
 	}
 
 	public int getNbExemplaire() {
-		return nbExemplaire;
+		return this.nbExemplaire;
 	}
 
 	public void setNbExemplaire(int nbExemplaire) {
@@ -104,15 +95,15 @@ public class Livre implements Serializable{
 	}
 
 	public List<LivreEmprunt> getEmprunts() {
-		return emprunts;
+		return this.emprunts;
 	}
 
 	public void setEmprunts(List<LivreEmprunt> emprunts) {
 		this.emprunts = emprunts;
 	}
-	
+
 	public void addEmprunts(LivreEmprunt pLivreEmprunt) {
-		if(this.emprunts == null) {
+		if (this.emprunts == null) {
 			this.emprunts = new ArrayList<LivreEmprunt>();
 		}
 		this.emprunts.add(pLivreEmprunt);
@@ -120,7 +111,7 @@ public class Livre implements Serializable{
 	}
 
 	public List<Auteur> getAuteurs() {
-		return auteurs;
+		return this.auteurs;
 	}
 
 	public void setAuteurs(List<Auteur> auteurs) {
@@ -128,28 +119,27 @@ public class Livre implements Serializable{
 	}
 
 	public void addAuteurs(Auteur pAuteur) {
-		if(this.auteurs == null) {
+		if (this.auteurs == null) {
 			this.auteurs = new ArrayList<Auteur>();
 		}
 		this.auteurs.add(pAuteur);
 		pAuteur.addManuscrits(this);
 	}
-	
+
 	public List<Editeur> getEditeurs() {
-		return editeurs;
+		return this.editeurs;
 	}
 
 	public void setEditeurs(List<Editeur> editeurs) {
 		this.editeurs = editeurs;
 	}
-	
+
 	public void addEditeurs(Editeur pEditeur) {
-		if(this.editeurs == null) {
+		if (this.editeurs == null) {
 			this.editeurs = new ArrayList<Editeur>();
 		}
 		this.editeurs.add(pEditeur);
-		//pEditeur
+		// pEditeur
 	}
-	
-	
+
 }

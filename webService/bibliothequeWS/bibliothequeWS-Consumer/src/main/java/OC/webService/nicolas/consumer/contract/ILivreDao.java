@@ -1,7 +1,5 @@
 package OC.webService.nicolas.consumer.contract;
 
-
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,9 +13,6 @@ import OC.webService.nicolas.model.entites.Livre;
 public interface ILivreDao extends JpaRepository<Livre, Integer> {
 
 	@Query("SELECT l FROM Livre l JOIN FETCH l.auteurs a WHERE l.titre LIKE %:titre% AND a.nom LIKE %:nom%")
-	public List<Livre> findByTitreAndAuteurs(@Param("titre")String pTitre, @Param("nom")String pNom);
-	
-	@Query("SELECT l FROM Livre l JOIN FETCH l.auteurs WHERE l.id = :id")
-	public Livre findByIdLivre(@Param("id")Integer pId);
+	public List<Livre> findByTitreAndAuteurs(@Param("titre") String pTitre, @Param("nom") String pNom);
 
 }

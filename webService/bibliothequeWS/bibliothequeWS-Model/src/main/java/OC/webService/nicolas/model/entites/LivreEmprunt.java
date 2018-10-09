@@ -1,5 +1,6 @@
 package OC.webService.nicolas.model.entites;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -12,24 +13,26 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="livre_emprunt")
-public class LivreEmprunt {
+@Table(name = "livre_emprunt")
+public class LivreEmprunt implements Serializable {
 
-	@Id 
+	private static final long serialVersionUID = 1L;
+	@Id
 	@GeneratedValue
-	@Column(name="id_emprunt")
+	@Column(name = "id_emprunt")
 	private Integer id;
-	@Column(name="date_emprunt")
+	@Column(name = "date_emprunt")
 	private Date dateEmprunt;
 	private boolean prolongation;
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}) 
-	@JoinColumn(name="id_utilisateur")
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
+	@JoinColumn(name = "id_utilisateur")
 	private Utilisateur utilisateur;
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}) 
-	@JoinColumn(name="id_livre")
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
+	@JoinColumn(name = "id_livre")
 	private Livre livre;
 
-	public LivreEmprunt() {}
+	public LivreEmprunt() {
+	}
 
 	public LivreEmprunt(Date dateEmprunt, boolean prolongation) {
 		this.dateEmprunt = dateEmprunt;
@@ -37,7 +40,7 @@ public class LivreEmprunt {
 	}
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -45,7 +48,7 @@ public class LivreEmprunt {
 	}
 
 	public Date getDateEmprunt() {
-		return dateEmprunt;
+		return this.dateEmprunt;
 	}
 
 	public void setDateEmprunt(Date dateEmprunt) {
@@ -53,7 +56,7 @@ public class LivreEmprunt {
 	}
 
 	public boolean isProlongation() {
-		return prolongation;
+		return this.prolongation;
 	}
 
 	public void setProlongation(boolean prolongation) {
@@ -61,7 +64,7 @@ public class LivreEmprunt {
 	}
 
 	public Utilisateur getUtilisateur() {
-		return utilisateur;
+		return this.utilisateur;
 	}
 
 	public void setUtilisateur(Utilisateur utilisateur) {
@@ -69,14 +72,11 @@ public class LivreEmprunt {
 	}
 
 	public Livre getLivre() {
-		return livre;
+		return this.livre;
 	}
 
 	public void setLivre(Livre livre) {
 		this.livre = livre;
 	}
-	
-	
-	
-	
+
 }

@@ -7,6 +7,12 @@ import OC.webService.nicolas.business.contract.LivreEmpruntManager;
 import OC.webService.nicolas.business.contract.LivreManager;
 import OC.webService.nicolas.business.contract.UtilisateurManager;
 
+/**
+ * Implémentation de {@link ManagerFactory}
+ * 
+ * @author nicolas
+ *
+ */
 @Component
 public class ManagerFactoryImpl implements ManagerFactory {
 

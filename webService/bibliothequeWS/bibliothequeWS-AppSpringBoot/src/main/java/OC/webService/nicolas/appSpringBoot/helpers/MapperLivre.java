@@ -9,14 +9,28 @@ import OC.webService.nicolas.model.entites.Livre;
 import fr.yogj.bibliows.types.AuteurType;
 import fr.yogj.bibliows.types.LivreType;
 
+/**
+ * Classe MapperLivre pour mapper les propriétés d'un objet {@link LivreType}
+ * vers un objet {@link Livre} et inversement
+ * 
+ * @author nicolas
+ *
+ */
 public class MapperLivre {
 
-	//@Autowired
-	private static ConversionDate convDate  = new ConversionDate();
-	
+	// @Autowired
+	private static ConversionDate convDate = new ConversionDate();
+
+	/**
+	 * Méthode depuis {@link LivreType} vers un {@link Livre}
+	 * 
+	 * @param pLivreType
+	 * @return {@link Livre}
+	 */
 	public static Livre fromLivreTypeToLivre(LivreType pLivreType) {
-		Date dateParution =getConvDate().convertirXMLGregorianCalendar(pLivreType.getDate());
-		Livre monLivre = new Livre(pLivreType.getTitre(), pLivreType.getGenre(), dateParution, pLivreType.getNbExemplaire());
+		Date dateParution = getConvDate().convertirXMLGregorianCalendar(pLivreType.getDate());
+		Livre monLivre = new Livre(pLivreType.getTitre(), pLivreType.getGenre(), dateParution,
+				pLivreType.getNbExemplaire());
 		monLivre.setId(pLivreType.getId());
 		for (AuteurType at : pLivreType.getAuteurs()) {
 			Date dateNaissance = getConvDate().convertirXMLGregorianCalendar(at.getDateDeNaissance());
@@ -27,7 +41,13 @@ public class MapperLivre {
 
 		return monLivre;
 	}
-	
+
+	/**
+	 * Méthode depuis {@link Livre} vers un {@link LivreType}
+	 * 
+	 * @param pLivre
+	 * @return {@link LivreType}
+	 */
 	public static LivreType fromLivreToLivreType(Livre pLivre) {
 		LivreType lt = new LivreType();
 		lt.setId(pLivre.getId());
@@ -53,7 +73,7 @@ public class MapperLivre {
 				e.printStackTrace();
 			}
 			lt.getAuteurs().add(au);
-		}		
+		}
 		return lt;
 	}
 

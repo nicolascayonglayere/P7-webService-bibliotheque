@@ -34,6 +34,12 @@ import fr.yogj.bibliows.types.LivreEmpruntType;
 import fr.yogj.bibliows.types.LivreType;
 import fr.yogj.bibliows.types.UtilisateurType;
 
+/**
+ * Classe BiblioWSEndPoint implémentation de {@link BiblioWS}
+ * 
+ * @author nicolas
+ *
+ */
 @Transactional
 @Service
 public class BiblioWSEndPoint implements BiblioWS {
@@ -41,13 +47,11 @@ public class BiblioWSEndPoint implements BiblioWS {
 	static final Logger logger = LogManager.getLogger();
 
 	private ManagerFactory manageFacto;
-	// @Autowired
-	// private LivreManager lm;
-	// @Autowired
-	// private UtilisateurManager um;
-	// @Autowired
-	// private LivreEmpruntManager lem;
 
+	/**
+	 * Méthode pour authentifier un {@link Utilisateur} à partir de son pseudo et de
+	 * son mot de passe donnés en paramètre
+	 */
 	@Override
 	public UtilisateurType login(String pseudo, String motDePasse) throws LoginFault_Exception {
 		// TODO Auto-generated method stub on vérifie les login
@@ -61,6 +65,9 @@ public class BiblioWSEndPoint implements BiblioWS {
 		}
 	}
 
+	/**
+	 * Méthode pour obtenir la liste de {@link Livre} nouveau
+	 */
 	@Override
 	public ListNouveautesResponse listNouveautes(String parameters) {
 		// TODO Auto-generated method stub
@@ -73,6 +80,9 @@ public class BiblioWSEndPoint implements BiblioWS {
 		return nouveautes;
 	}
 
+	/**
+	 * Méthode pour obtenir la liste des {@link Utilisateur} en retard
+	 */
 	@Override
 	public ListRetardatairesResponse listRetardataires(String parameters) {
 		// TODO Auto-generated method stub
@@ -85,6 +95,9 @@ public class BiblioWSEndPoint implements BiblioWS {
 		return lrr;
 	}
 
+	/**
+	 * Méthode pour chercher un {@link Livre}
+	 */
 	@Override
 	public RechercheOuvrageResponse rechercheOuvrage(RechercheOuvrage parameters) throws DetailsOuvrageFault_Exception {
 		// TODO Auto-generated method stub
@@ -103,6 +116,9 @@ public class BiblioWSEndPoint implements BiblioWS {
 		}
 	}
 
+	/**
+	 * Méthode pour prolonger un {@link LivreEmprunt}
+	 */
 	@Override
 	public LivreEmpruntType prolongationOuvrage(int idEmprunt) throws ProlongationOuvrageFault1_Exception {
 		// TODO Auto-generated method stub
@@ -116,6 +132,9 @@ public class BiblioWSEndPoint implements BiblioWS {
 		}
 	}
 
+	/**
+	 * Méthode pour déconnecter un {@link Utilisateur}
+	 */
 	@Override
 	public String deconnexion(Deconnexion parameters) throws DeconnexionFault_Exception {
 		// TODO Auto-generated method stub
@@ -128,6 +147,9 @@ public class BiblioWSEndPoint implements BiblioWS {
 		}
 	}
 
+	/**
+	 * Méthode pour emprunter un {@link Livre}
+	 */
 	@Override
 	public LivreEmpruntType empruntOuvrage(int idLivre, int idEmprunteur) throws EmpruntOuvrageFault_Exception {
 		// TODO Auto-generated method stub
@@ -142,6 +164,10 @@ public class BiblioWSEndPoint implements BiblioWS {
 
 	}
 
+	/**
+	 * Méthode pour obtenir la liste des {@link LivreEmprunt} d'un
+	 * {@link Utilisateur} d'id donné en paramètre
+	 */
 	@Override
 	public List<LivreEmpruntType> obtenirEmpruntUtilisateur(int idUtilisateur)
 			throws ObtenirEmpruntUtilisateurFault_Exception {
@@ -163,6 +189,9 @@ public class BiblioWSEndPoint implements BiblioWS {
 
 	}
 
+	/**
+	 * Méthode pour rendre un {@link LivreEmprunt} dont l'id est donné en paramètre
+	 */
 	@Override
 	public LivreType retourOuvrage(int idLivreEmprunt) throws RetourOuvrageFault1_Exception {
 		// TODO Auto-generated method stub

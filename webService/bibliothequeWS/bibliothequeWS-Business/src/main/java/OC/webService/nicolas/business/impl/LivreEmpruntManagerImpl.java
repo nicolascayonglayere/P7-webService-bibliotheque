@@ -15,12 +15,21 @@ import OC.webService.nicolas.model.entites.Livre;
 import OC.webService.nicolas.model.entites.LivreEmprunt;
 import OC.webService.nicolas.model.entites.Utilisateur;
 
+/**
+ * Implémentation de {@link LivreEmpruntManager}
+ * 
+ * @author nicolas
+ *
+ */
 @Component
 public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmpruntManager {
 
 	static final Logger logger = LogManager.getLogger();
 	private LivreEmprunt livreEmprunt = new LivreEmprunt();
 
+	/**
+	 * Méthode pour emprunter un {@link Livre}
+	 */
 	@Override
 	public LivreEmprunt emprunterOuvrage(int pIdLivre, int pIdEmprunteur) throws RuntimeException {
 		Optional<Livre> myOptional = this.getDaoFactory().getLivreDao().findById(pIdLivre);
@@ -41,7 +50,6 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 			// recupérer la date de retour la plus proche
 			Calendar cal = Calendar.getInstance();
 			Date dateRetour = ouvragesEmpruntes.get(0).getDateEmprunt();
-			// cal.add(Calendar.DATE, 28);
 			for (LivreEmprunt le : ouvragesEmpruntes) {
 				cal.setTime(le.getDateEmprunt());
 				cal.add(Calendar.DATE, 28);
@@ -53,6 +61,9 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		}
 	}
 
+	/**
+	 * Méthode pour rendre un {@link LivreEmprunt}
+	 */
 	@Override
 	public Livre retournerOuvrage(int pIdEmprunt) throws RuntimeException {
 		this.livreEmprunt = this.findByIdEmprunt(pIdEmprunt);
@@ -69,6 +80,9 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 
 	}
 
+	/**
+	 * Méthode pour prolonger un {@link LivreEmprunt}
+	 */
 	@Override
 	public LivreEmprunt prolongerEmprunt(int pIdEmprunt) throws RuntimeException {
 		if (this.findByIdEmprunt(pIdEmprunt).getId() != 0) {
@@ -82,6 +96,9 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		}
 	}
 
+	/**
+	 * Méthode pour trouver un {@link LivreEmprunt}
+	 */
 	@Override
 	public LivreEmprunt findByIdEmprunt(int pIdEmprunt) {
 		Optional<LivreEmprunt> myOptional = this.getDaoFactory().getLivreEmpruntDao().findById(pIdEmprunt);
@@ -89,6 +106,9 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		return this.livreEmprunt;
 	}
 
+	/**
+	 * Méthode pour obtenir les {@link Utilisateurs} en retard
+	 */
 	@Override
 	public List<Utilisateur> obtenirRetardataires() {
 		List<Utilisateur> retardataires = new ArrayList<Utilisateur>();
@@ -96,16 +116,14 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 
 		cal.add(Calendar.DATE, -28);
 		logger.debug("date emprunt en retard : " + cal.getTime());
-		retardataires = this.getDaoFactory().getLivreEmpruntDao().findRetardataires(cal.getTime());// calcul
-																									// de
-																									// la
-																									// date
-																									// faux
-																									// pour
-																									// l'instant
+		retardataires = this.getDaoFactory().getLivreEmpruntDao().findRetardataires(cal.getTime());
 		return retardataires;
 	}
 
+	/**
+	 * Méthode pour trouver la liste des {@link LivreEmprunt} d'un
+	 * {@link Utilisateur} d'id donné en paramètre
+	 */
 	@Override
 	public List<LivreEmprunt> obtenirEmpruntUtilisateur(int pIdUtilisateur) throws RuntimeException {
 		List<LivreEmprunt> empruntsUtilisateur = this.getDaoFactory().getLivreEmpruntDao()

@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import OC.webService.nicolas.business.contract.LivreEmpruntManager;
@@ -16,6 +18,7 @@ import OC.webService.nicolas.model.entites.Utilisateur;
 @Component
 public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmpruntManager {
 
+	static final Logger logger = LogManager.getLogger();
 	private LivreEmprunt livreEmprunt = new LivreEmprunt();
 
 	@Override
@@ -24,7 +27,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		Livre l = myOptional.get();
 		List<LivreEmprunt> ouvragesEmpruntes = this.getDaoFactory().getLivreEmpruntDao().findByLivreId(pIdLivre);
 		int nbEx = l.getNbExemplaire() - ouvragesEmpruntes.size();
-
+		logger.debug("nb exemplaires restants : " + nbEx);
 		if (nbEx > 0) {
 			Optional<Utilisateur> myUserOptional = this.getDaoFactory().getUtilisateurDao().findById(pIdEmprunteur);
 			Utilisateur user = myUserOptional.get();
@@ -38,7 +41,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 			// recupérer la date de retour la plus proche
 			Calendar cal = Calendar.getInstance();
 			Date dateRetour = ouvragesEmpruntes.get(0).getDateEmprunt();
-			cal.add(Calendar.DATE, 28);
+			// cal.add(Calendar.DATE, 28);
 			for (LivreEmprunt le : ouvragesEmpruntes) {
 				cal.setTime(le.getDateEmprunt());
 				cal.add(Calendar.DATE, 28);
@@ -58,6 +61,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		Livre l = myOptional.get();
 		if (l.getId() != 0) {
 			this.getDaoFactory().getLivreEmpruntDao().delete(this.livreEmprunt);
+			l.setNbExemplaire(l.getNbExemplaire() + 1);
 			return l;
 		} else {
 			throw new RuntimeException("Vous n'avez pas emprunte cet ouvrage.");
@@ -88,13 +92,17 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	@Override
 	public List<Utilisateur> obtenirRetardataires() {
 		List<Utilisateur> retardataires = new ArrayList<Utilisateur>();
-		retardataires = this.getDaoFactory().getLivreEmpruntDao().findRetardataires(Calendar.getInstance().getTime());// calcul
-																														// de
-																														// la
-																														// date
-																														// faux
-																														// pour
-																														// l'instant
+		Calendar cal = Calendar.getInstance();
+
+		cal.add(Calendar.DATE, -28);
+		logger.debug("date emprunt en retard : " + cal.getTime());
+		retardataires = this.getDaoFactory().getLivreEmpruntDao().findRetardataires(cal.getTime());// calcul
+																									// de
+																									// la
+																									// date
+																									// faux
+																									// pour
+																									// l'instant
 		return retardataires;
 	}
 

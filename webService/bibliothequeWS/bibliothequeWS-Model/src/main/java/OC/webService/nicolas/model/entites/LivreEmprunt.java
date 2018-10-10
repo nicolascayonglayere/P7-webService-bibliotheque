@@ -12,6 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Entite Hibernate correspondant à la table livre_emprunt
+ * 
+ * @author nicolas
+ *
+ */
 @Entity
 @Table(name = "livre_emprunt")
 public class LivreEmprunt implements Serializable {
@@ -31,14 +37,26 @@ public class LivreEmprunt implements Serializable {
 	@JoinColumn(name = "id_livre")
 	private Livre livre;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	public LivreEmprunt() {
 	}
 
+	/**
+	 * Constructeur avec paramètres
+	 * 
+	 * @param dateEmprunt
+	 * @param prolongation
+	 */
 	public LivreEmprunt(Date dateEmprunt, boolean prolongation) {
 		this.dateEmprunt = dateEmprunt;
 		this.prolongation = prolongation;
 	}
 
+	/**
+	 * Getter et Setter
+	 */
 	public Integer getId() {
 		return this.id;
 	}

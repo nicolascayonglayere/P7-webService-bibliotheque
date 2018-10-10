@@ -5,4 +5,3 @@ OC\webService\nicolas\business\contract\LivreManager.class
 OC\webService\nicolas\business\impl\LivreEmpruntManagerImpl.class
 OC\webService\nicolas\business\impl\UtilisateurManagerImpl.class
 OC\webService\nicolas\business\contract\UtilisateurManager.class
-OC\webService\nicolas\business\App.class

@@ -4,5 +4,4 @@ OC\webService\nicolas\model\entites\Auteur.class
 OC\webService\nicolas\model\entites\LivreEmprunt.class
 OC\webService\nicolas\model\entites\Editeur.class
 OC\webService\nicolas\model\entites\Livre.class
-OC\webService\nicolas\model\App.class
 OC\webService\nicolas\model\entites\CoordonneeUtilisateur.class

@@ -17,6 +17,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Entite Hibernate correspondant à la table livre
+ * 
+ * @author nicolas
+ *
+ */
 @Entity
 @Table(name = "livre")
 public class Livre implements Serializable {
@@ -44,9 +50,20 @@ public class Livre implements Serializable {
 	@OneToMany(mappedBy = "livre", cascade = { CascadeType.ALL })
 	private List<LivreEmprunt> emprunts;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	protected Livre() {
 	}
 
+	/**
+	 * Constructeur avec paramètres
+	 * 
+	 * @param titre
+	 * @param genre
+	 * @param dateParution
+	 * @param nbExemplaire
+	 */
 	public Livre(String titre, String genre, Date dateParution, int nbExemplaire) {
 		this.titre = titre;
 		this.genre = genre;
@@ -54,6 +71,9 @@ public class Livre implements Serializable {
 		this.nbExemplaire = nbExemplaire;
 	}
 
+	/**
+	 * Getter et Setter
+	 */
 	public Integer getId() {
 		return this.id;
 	}

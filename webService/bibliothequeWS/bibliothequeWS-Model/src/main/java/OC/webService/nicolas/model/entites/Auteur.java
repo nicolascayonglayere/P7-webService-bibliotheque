@@ -19,6 +19,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+/**
+ * Entite Hibernate correspondant à la table auteur
+ * 
+ * @author nicolas
+ *
+ */
 @Entity
 @Table(name = "auteur")
 public class Auteur implements Serializable {
@@ -42,9 +48,20 @@ public class Auteur implements Serializable {
 	@JoinTable(name = "livre_manuscrit", joinColumns = @JoinColumn(name = "id_auteur"), inverseJoinColumns = @JoinColumn(name = "id_livre"))
 	private List<Livre> manuscrits;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	public Auteur() {
 	}
 
+	/**
+	 * Constructeurs avec paramètres
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @param dateNaissance
+	 * @param nationalite
+	 */
 	public Auteur(String nom, String prenom, Date dateNaissance, String nationalite) {
 		this.nom = nom;
 		this.prenom = prenom;
@@ -52,6 +69,9 @@ public class Auteur implements Serializable {
 		this.nationalite = nationalite;
 	}
 
+	/**
+	 * Getter et Setter
+	 */
 	public Integer getId() {
 		return this.id;
 	}

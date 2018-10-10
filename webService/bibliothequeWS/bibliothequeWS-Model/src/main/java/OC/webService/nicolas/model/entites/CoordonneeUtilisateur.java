@@ -12,6 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Entite Hibernate correspondant à la table coordonnee_utilisateur
+ * 
+ * @author nicolas
+ *
+ */
 @Entity
 @Table(name = "coordonnee_utilisateur")
 public class CoordonneeUtilisateur implements Serializable {
@@ -31,14 +37,26 @@ public class CoordonneeUtilisateur implements Serializable {
 	@JoinColumn(name = "id_utilisateur")
 	private Utilisateur utilisateur;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	public CoordonneeUtilisateur() {
 	}
 
+	/**
+	 * Constructeur avec paramètres
+	 * 
+	 * @param adresse
+	 * @param email
+	 */
 	public CoordonneeUtilisateur(String adresse, String email) {
 		this.adresse = adresse;
 		this.email = email;
 	}
 
+	/**
+	 * Getter et Setter
+	 */
 	public Integer getId() {
 		return this.id;
 	}

@@ -32,10 +32,15 @@ public class LivreManagerImpl extends AbstractManager implements LivreManager {
 		logger.debug(pTitre + pNom);
 		if (this.getDaoFactory().getLivreDao().findByTitreAndAuteurs(pTitre, pNom).size() > 0) {
 			this.livres = this.getDaoFactory().getLivreDao().findByTitreAndAuteurs(pTitre, pNom);
-			for (Livre l : this.livres) {
-				int nbEx = this.getDaoFactory().getLivreEmpruntDao().findByLivreId(l.getId()).size();
-				l.setNbExemplaire(l.getNbExemplaire() - nbEx);// verifier la difference
-			}
+			// for (Livre l : this.livres) {
+			// int nbEx =
+			// this.getDaoFactory().getLivreEmpruntDao().findByLivreId(l.getId()).size();
+			// if ((l.getNbExemplaire() - nbEx) > 0) {
+			// l.setNbExemplaire(l.getNbExemplaire() - nbEx);
+			// } else {
+			// l.setNbExemplaire(0);
+			// }
+			// }
 		} else {
 			throw new RuntimeException("ouvrage non trouvé : titre = " + pTitre + " - auteur = " + pNom);
 		}

@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 import OC.webService.nicolas.appSpringBoot.helpers.MapperLivre;
 import OC.webService.nicolas.appSpringBoot.helpers.MapperLivreEmprunt;
 import OC.webService.nicolas.appSpringBoot.helpers.MapperUtilisateur;
-import OC.webService.nicolas.business.contract.LivreEmpruntManager;
-import OC.webService.nicolas.business.contract.LivreManager;
-import OC.webService.nicolas.business.contract.UtilisateurManager;
+import OC.webService.nicolas.business.ManagerFactory;
 import OC.webService.nicolas.model.entites.Livre;
 import OC.webService.nicolas.model.entites.LivreEmprunt;
 import OC.webService.nicolas.model.entites.Utilisateur;
@@ -41,18 +39,20 @@ import fr.yogj.bibliows.types.UtilisateurType;
 public class BiblioWSEndPoint implements BiblioWS {
 
 	static final Logger logger = LogManager.getLogger();
-	@Autowired
-	private LivreManager lm;
-	@Autowired
-	private UtilisateurManager um;
-	@Autowired
-	private LivreEmpruntManager lem;
+
+	private ManagerFactory manageFacto;
+	// @Autowired
+	// private LivreManager lm;
+	// @Autowired
+	// private UtilisateurManager um;
+	// @Autowired
+	// private LivreEmpruntManager lem;
 
 	@Override
 	public UtilisateurType login(String pseudo, String motDePasse) throws LoginFault_Exception {
 		// TODO Auto-generated method stub on vérifie les login
 		try {
-			Utilisateur u = this.um.getUtilisateur(pseudo, motDePasse);
+			Utilisateur u = this.manageFacto.getUtilisateurManager().getUtilisateur(pseudo, motDePasse);
 			UtilisateurType user = MapperUtilisateur.fromUtilisateurToUtilisateurType(u);
 			return user;
 		} catch (RuntimeException e) {
@@ -66,7 +66,7 @@ public class BiblioWSEndPoint implements BiblioWS {
 		// TODO Auto-generated method stub
 		ListNouveautesResponse nouveautes = new ListNouveautesResponse();
 
-		for (Livre l : this.lm.obtenirNouveautes()) {
+		for (Livre l : this.manageFacto.getLivreManager().obtenirNouveautes()) {
 			LivreType livreType = MapperLivre.fromLivreToLivreType(l);
 			nouveautes.getNouveautes().add(livreType);
 		}
@@ -77,7 +77,7 @@ public class BiblioWSEndPoint implements BiblioWS {
 	public ListRetardatairesResponse listRetardataires(String parameters) {
 		// TODO Auto-generated method stub
 		ListRetardatairesResponse lrr = new ListRetardatairesResponse();
-		for (Utilisateur u : this.lem.obtenirRetardataires()) {
+		for (Utilisateur u : this.manageFacto.getLivreEmpruntManager().obtenirRetardataires()) {
 			UtilisateurType userType = MapperUtilisateur.fromUtilisateurToUtilisateurType(u);
 			lrr.getUtilisateur().add(userType);
 
@@ -90,7 +90,8 @@ public class BiblioWSEndPoint implements BiblioWS {
 		// TODO Auto-generated method stub
 		RechercheOuvrageResponse rop = new RechercheOuvrageResponse();
 		try {
-			List<Livre> livres = this.lm.trouverParTitreEtAuteur(parameters.getTitre(), parameters.getAuteurNom());
+			List<Livre> livres = this.manageFacto.getLivreManager().trouverParTitreEtAuteur(parameters.getTitre(),
+					parameters.getAuteurNom());
 			for (Livre l : livres) {
 				LivreType lt = MapperLivre.fromLivreToLivreType(l);
 				rop.getOuvrages().add(lt);
@@ -106,7 +107,7 @@ public class BiblioWSEndPoint implements BiblioWS {
 	public LivreEmpruntType prolongationOuvrage(int idEmprunt) throws ProlongationOuvrageFault1_Exception {
 		// TODO Auto-generated method stub
 		try {
-			LivreEmprunt livreEmprunte = this.lem.prolongerEmprunt(idEmprunt);
+			LivreEmprunt livreEmprunte = this.manageFacto.getLivreEmpruntManager().prolongerEmprunt(idEmprunt);
 			LivreEmpruntType let = MapperLivreEmprunt.fromLivreEmpruntToLivreEmpruntType(livreEmprunte);
 			return let;
 		} catch (RuntimeException e) {
@@ -119,7 +120,7 @@ public class BiblioWSEndPoint implements BiblioWS {
 	public String deconnexion(Deconnexion parameters) throws DeconnexionFault_Exception {
 		// TODO Auto-generated method stub
 		try {
-			this.um.getUtilisateur(parameters.getId());
+			this.manageFacto.getUtilisateurManager().getUtilisateur(parameters.getId());
 			return "DECO OK";
 		} catch (RuntimeException e) {
 			logger.debug(e.getMessage());
@@ -131,8 +132,8 @@ public class BiblioWSEndPoint implements BiblioWS {
 	public LivreEmpruntType empruntOuvrage(int idLivre, int idEmprunteur) throws EmpruntOuvrageFault_Exception {
 		// TODO Auto-generated method stub
 		try {
-			LivreEmpruntType empruntType = MapperLivreEmprunt
-					.fromLivreEmpruntToLivreEmpruntType(this.lem.emprunterOuvrage(idLivre, idEmprunteur));
+			LivreEmpruntType empruntType = MapperLivreEmprunt.fromLivreEmpruntToLivreEmpruntType(
+					this.manageFacto.getLivreEmpruntManager().emprunterOuvrage(idLivre, idEmprunteur));
 			return empruntType;
 		} catch (RuntimeException e) {
 			logger.debug(e.getMessage());
@@ -146,7 +147,8 @@ public class BiblioWSEndPoint implements BiblioWS {
 			throws ObtenirEmpruntUtilisateurFault_Exception {
 		// TODO Auto-generated method stub
 		try {
-			List<LivreEmprunt> livresEmpruntes = this.lem.obtenirEmpruntUtilisateur(idUtilisateur);
+			List<LivreEmprunt> livresEmpruntes = this.manageFacto.getLivreEmpruntManager()
+					.obtenirEmpruntUtilisateur(idUtilisateur);
 			List<LivreEmpruntType> ouvrages = new ArrayList<LivreEmpruntType>();
 			for (LivreEmprunt le : livresEmpruntes) {
 				LivreEmpruntType let = MapperLivreEmprunt.fromLivreEmpruntToLivreEmpruntType(le);
@@ -165,7 +167,7 @@ public class BiblioWSEndPoint implements BiblioWS {
 	public LivreType retourOuvrage(int idLivreEmprunt) throws RetourOuvrageFault1_Exception {
 		// TODO Auto-generated method stub
 		try {
-			Livre livreEmprunte = this.lem.retournerOuvrage(idLivreEmprunt);
+			Livre livreEmprunte = this.manageFacto.getLivreEmpruntManager().retournerOuvrage(idLivreEmprunt);
 			LivreType lt = MapperLivre.fromLivreToLivreType(livreEmprunte);
 			return lt;
 		} catch (RuntimeException e) {
@@ -173,6 +175,15 @@ public class BiblioWSEndPoint implements BiblioWS {
 			throw new RetourOuvrageFault1_Exception(e.getMessage());
 		}
 
+	}
+
+	public ManagerFactory getManageFacto() {
+		return this.manageFacto;
+	}
+
+	@Autowired
+	public void setManageFacto(ManagerFactory manageFacto) {
+		this.manageFacto = manageFacto;
 	}
 
 }

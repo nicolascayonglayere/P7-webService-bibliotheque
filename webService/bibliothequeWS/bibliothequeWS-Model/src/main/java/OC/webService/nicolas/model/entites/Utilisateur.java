@@ -16,6 +16,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+/**
+ * Entite Hibernate correspondant à la table utilisateur
+ * 
+ * @author nicolas
+ *
+ */
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur implements Serializable {
@@ -41,9 +47,20 @@ public class Utilisateur implements Serializable {
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<LivreEmprunt> emprunts;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	public Utilisateur() {
 	}
 
+	/**
+	 * Constructeur avec paramètres
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @param pseudo
+	 * @param motDePasse
+	 */
 	public Utilisateur(String nom, String prenom, String pseudo, String motDePasse) {
 		this.nom = nom;
 		this.prenom = prenom;
@@ -51,6 +68,9 @@ public class Utilisateur implements Serializable {
 		this.motDePasse = motDePasse;
 	}
 
+	/**
+	 * Getter et Setter
+	 */
 	public Integer getId() {
 		return this.id;
 	}

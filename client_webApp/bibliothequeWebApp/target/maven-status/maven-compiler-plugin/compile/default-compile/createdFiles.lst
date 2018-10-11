@@ -8,7 +8,9 @@ fr\yogj\bibliows\types\LivreEmpruntType.class
 fr\yogj\bibliows\ObjectFactory.class
 fr\yogj\bibliows\BiblioWS_Service.class
 fr\yogj\bibliows\ProlongationOuvrageFault1_Exception.class
+META-INF\spring-configuration-metadata.json
 fr\yogj\bibliows\ObtenirEmpruntUtilisateurFault_Exception.class
+oc\webApp\nicolas\actions\Accueil.class
 fr\yogj\bibliows\ProlongationOuvrageResponse.class
 fr\yogj\bibliows\DetailsOuvrageFault.class
 fr\yogj\bibliows\EmpruntOuvrageFault_Exception.class
@@ -42,7 +44,6 @@ oc\webApp\nicolas\App.class
 fr\yogj\bibliows\EmpruntOuvrageResponse.class
 fr\yogj\bibliows\RetourOuvrage.class
 fr\yogj\bibliows\types\EditeurType.class
-oc\webApp\nicolas\App$1.class
 oc\webApp\nicolas\BiblioWebAppConfiguration.class
 fr\yogj\bibliows\types\package-info.class
 fr\yogj\bibliows\UneOperationResponse.class

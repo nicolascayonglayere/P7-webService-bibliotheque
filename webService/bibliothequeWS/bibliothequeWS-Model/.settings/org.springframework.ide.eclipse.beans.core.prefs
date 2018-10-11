@@ -2,7 +2,7 @@
 //org.springframework.ide.eclipse.beans.core.default.version.http\://www.springframework.org/schema/beans=
 //org.springframework.ide.eclipse.beans.core.default.version.http\://www.springframework.org/schema/c=
 //org.springframework.ide.eclipse.beans.core.default.version.http\://www.springframework.org/schema/cache=
-//org.springframework.ide.eclipse.beans.core.default.version.http\://www.springframework.org/schema/context=
+//org.springframework.ide.eclipse.beans.core.default.version.http\://www.springframework.org/schema/context=http\://www.springframework.org/schema/context/spring-context.xsd
 //org.springframework.ide.eclipse.beans.core.default.version.http\://www.springframework.org/schema/data/jpa=http\://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
 //org.springframework.ide.eclipse.beans.core.default.version.http\://www.springframework.org/schema/data/repository=
 //org.springframework.ide.eclipse.beans.core.default.version.http\://www.springframework.org/schema/jdbc=

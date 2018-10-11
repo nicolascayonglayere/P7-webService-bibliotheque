@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="bootstrap" />
+	<constant name="struts.custom.i18n.resources" value="package" />
+	<constant name="struts.objectFactory" value="spring"/>
+
+	<package name="default" extends="struts-default" namespace="/">
+
+		<!-- pile d'interceptor personnalisee pour vérifier les droits de l'utilisateur-->	
+		<interceptors>
+			<interceptor class="oc.webApp.nicolas.interceptor.LoginInterceptor" name="loginInterceptor"/>
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="loginInterceptor"/>
+				<interceptor-ref name="defaultStack" />
+       			<interceptor-ref name="store">
+					<param name="operationMode">RETRIEVE</param>
+		    	</interceptor-ref>	
+			</interceptor-stack>			
+		</interceptors>
+		
+		<!-- Action par défaut -->
+        <default-action-ref name="index" />
+
+		<global-results>
+			<result name="login">/static/login.jsp</result>
+		</global-results>
+
+        <!-- Action "index" -->
+        <action name="index" >
+            <result type="redirectAction">
+            	<param name="actionName">accueil</param>
+            	<param name="namespace">/</param>
+            </result>
+        </action>
+        
+		<action name="accueil" class="oc.webApp.nicolas.actions.Accueil" method="execute">
+			<result name="success">/static/accueil.jsp</result>
+		</action>		
+			
+		<!--   login action  -->
+		<action name="go_login">
+			<result>/login.jsp</result>
+		</action>
+				
+		<action name="loginUser" class="oc.webApp.nicolas.actions.Login" method="loginRegisterUser">
+       	 	<interceptor-ref name="store">
+				<param name="operationMode">STORE</param>
+			</interceptor-ref>
+			 <interceptor-ref name="defaultStack">
+			 	<param name="params.excludeParams">dojo..*,^struts..*,^session..*,^request..*,^application..*,^servlet(Request|Response)..*,parameters...*,submit,token,struts.token.name</param>
+			</interceptor-ref>
+			<result name="success" type="redirectAction">
+				<param name="actionName">go_monCompte</param>
+				<param name="namespace">/utilisateur</param>
+			</result>
+			<result name="login">/login.jsp</result>
+			<result name="input">/login.jsp</result>			
+		</action>			
+	</package>
+	
+	<package name="utilisateur" extends="default" namespace="/utilisateur">
+		<!--   logout action  -->
+		<action name="logOut" class="oc.webApp.nicolas.actions.Login" method="logOut">
+			<result name="success" type="redirectAction">
+				<param name="actionName">go_monCompte</param>
+			</result>
+		</action>		
+		
+		
+		<!-- page mon compte -->
+		<action name="go_monCompte" class="oc.webApp.nicolas.actions.MonCompte" method="execute">
+			<result name="success">/monCompte.jsp</result>
+		</action>
+	
+	
+	</package>
+	
+</struts>

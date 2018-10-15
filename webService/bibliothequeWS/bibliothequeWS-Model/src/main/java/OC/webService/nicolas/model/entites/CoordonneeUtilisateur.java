@@ -27,9 +27,9 @@ public class CoordonneeUtilisateur implements Serializable {
 	@GeneratedValue
 	@Column(name = "id_coordonnee")
 	private Integer id;
-	@Column(length = 100)
+	@Column(length = 100, nullable = false)
 	private String adresse;
-	@Column(length = 60, unique = true)
+	@Column(length = 60, unique = true, nullable = false)
 	private String email;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,

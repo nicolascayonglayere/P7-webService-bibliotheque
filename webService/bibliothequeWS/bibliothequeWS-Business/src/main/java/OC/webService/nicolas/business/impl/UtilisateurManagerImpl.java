@@ -2,6 +2,7 @@ package OC.webService.nicolas.business.impl;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import OC.webService.nicolas.business.contract.UtilisateurManager;
@@ -16,7 +17,7 @@ import OC.webService.nicolas.model.entites.Utilisateur;
 @Component
 public class UtilisateurManagerImpl extends AbstractManager implements UtilisateurManager {
 
-	private Utilisateur user = new Utilisateur();
+	private Utilisateur user;// = new Utilisateur();
 
 	/**
 	 * Méthode pour obtenir l {@link Utilisateur} à partir de son pseudo et de son
@@ -47,13 +48,13 @@ public class UtilisateurManagerImpl extends AbstractManager implements Utilisate
 			return this.user;
 	}
 
-	// public Utilisateur getUser() {
-	// return user;
-	// }
-	//
-	// @Autowired
-	// public void setUser(Utilisateur user) {
-	// this.user = user;
-	// }
+	public Utilisateur getUser() {
+		return this.user;
+	}
+
+	@Autowired
+	public void setUser(Utilisateur user) {
+		this.user = user;
+	}
 
 }

@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.springframework.stereotype.Component;
 
 /**
  * Entite Hibernate correspondant à la table utilisateur
@@ -22,6 +23,7 @@ import org.hibernate.annotations.FetchMode;
  * @author nicolas
  *
  */
+@Component
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur implements Serializable {
@@ -31,20 +33,19 @@ public class Utilisateur implements Serializable {
 	@GeneratedValue
 	@Column(name = "id_utilisateur")
 	private Integer id;
-	@Column(length = 60)
+	@Column(length = 60, nullable = false)
 	private String nom;
-	@Column(length = 60)
+	@Column(length = 60, nullable = false)
 	private String prenom;
-	@Column(length = 60, unique = true)
+	@Column(length = 60, unique = true, nullable = false)
 	private String pseudo;
-	@Column(name = "mot_de_passe", length = 100)
+	@Column(name = "mot_de_passe", length = 100, nullable = false)
 	private String motDePasse;
 	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<CoordonneeUtilisateur> coordonnee;
-	@OneToMany(mappedBy = "utilisateur", cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
-			CascadeType.REFRESH })
-	@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.DETACH,
+			CascadeType.MERGE, CascadeType.REFRESH })
 	private List<LivreEmprunt> emprunts;
 
 	/**

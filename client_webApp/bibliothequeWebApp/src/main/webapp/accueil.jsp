@@ -36,12 +36,14 @@
 								<img src="<s:property value="#URLTag"/>" class="thumbnail, rounded" />-->			    			
 				            	<s:property value="#livreType.titre"/></br>
 				            	<s:property value="%{#livreType.auteur.nom}"/>
-			                    <s:param name="idLivre" value="id" />	
+			                    <s:param name="idLivre" value="#livreType.id" />	
 			               	</s:a>
 				    	</div>
 				 	</s:iterator>
 				</div>
-	  					
+	  			
+	  			
+	  			<!-- un formulaire de recherche de livre a partir de auteur, genre, titre -->		
 			</div>
 	</body>
 </html>

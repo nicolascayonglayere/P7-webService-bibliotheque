@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import OC.webService.nicolas.business.contract.LivreEmpruntManager;
@@ -25,7 +26,7 @@ import OC.webService.nicolas.model.entites.Utilisateur;
 public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmpruntManager {
 
 	static final Logger logger = LogManager.getLogger();
-	private LivreEmprunt livreEmprunt = new LivreEmprunt();
+	private LivreEmprunt livreEmprunt;// = new LivreEmprunt();
 
 	/**
 	 * Méthode pour emprunter un {@link Livre}
@@ -135,13 +136,13 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		}
 	}
 
-	// public LivreEmprunt getLivreEmprunt() {
-	// return this.livreEmprunt;
-	// }
-	//
-	// @Autowired
-	// public void setLivreEmprunt(LivreEmprunt livreEmprunt) {
-	// this.livreEmprunt = livreEmprunt;
-	// }
+	public LivreEmprunt getLivreEmprunt() {
+		return this.livreEmprunt;
+	}
+
+	@Autowired
+	public void setLivreEmprunt(LivreEmprunt livreEmprunt) {
+		this.livreEmprunt = livreEmprunt;
+	}
 
 }

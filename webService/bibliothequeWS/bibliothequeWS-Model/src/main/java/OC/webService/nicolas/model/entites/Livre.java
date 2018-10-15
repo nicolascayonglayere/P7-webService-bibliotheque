@@ -17,12 +17,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Entite Hibernate correspondant à la table livre
  * 
  * @author nicolas
  *
  */
+@Component
 @Entity
 @Table(name = "livre")
 public class Livre implements Serializable {
@@ -34,10 +37,11 @@ public class Livre implements Serializable {
 	private Integer id;
 	@Column(length = 60)
 	private String titre;
+	@Column(nullable = false)
 	private String genre;
 	@Column(name = "date_parution")
 	private Date dateParution;
-	@Column(name = "nb_exemplaire")
+	@Column(name = "nb_exemplaire", nullable = false)
 	private int nbExemplaire;
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.REFRESH })
@@ -47,7 +51,7 @@ public class Livre implements Serializable {
 			CascadeType.REFRESH })
 	@JoinTable(name = "livre_edition", joinColumns = @JoinColumn(name = "id_livre"), inverseJoinColumns = @JoinColumn(name = "id_editeur"))
 	private List<Editeur> editeurs;
-	@OneToMany(mappedBy = "livre", cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "livre", fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	private List<LivreEmprunt> emprunts;
 
 	/**

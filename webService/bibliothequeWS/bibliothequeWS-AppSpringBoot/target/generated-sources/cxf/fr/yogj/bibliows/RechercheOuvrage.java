@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *           &lt;element name="titre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *           &lt;element name="genre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *           &lt;element name="auteurNom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *           &lt;element name="idLivre" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;/choice&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -34,7 +35,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "titre",
     "genre",
-    "auteurNom"
+    "auteurNom",
+    "idLivre"
 })
 @XmlRootElement(name = "rechercheOuvrage")
 public class RechercheOuvrage {
@@ -42,6 +44,7 @@ public class RechercheOuvrage {
     protected String titre;
     protected String genre;
     protected String auteurNom;
+    protected Integer idLivre;
 
     /**
      * Obtient la valeur de la propriété titre.
@@ -113,6 +116,30 @@ public class RechercheOuvrage {
      */
     public void setAuteurNom(String value) {
         this.auteurNom = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété idLivre.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getIdLivre() {
+        return idLivre;
+    }
+
+    /**
+     * Définit la valeur de la propriété idLivre.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setIdLivre(Integer value) {
+        this.idLivre = value;
     }
 
 }

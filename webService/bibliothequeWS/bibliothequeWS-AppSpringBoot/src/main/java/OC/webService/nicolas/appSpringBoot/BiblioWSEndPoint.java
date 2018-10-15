@@ -103,11 +103,17 @@ public class BiblioWSEndPoint implements BiblioWS {
 		// TODO Auto-generated method stub
 		RechercheOuvrageResponse rop = new RechercheOuvrageResponse();
 		try {
-			List<Livre> livres = this.manageFacto.getLivreManager().trouverParTitreEtAuteur(parameters.getTitre(),
-					parameters.getAuteurNom());
-			for (Livre l : livres) {
-				LivreType lt = MapperLivre.fromLivreToLivreType(l);
+			if (parameters.getIdLivre() != 0) {
+				Livre livre = this.manageFacto.getLivreManager().trouverParId(parameters.getIdLivre());
+				LivreType lt = MapperLivre.fromLivreToLivreType(livre);
 				rop.getOuvrages().add(lt);
+			} else {
+				List<Livre> livres = this.manageFacto.getLivreManager().trouverParTitreEtAuteur(parameters.getTitre(),
+						parameters.getAuteurNom());
+				for (Livre l : livres) {
+					LivreType lt = MapperLivre.fromLivreToLivreType(l);
+					rop.getOuvrages().add(lt);
+				}
 			}
 			return rop;
 		} catch (RuntimeException e) {

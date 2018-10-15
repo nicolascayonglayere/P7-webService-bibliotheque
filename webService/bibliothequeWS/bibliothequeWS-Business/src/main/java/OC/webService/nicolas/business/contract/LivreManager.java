@@ -32,4 +32,12 @@ public interface LivreManager {
 	 */
 	public List<Livre> trouverParTitreEtAuteur(String pTitre, String pNom) throws RuntimeException;
 
+	/**
+	 * Méthode pour trouver un {@link Livre} à partir de son id donné en paramètre
+	 * 
+	 * @param id
+	 * @return {@link Livre}
+	 */
+	public Livre trouverParId(Integer id);
+
 }

@@ -16,9 +16,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 /**
  * Entite Hibernate correspondant à la table auteur
  * 
@@ -34,7 +31,7 @@ public class Auteur implements Serializable {
 	@GeneratedValue
 	@Column(name = "id_auteur")
 	private Integer id;
-	@Column(length = 60)
+	@Column(length = 60, nullable = false)
 	private String nom;
 	@Column(length = 60)
 	private String prenom;
@@ -44,7 +41,6 @@ public class Auteur implements Serializable {
 	private String nationalite;
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.REFRESH })
-	@Fetch(value = FetchMode.SUBSELECT)
 	@JoinTable(name = "livre_manuscrit", joinColumns = @JoinColumn(name = "id_auteur"), inverseJoinColumns = @JoinColumn(name = "id_livre"))
 	private List<Livre> manuscrits;
 

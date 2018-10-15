@@ -3,10 +3,10 @@
 
 <struts>
 
-	<constant name="struts.devMode" value="true" />
+	<!--  <constant name="struts.devMode" value="true" />
 	<constant name="struts.ui.theme" value="bootstrap" />
 	<constant name="struts.custom.i18n.resources" value="package" />
-	<constant name="struts.objectFactory" value="spring"/>
+	<constant name="struts.objectFactory" value="spring"/>-->
 
 	<package name="default" extends="struts-default" namespace="/">
 
@@ -26,19 +26,19 @@
         <default-action-ref name="index" />
 
 		<global-results>
-			<result name="login">/static/login.jsp</result>
+			<result name="login">/login.jsp</result>
 		</global-results>
 
         <!-- Action "index" -->
         <action name="index" >
             <result type="redirectAction">
             	<param name="actionName">accueil</param>
-            	<param name="namespace">/</param>
+            	<!--  <param name="namespace">/</param>-->
             </result>
         </action>
         
 		<action name="accueil" class="oc.webApp.nicolas.actions.Accueil" method="execute">
-			<result name="success">/static/accueil.jsp</result>
+			<result name="success">/accueil.jsp</result>
 		</action>		
 			
 		<!--   login action  -->
@@ -59,7 +59,20 @@
 			</result>
 			<result name="login">/login.jsp</result>
 			<result name="input">/login.jsp</result>			
-		</action>			
+		</action>
+		
+        <!--page livre-->
+        <action name="go_livre" class="oc.webApp.nicolas.actions.GoLivre" method="execute">
+       	 	<interceptor-ref name="store">
+				<param name="operationMode">STORE</param>
+			</interceptor-ref>        
+		   	<interceptor-ref name="defaultStack" />
+        	<result name="input" type="redirectAction">
+        		<param name="actionName">accueil</param>
+        		<!--  <param name="namespace">/</param>-->
+        	</result>
+        	<result name="success">/livre.jsp</result>
+        </action>					
 	</package>
 	
 	<package name="utilisateur" extends="default" namespace="/utilisateur">
@@ -70,13 +83,46 @@
 			</result>
 		</action>		
 		
-		
 		<!-- page mon compte -->
 		<action name="go_monCompte" class="oc.webApp.nicolas.actions.MonCompte" method="execute">
 			<result name="success">/monCompte.jsp</result>
 		</action>
 	
-	
+		<!-- action pour emprunter un livre -->               
+        <action name="emprunt_livre" class="oc.webApp.nicolas.actions.GestionPret" method="emprunter">
+       		<!--  <interceptor-ref name="store">
+				<param name="operationMode">STORE</param>
+		    </interceptor-ref>
+		    <interceptor-ref name="loginStack" />-->        
+			<result name="success" type="redirectAction">
+				<param name="actionName">go_monCompte</param>
+			</result>
+			<result name="input" type="redirectAction">
+				<param name="actionName">go_monCompte</param>
+			</result>
+        </action>
+        
+        <!-- action pour rendre un livre emprunté -->
+        <action name="retour_ouvrage" class="oc.webApp.nicolas.actions.GestionPret" method="retourner">
+       		<interceptor-ref name="store">
+				<param name="operationMode">STORE</param>
+		    </interceptor-ref>
+		    <interceptor-ref name="defaultStack" />        
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">go_monCompte</param>
+         	</result>
+        </action>  
+        
+        <!-- action pour prolonger un livre emprunté -->
+        <action name="prolongation_ouvrage" class="oc.webApp.nicolas.actions.GestionPret" method="prolonger">
+       		<interceptor-ref name="store">
+				<param name="operationMode">STORE</param>
+		    </interceptor-ref>
+		    <interceptor-ref name="defaultStack" />        
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">go_monCompte</param>
+         	</result>
+        </action>              	
 	</package>
 	
 </struts>

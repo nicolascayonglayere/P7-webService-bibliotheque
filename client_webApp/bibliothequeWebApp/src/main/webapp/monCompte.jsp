@@ -31,7 +31,11 @@
 				    			<s:param name="idEmprunt" value="#livreEmpruntType.id"/>
 				    			<s:submit class="btn btn-default" value="%{getText('bouton.retour')}"/>
 				    		</s:a>	
-				    		<!-- ajouter un bouton pour la prolongation -->					
+				    		<!-- ajouter un bouton pour la prolongation -->
+				    		<s:a action="prolongation_ouvrage" namespace="/utilisateur">
+				    			<s:param name="idEmprunt" value="#livreEmpruntType.id"/>
+				    			<s:submit class="btn btn-default" value="%{getText('bouton.prolongation')}"/>
+				    		</s:a>
 						</li>
 				   	</ul>
 				</s:iterator>		

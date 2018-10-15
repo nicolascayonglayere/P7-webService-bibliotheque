@@ -12,12 +12,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Entite Hibernate correspondant à la table livre_emprunt
  * 
  * @author nicolas
  *
  */
+@Component
 @Entity
 @Table(name = "livre_emprunt")
 public class LivreEmprunt implements Serializable {
@@ -27,8 +30,9 @@ public class LivreEmprunt implements Serializable {
 	@GeneratedValue
 	@Column(name = "id_emprunt")
 	private Integer id;
-	@Column(name = "date_emprunt")
+	@Column(name = "date_emprunt", nullable = false)
 	private Date dateEmprunt;
+	@Column(nullable = false)
 	private boolean prolongation;
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinColumn(name = "id_utilisateur")

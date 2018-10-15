@@ -67,7 +67,8 @@
       	<xsd:complexType>
       		<xsd:sequence>
 
-      			<xsd:choice>
+      			<xsd:choice>
+
 
       				<xsd:element name="titre" type="xsd:string"
       					minOccurs="0">
@@ -75,9 +76,13 @@
 
       				<xsd:element name="genre" type="xsd:string"
       					minOccurs="0">
-      				</xsd:element>
-      				<xsd:element name="auteurNom"
-      					type="xsd:string" minOccurs="0">
+      				</xsd:element>
+
+      				<xsd:element name="auteurNom" type="xsd:string"
+      					minOccurs="0">
+      				</xsd:element>
+      				<xsd:element name="idLivre"
+      					type="xsd:int" minOccurs="0" maxOccurs="1">
       				</xsd:element>
       			</xsd:choice>
 

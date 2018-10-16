@@ -10,7 +10,6 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  */
 
 @SpringBootApplication
-// @EnableJaxRsWebClient
 @ServletComponentScan
 public class App {
 	public static void main(String[] args) {
@@ -18,7 +17,6 @@ public class App {
 		System.out.println("Hello World!");
 		SpringApplication.run(App.class, args);
 	}
-
 	// @Bean
 	// CommandLineRunner initProxyClientRunner(final BiblioWS client) {
 	//
@@ -26,7 +24,7 @@ public class App {
 	//
 	// @Override
 	// public void run(String... runArgs) throws Exception {
-	// System.out.println(client.listNouveautes(null));
+	// System.out.println(client.listNouveautes(""));
 	// }
 	// };
 	// }

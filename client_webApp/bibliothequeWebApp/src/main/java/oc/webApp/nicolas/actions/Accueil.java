@@ -3,6 +3,8 @@ package oc.webApp.nicolas.actions;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.yogj.bibliows.BiblioWS_Service;
@@ -15,6 +17,7 @@ import fr.yogj.bibliows.types.LivreType;
  * @author nicolas
  *
  */
+@Service
 public class Accueil extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;

@@ -17,6 +17,13 @@ import fr.yogj.bibliows.DeconnexionFault_Exception;
 import fr.yogj.bibliows.LoginFault_Exception;
 import fr.yogj.bibliows.types.UtilisateurType;
 
+/**
+ * Classe Action Login qui gère la connexion et la deconnexion d'un
+ * {@link UtilisateurType}
+ * 
+ * @author nicolas
+ *
+ */
 public class Login extends ActionSupport implements SessionAware, ServletRequestAware {
 
 	private static final long serialVersionUID = 1L;

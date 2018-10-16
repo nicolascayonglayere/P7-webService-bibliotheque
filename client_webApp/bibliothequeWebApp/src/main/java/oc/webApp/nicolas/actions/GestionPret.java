@@ -16,6 +16,12 @@ import fr.yogj.bibliows.types.LivreEmpruntType;
 import fr.yogj.bibliows.types.LivreType;
 import fr.yogj.bibliows.types.UtilisateurType;
 
+/**
+ * Classe action qui gère les {@link LivreEmpruntType}
+ * 
+ * @author nicolas
+ *
+ */
 public class GestionPret extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
@@ -26,8 +32,13 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	private LivreEmpruntType monEmprunt = new LivreEmpruntType();
 	private Map<String, Object> session;
 
+	/**
+	 * Méthode pour emprunter un livre
+	 * 
+	 * @return
+	 */
 	public String emprunter() {
-		logger.debug("emprunt : " + this.livreType.getTitre());
+		logger.debug("emprunt : " + this.livreType.getId());
 		this.utilisateur = ((UtilisateurType) this.session.get("utilisateur"));
 
 		try {
@@ -44,6 +55,11 @@ public class GestionPret extends ActionSupport implements SessionAware {
 
 	}
 
+	/**
+	 * Méthode pour rendre un livre
+	 * 
+	 * @return
+	 */
 	public String retourner() {
 		logger.debug("nom ouvrage retourner " + this.monEmprunt.getOuvrage().getTitre() + " nom emprunteur "
 				+ this.utilisateur.getPseudo());
@@ -62,6 +78,11 @@ public class GestionPret extends ActionSupport implements SessionAware {
 
 	}
 
+	/**
+	 * Méthode pour prolonger le pret d'un livre
+	 * 
+	 * @return
+	 */
 	public String prolonger() {
 		logger.debug("nom ouvrage retourner " + this.monEmprunt.getOuvrage().getTitre() + " nom emprunteur "
 				+ this.utilisateur.getPseudo());

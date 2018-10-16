@@ -16,6 +16,12 @@ import fr.yogj.bibliows.types.CoordonneeUtilisateurType;
 import fr.yogj.bibliows.types.LivreEmpruntType;
 import fr.yogj.bibliows.types.UtilisateurType;
 
+/**
+ * Classe Action MonCompte qui permet la construction de la jsp monCompte
+ * 
+ * @author nicolas
+ *
+ */
 public class MonCompte extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;

@@ -4,8 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<%@include file="_head.jsp" %>
 
 		<title>Accueil</title>
 	</head>
@@ -43,7 +42,28 @@
 				</div>
 	  			
 	  			
-	  			<!-- un formulaire de recherche de livre a partir de auteur, genre, titre -->		
+	  			<!-- un formulaire de recherche de livre a partir de auteur, genre, titre -->	
+				<h2 id="titre"><s:text name="index.recherche"/></h2>
+				<h3><s:text name="index.explication"></s:text></h3>
+				<s:form action="rechMulti" cssClass="form-vertical" namespace="/">
+					<s:textfield name="titre" placeholder="titre" label="%{getText('form.titre')}" requiredLabel="true"/>
+					<s:textfield name="nomAuteur" placeholder="nomAuteur" label="%{getText('form.auteur')}" requiredLabel="true"/>
+					<s:select name="selectedGenre" label="%{getText('livre.genre')}" list="listGenre" size="1" />
+					<s:submit class="btn btn-default" value="%{getText('bouton.valider')}">
+						<!--<s:param name="nom" value="topo.nomTopo"/>-->
+					</s:submit>					
+				</s:form>	
+				
+				<s:if test="listResultat">
+					<s:iterator value="listLivre" var="livreType">
+						<s:a action="go_livre" namespace="/">				
+							<p id="listLivreType">
+								<li><s:property value="#livreType.titre"/> <s:property value="#livreType.auteurs.nom"/> <s:property value="#livreType.genre"/></li>	
+								<s:param name="idLivre" value="#livreType.id" />										
+							</p>
+						</s:a>
+					</s:iterator>
+				</s:if>				  				
 			</div>
 	</body>
 </html>

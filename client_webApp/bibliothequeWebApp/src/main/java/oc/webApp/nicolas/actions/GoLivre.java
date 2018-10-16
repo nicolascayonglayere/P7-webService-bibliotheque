@@ -11,6 +11,12 @@ import fr.yogj.bibliows.RechercheOuvrage;
 import fr.yogj.bibliows.RechercheOuvrageResponse;
 import fr.yogj.bibliows.types.LivreType;
 
+/**
+ * Classe action qui permet d'afficher la page d'un livre
+ * 
+ * @author nicolas
+ *
+ */
 public class GoLivre extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
@@ -18,11 +24,14 @@ public class GoLivre extends ActionSupport {
 	private BiblioWS_Service biblioWS = new BiblioWS_Service();
 	private LivreType livreType = new LivreType();
 
+	/**
+	 * Méthode qui construit et envoie les données à la jsp
+	 */
 	@Override
 	public String execute() {
 		RechercheOuvrage param = new RechercheOuvrage();
 		if (this.livreType.getId() != 0) {
-			// param.setId(livreType.getId();
+			param.setIdLivre(this.livreType.getId());
 		} else {
 			param.setTitre(this.livreType.getTitre());
 			param.setGenre(this.livreType.getGenre());

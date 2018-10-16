@@ -72,7 +72,17 @@
         		<!--  <param name="namespace">/</param>-->
         	</result>
         	<result name="success">/livre.jsp</result>
-        </action>					
+        </action>
+
+		<!-- Actions pour recherche multi-criteres -->
+		<action name="rechMulti" class="oc.webApp.nicolas.actions.RechercheMultiCritere" method="execute">
+			<result name="input" type="redirectAction">
+				<param name="actionName">accueil</param>
+			</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">accueil</param>
+			</result>
+		</action>        					
 	</package>
 	
 	<package name="utilisateur" extends="default" namespace="/utilisateur">

@@ -12,15 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
-
 /**
  * Entite Hibernate correspondant à la table livre_emprunt
  * 
  * @author nicolas
  *
  */
-@Component
+
 @Entity
 @Table(name = "livre_emprunt")
 public class LivreEmprunt implements Serializable {

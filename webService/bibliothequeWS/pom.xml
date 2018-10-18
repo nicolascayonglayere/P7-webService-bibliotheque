@@ -29,11 +29,17 @@
     <module>bibliothequeWS-Business</module>
     <module>bibliothequeWS-Model</module>
     <module>bibliothequeWS-AppSpringBoot</module>
+    <module>bibliothequeWS-DTO</module>
   </modules>
   
   
   <dependencyManagement>
   	<dependencies>
+  		<dependency>
+  			<groupId>OC.webService.nicolas</groupId>
+  			<artifactId>bibliothequeWS-DTO</artifactId>
+  			<version>1.0-SNAPSHOT</version>
+  		</dependency>  	
   		<dependency>
   			<groupId>OC.webService.nicolas</groupId>
   			<artifactId>bibliothequeWS-Technical</artifactId>

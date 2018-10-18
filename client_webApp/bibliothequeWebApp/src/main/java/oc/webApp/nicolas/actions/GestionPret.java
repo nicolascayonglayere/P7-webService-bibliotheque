@@ -27,9 +27,10 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	private static final long serialVersionUID = 1L;
 	static final Logger logger = LogManager.getLogger();
 	private BiblioWS_Service biblioWS = new BiblioWS_Service();
-	private LivreType livreType = new LivreType();
-	private UtilisateurType utilisateur = new UtilisateurType();
-	private LivreEmpruntType monEmprunt = new LivreEmpruntType();
+	private String idLivre;
+	private LivreType livreType;// = new LivreType();
+	private UtilisateurType utilisateur;// = new UtilisateurType();
+	private LivreEmpruntType monEmprunt;// = new LivreEmpruntType();
 	private Map<String, Object> session;
 
 	/**
@@ -38,11 +39,13 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	 * @return
 	 */
 	public String emprunter() {
-		logger.debug("emprunt : " + this.livreType.getId());
-		this.utilisateur = ((UtilisateurType) this.session.get("utilisateur"));
 
+		this.utilisateur = ((UtilisateurType) this.session.get("utilisateur"));
+		// logger.debug("emprunt : " + this.idLivre + " - user :" +
+		// this.utilisateur.getPseudo());
+		System.out.println("emprunt : " + this.idLivre + " - user :" + this.utilisateur.getPseudo());
 		try {
-			this.monEmprunt = this.biblioWS.getBiblioWSSOAP().empruntOuvrage(this.livreType.getId(),
+			this.monEmprunt = this.biblioWS.getBiblioWSSOAP().empruntOuvrage(Integer.valueOf(this.idLivre),
 					this.utilisateur.getId());
 			this.addActionMessage("Votre emprunt a été enregistré avc le n° : " + this.monEmprunt.getId());
 			return ActionSupport.SUCCESS;
@@ -135,6 +138,14 @@ public class GestionPret extends ActionSupport implements SessionAware {
 
 	public void setMonEmprunt(LivreEmpruntType monEmprunt) {
 		this.monEmprunt = monEmprunt;
+	}
+
+	public String getIdLivre() {
+		return this.idLivre;
+	}
+
+	public void setIdLivre(String idLivre) {
+		this.idLivre = idLivre;
 	}
 
 }

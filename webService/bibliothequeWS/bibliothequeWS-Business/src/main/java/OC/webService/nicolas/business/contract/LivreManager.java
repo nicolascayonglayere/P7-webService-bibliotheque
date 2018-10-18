@@ -4,6 +4,7 @@ import java.util.List;
 
 import OC.webService.nicolas.model.entites.Auteur;
 import OC.webService.nicolas.model.entites.Livre;
+import fr.yogj.bibliows.types.LivreType;
 
 /**
  * Interface LivreManager et ses méthodes de traitement
@@ -19,7 +20,7 @@ public interface LivreManager {
 	 * 
 	 * @return liste de {@link Livre}
 	 */
-	public List<Livre> obtenirNouveautes();
+	public List<LivreType> obtenirNouveautes();
 
 	/**
 	 * Méthode pour trouver un {@link Livre} à partir de son titre et du nom de son
@@ -30,7 +31,7 @@ public interface LivreManager {
 	 * @return liste de {@link Livre}
 	 * @throws RuntimeException
 	 */
-	public List<Livre> trouverParTitreEtAuteur(String pTitre, String pNom) throws RuntimeException;
+	public List<LivreType> trouverParTitreEtAuteur(String pTitre, String pNom) throws RuntimeException;
 
 	/**
 	 * Méthode pour trouver un {@link Livre} à partir de son id donné en paramètre
@@ -38,6 +39,6 @@ public interface LivreManager {
 	 * @param id
 	 * @return {@link Livre}
 	 */
-	public Livre trouverParId(Integer id);
+	public LivreType trouverParId(Integer id);
 
 }

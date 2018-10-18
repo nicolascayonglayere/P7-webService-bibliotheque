@@ -34,7 +34,7 @@
 								</s:url>
 								<img src="<s:property value="#URLTag"/>" class="thumbnail, rounded" />-->			    			
 				            	<s:property value="#livreType.titre"/></br>
-				            	<s:property value="%{#livreType.auteur.nom}"/>
+				            	<s:property value="#livreType.auteurType.nom}"/>
 			                    <s:param name="idLivre" value="#livreType.id" />	
 			               	</s:a>
 				    	</div>

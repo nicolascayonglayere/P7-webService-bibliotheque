@@ -1,6 +1,7 @@
 package OC.webService.nicolas.business.contract;
 
 import OC.webService.nicolas.model.entites.Utilisateur;
+import fr.yogj.bibliows.types.UtilisateurType;
 
 /**
  * Interface UtilisateurManager et ses méthodes de traitement
@@ -19,7 +20,7 @@ public interface UtilisateurManager {
 	 * @return {@link Utilisateur}
 	 * @throws RuntimeException
 	 */
-	public Utilisateur getUtilisateur(String pseudo, String motDePasse) throws RuntimeException;
+	public UtilisateurType getUtilisateur(String pseudo, String motDePasse) throws RuntimeException;
 
 	/**
 	 * Méthode pour obtenir l {@link Utilisateur} d'id donné en paramètre
@@ -28,5 +29,5 @@ public interface UtilisateurManager {
 	 * @return {@link Utilisateur}
 	 * @throws RuntimeException
 	 */
-	public Utilisateur getUtilisateur(int id) throws RuntimeException;
+	public UtilisateurType getUtilisateur(int id) throws RuntimeException;
 }

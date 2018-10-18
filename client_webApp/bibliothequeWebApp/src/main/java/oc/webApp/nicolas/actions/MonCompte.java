@@ -11,7 +11,6 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.yogj.bibliows.BiblioWS_Service;
-import fr.yogj.bibliows.ObtenirEmpruntUtilisateurFault_Exception;
 import fr.yogj.bibliows.types.CoordonneeUtilisateurType;
 import fr.yogj.bibliows.types.LivreEmpruntType;
 import fr.yogj.bibliows.types.UtilisateurType;
@@ -28,7 +27,7 @@ public class MonCompte extends ActionSupport implements SessionAware {
 	static final Logger logger = LogManager.getLogger();
 	private BiblioWS_Service biblioWS = new BiblioWS_Service();
 	private Map<String, Object> session;
-	private UtilisateurType utilisateur = new UtilisateurType();
+	private UtilisateurType utilisateur;// = new UtilisateurType();
 	private List<LivreEmpruntType> listEmprunt = new ArrayList<LivreEmpruntType>();
 	private CoordonneeUtilisateurType coordonneeUtilisateur = new CoordonneeUtilisateurType();
 
@@ -41,11 +40,12 @@ public class MonCompte extends ActionSupport implements SessionAware {
 		this.utilisateur = ((UtilisateurType) this.session.get("utilisateur"));
 		logger.debug("Compte de " + this.utilisateur.getPseudo());
 		try {
-			this.listEmprunt = this.biblioWS.getBiblioWSSOAP().obtenirEmpruntUtilisateur(this.utilisateur.getId());
+			// this.listEmprunt =
+			// this.biblioWS.getBiblioWSSOAP().obtenirEmpruntUtilisateur(this.utilisateur.getId());
 			this.coordonneeUtilisateur.setAdresse(this.utilisateur.getCoordonnee().get(0).getAdresse());
 			this.coordonneeUtilisateur.setEmail(this.utilisateur.getCoordonnee().get(0).getEmail());
 			return ActionSupport.SUCCESS;
-		} catch (ObtenirEmpruntUtilisateurFault_Exception e) {
+		} catch (Exception e) {// (ObtenirEmpruntUtilisateurFault_Exception e) {
 			this.addActionMessage(e.getMessage());
 			e.printStackTrace();
 			logger.debug(e.getMessage());

@@ -30,7 +30,7 @@ public class Login extends ActionSupport implements SessionAware, ServletRequest
 	static final Logger logger = LogManager.getLogger();
 	private HttpServletRequest servletRequest;
 	private Map<String, Object> session;
-	private UtilisateurType utilisateur = new UtilisateurType();
+	private UtilisateurType utilisateur;// = new UtilisateurType();
 	private BiblioWS_Service biblioWS = new BiblioWS_Service();
 
 	/**

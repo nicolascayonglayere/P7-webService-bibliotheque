@@ -61,6 +61,10 @@
     	<groupId>OC.webService.nicolas</groupId>
     	<artifactId>bibliothequeWS-Model</artifactId>
     </dependency>
+    <dependency>
+    	<groupId>OC.webService.nicolas</groupId>
+    	<artifactId>bibliothequeWS-DTO</artifactId>
+    </dependency>    
     <!--<dependency>-->
     	<!--<groupId>org.springframework.boot</groupId>-->
     	<!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
@@ -86,7 +90,7 @@
     </dependency>
   </dependencies>
 
-  <build>
+  <!--  <build>
     <plugins>
         <plugin>
             <groupId>org.apache.cxf</groupId>
@@ -97,6 +101,7 @@
                     <id>generate-sources</id>
                     <phase>generate-sources</phase>
                     <configuration>
+                    	<sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
                         <wsdlRoot>${basedir}/src/main/resources</wsdlRoot>
                         <wsdlOptions>
                             <wsdlOption>
@@ -119,5 +124,5 @@
 		    <artifactId>spring-boot-maven-plugin</artifactId>
 	    </plugin>
     </plugins>
-  </build>
+  </build>-->
 </project>

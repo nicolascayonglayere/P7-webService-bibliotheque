@@ -15,7 +15,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.springframework.stereotype.Component;
 
 /**
  * Entite Hibernate correspondant à la table utilisateur
@@ -23,7 +22,7 @@ import org.springframework.stereotype.Component;
  * @author nicolas
  *
  */
-@Component
+
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur implements Serializable {

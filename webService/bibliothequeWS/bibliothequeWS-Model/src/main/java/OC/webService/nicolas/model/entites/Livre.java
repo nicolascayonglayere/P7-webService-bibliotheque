@@ -17,15 +17,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
-
 /**
  * Entite Hibernate correspondant à la table livre
  * 
  * @author nicolas
  *
  */
-@Component
+
 @Entity
 @Table(name = "livre")
 public class Livre implements Serializable {

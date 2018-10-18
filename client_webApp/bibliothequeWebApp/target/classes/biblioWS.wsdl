@@ -53,8 +53,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="listNouveautes" type="xsd:string">
-      </xsd:element>
+      <xsd:element name="listNouveautes" type="xsd:string"></xsd:element>
       <xsd:element name="listNouveautesResponse">
       	<xsd:complexType>
       		<xsd:sequence>
@@ -423,18 +422,140 @@
         </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="biblioWSSOAP" type="ybs:biblioWS">
-  	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
   	<wsdl:operation name="login">
+
   		<soap:operation soapAction="http://yogj.fr/biblioWS/login" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="UtilisateurNotFoundFault">
+  			<soap:fault use="literal" name="UtilisateurNotFoundFault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="deconnexion">
+
+  		<soap:operation
+  			soapAction="http://yogj.fr/biblioWS/deconnexion" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="UtilisateurNotFoundFault">
+
+  			<soap:fault use="literal" name="UtilisateurNotFoundFault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="listNouveautes">
+
+  		<soap:operation
+  			soapAction="http://yogj.fr/biblioWS/listNouveautes" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
-  	<wsdl:operation name="deconnexion">
-  		<soap:operation soapAction="http://yogj.fr/biblioWS/deconnexion" />
+  	<wsdl:operation name="rechercheOuvrage">
+
+  		<soap:operation
+  			soapAction="http://yogj.fr/biblioWS/rechercheOuvrage" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="LivreNotFoundFault">
+
+  			<soap:fault use="literal" name="LivreNotFoundFault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="empruntOuvrage">
+
+  		<soap:operation
+  			soapAction="http://yogj.fr/biblioWS/empruntOuvrage" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="LivreNotFoundFault">
+
+  			<soap:fault use="literal" name="LivreNotFoundFault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="retourOuvrage">
+
+  		<soap:operation
+  			soapAction="http://yogj.fr/biblioWS/retourOuvrage" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="EmpruntLivreNotFoundFault">
+
+  			<soap:fault use="literal"
+  				name="EmpruntLivreNotFoundFault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="prolongationOuvrage">
+
+  		<soap:operation
+  			soapAction="http://yogj.fr/biblioWS/prolongationOuvrage" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="EmpruntLivreNotFoundFault">
+
+  			<soap:fault use="literal"
+  				name="EmpruntLivreNotFoundFault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="listRetardataires">
+
+  		<soap:operation
+  			soapAction="http://yogj.fr/biblioWS/listRetardataires" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="obtenirEmpruntUtilisateur">
+  		<soap:operation
+  			soapAction="http://yogj.fr/biblioWS/obtenirEmpruntUtilisateur" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -445,76 +566,10 @@
   			<soap:fault use="literal" name="UtilisateurNotFoundFault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="listNouveautes">
-  		<soap:operation soapAction="http://yogj.fr/biblioWS/listNouveautes" />
-  		<wsdl:input>
-  			<soap:body use="literal" />
-  		</wsdl:input>
-  		<wsdl:output>
-  			<soap:body use="literal" />
-  		</wsdl:output>
-  	</wsdl:operation>
-  	<wsdl:operation name="rechercheOuvrage">
-  		<soap:operation soapAction="http://yogj.fr/biblioWS/rechercheOuvrage" />
-  		<wsdl:input>
-  			<soap:body use="literal" />
-  		</wsdl:input>
-  		<wsdl:output>
-  			<soap:body use="literal" />
-  		</wsdl:output>
-  		<wsdl:fault name="LivreNotFoundFault">
-  			<soap:fault use="literal" name="LivreNotFoundFault" />
-  		</wsdl:fault>
-  	</wsdl:operation>
-  	<wsdl:operation name="empruntOuvrage">
-  		<soap:operation soapAction="http://yogj.fr/biblioWS/empruntOuvrage" />
-  		<wsdl:input>
-  			<soap:body use="literal" />
-  		</wsdl:input>
-  		<wsdl:output>
-  			<soap:body use="literal" />
-  		</wsdl:output>
-  		<wsdl:fault name="LivreNotFoundFault">
-  			<soap:fault use="literal" name="LivreNotFoundFault" />
-  		</wsdl:fault>
-  	</wsdl:operation>
-  	<wsdl:operation name="retourOuvrage">
-  		<soap:operation soapAction="http://yogj.fr/biblioWS/retourOuvrage" />
-  		<wsdl:input>
-  			<soap:body use="literal" />
-  		</wsdl:input>
-  		<wsdl:output>
-  			<soap:body use="literal" />
-  		</wsdl:output>
-  		<wsdl:fault name="EmpruntLivreNotFoundFault">
-  			<soap:fault use="literal" name="EmpruntLivreNotFoundFault" />
-  		</wsdl:fault>
-  	</wsdl:operation>
-  	<wsdl:operation name="prolongationOuvrage">
-  		<soap:operation soapAction="http://yogj.fr/biblioWS/prolongationOuvrage" />
-  		<wsdl:input>
-  			<soap:body use="literal" />
-  		</wsdl:input>
-  		<wsdl:output>
-  			<soap:body use="literal" />
-  		</wsdl:output>
-  		<wsdl:fault name="EmpruntLivreNotFoundFault">
-  			<soap:fault use="literal" name="EmpruntLivreNotFoundFault" />
-  		</wsdl:fault>
-  	</wsdl:operation>
-  	<wsdl:operation name="listRetardataires">
-  		<soap:operation soapAction="http://yogj.fr/biblioWS/listRetardataires" />
-  		<wsdl:input>
-  			<soap:body use="literal" />
-  		</wsdl:input>
-  		<wsdl:output>
-  			<soap:body use="literal" />
-  		</wsdl:output>
-  	</wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="biblioWS">
     <wsdl:port binding="ybs:biblioWSSOAP" name="biblioWSSOAP">
-      <soap:address location="http://localhost:8181/biblioWS"/>
+      <soap:address location="http://localhost:8181/biblioWS/biblioWS"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

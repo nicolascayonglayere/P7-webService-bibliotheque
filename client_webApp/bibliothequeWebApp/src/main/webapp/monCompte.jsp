@@ -25,7 +25,7 @@
 				<s:iterator value="listEmprunt" var="livreEmpruntType">
 					<ul>
 						<li>
-							<s:property value="#livreEmpruntType.livreType.titre"/> <s:property value=#livreEmpruntType.dateEmprunt/>
+							<s:property value="#livreEmpruntType.livreType.titre"/> <s:property value="#livreEmpruntType.dateEmprunt"/>
 							<!-- un bouton pour le retour -->
 				    		<s:a action="retour_ouvrage" namespace="/utilisateur">
 				    			<s:param name="idEmprunt" value="#livreEmpruntType.id"/>

@@ -34,10 +34,14 @@ public class RechercheMultiCritere extends ActionSupport {
 	 * 
 	 * @return
 	 */
-	public String exectue() {
+	@Override
+	public String execute() {
 		logger.debug("recherche multi : titre = " + this.titre + " - auteur = " + this.nomAuteur + " - genre = "
 				+ this.selectedGenre);
+		System.out.println("recherche multi : titre = " + this.titre + " - auteur = " + this.nomAuteur + " - genre = "
+				+ this.selectedGenre);
 		RechercheOuvrage parameters = new RechercheOuvrage();
+		// parameters.setIdLivre(0);
 		if (this.titre.length() > 0) {
 			parameters.setTitre(this.titre);
 		}
@@ -48,6 +52,7 @@ public class RechercheMultiCritere extends ActionSupport {
 			parameters.setAuteurNom(this.nomAuteur);
 		}
 		try {
+			System.out.println(this.biblioWS.getBiblioWSSOAP().rechercheOuvrage(parameters).getOuvrages().size());
 			this.listResultat = this.biblioWS.getBiblioWSSOAP().rechercheOuvrage(parameters).getOuvrages();
 		} catch (DetailsOuvrageFault_Exception e) {
 			logger.debug(e.getMessage());

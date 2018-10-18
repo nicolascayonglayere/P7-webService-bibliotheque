@@ -22,6 +22,7 @@ public class GoLivre extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	static final Logger logger = LogManager.getLogger();
 	private BiblioWS_Service biblioWS = new BiblioWS_Service();
+	private String idLivre;
 	private LivreType livreType = new LivreType();
 
 	/**
@@ -30,8 +31,10 @@ public class GoLivre extends ActionSupport {
 	@Override
 	public String execute() {
 		RechercheOuvrage param = new RechercheOuvrage();
-		if (this.livreType.getId() != 0) {
-			param.setIdLivre(this.livreType.getId());
+		logger.debug(this.livreType.getId());
+		System.out.println(this.idLivre);
+		if (Integer.valueOf(this.idLivre) != 0) {
+			param.setIdLivre(Integer.valueOf(this.idLivre));
 		} else {
 			param.setTitre(this.livreType.getTitre());
 			param.setGenre(this.livreType.getGenre());
@@ -65,5 +68,13 @@ public class GoLivre extends ActionSupport {
 
 	public void setLivreType(LivreType livreType) {
 		this.livreType = livreType;
+	}
+
+	public String getIdLivre() {
+		return this.idLivre;
+	}
+
+	public void setIdLivre(String idLivre) {
+		this.idLivre = idLivre;
 	}
 }

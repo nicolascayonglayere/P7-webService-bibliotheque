@@ -27,6 +27,6 @@ hs_err_pid*
 
 #autres chemins
 target
-*.settings
+.settings
 *.classpath
 *.factorypath

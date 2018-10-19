@@ -75,21 +75,23 @@
         </action>
 
 		<!-- Actions pour recherche multi-criteres -->
+		<action name="go_recherche" class="oc.webApp.nicolas.actions.RechercheMultiCritere" method="input">
+			<result name="success">/recherche.jsp</result>
+		</action> 
+		
 		<action name="rechMulti" class="oc.webApp.nicolas.actions.RechercheMultiCritere" method="execute">
-			<result name="input" type="redirectAction">
-				<param name="actionName">accueil</param>
-			</result>
-			<result name="success" type="redirectAction">
-				<param name="actionName">accueil</param>
-			</result>
+			<result name="input">/recherche.jsp</result>
+			<result name="success">/recherche.jsp</result>
 		</action>        					
 	</package>
 	
 	<package name="utilisateur" extends="default" namespace="/utilisateur">
+		<default-interceptor-ref name="loginStack" />
 		<!--   logout action  -->
 		<action name="logOut" class="oc.webApp.nicolas.actions.Login" method="logOut">
 			<result name="success" type="redirectAction">
-				<param name="actionName">go_monCompte</param>
+				<param name="actionName">accueil</param>
+				<param name="namespace">/</param>
 			</result>
 		</action>		
 		
@@ -100,10 +102,10 @@
 	
 		<!-- action pour emprunter un livre -->               
         <action name="emprunt_livre" class="oc.webApp.nicolas.actions.GestionPret" method="emprunter">
-       		<!--  <interceptor-ref name="store">
+       		<interceptor-ref name="store">
 				<param name="operationMode">STORE</param>
 		    </interceptor-ref>
-		    <interceptor-ref name="loginStack" />-->        
+		    <interceptor-ref name="loginStack" />        
 			<result name="success" type="redirectAction">
 				<param name="actionName">go_monCompte</param>
 			</result>
@@ -117,7 +119,7 @@
        		<interceptor-ref name="store">
 				<param name="operationMode">STORE</param>
 		    </interceptor-ref>
-		    <interceptor-ref name="defaultStack" />        
+		    <interceptor-ref name="loginStack" />        
         	<result name="success" type="redirectAction">
         		<param name="actionName">go_monCompte</param>
          	</result>
@@ -128,11 +130,22 @@
        		<interceptor-ref name="store">
 				<param name="operationMode">STORE</param>
 		    </interceptor-ref>
-		    <interceptor-ref name="defaultStack" />        
+		    <interceptor-ref name="loginStack" />        
         	<result name="success" type="redirectAction">
         		<param name="actionName">go_monCompte</param>
          	</result>
         </action>              	
 	</package>
+
+    <!-- ===== Package pour les actions AJAX ===== -->
+    <package name="ajax" extends="default, json-default" namespace="/jsp">
+
+		<!-- action qui retourne les emprunts en cours -->
+        <action name="ajax_listEmprunt" class="oc.webApp.nicolas.actions.BilanEmpruntAjax">
+        	<result type="json">
+        		<param name="root">listTopoEmprunt</param>
+        	</result>
+        </action>
+    </package>	
 	
 </struts>

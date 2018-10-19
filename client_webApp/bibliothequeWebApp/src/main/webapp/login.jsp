@@ -10,6 +10,8 @@
 	</head>
 
 	<body>
+		<%@include file="_navigation.jsp" %>
+		<div id=blocPge>
 			<s:actionmessage/>
 			<div class="container">
 				<h1 id="titre"><s:text name="login.titre"/></h1>
@@ -32,5 +34,7 @@
 					<s:text name="creerUser.titre"/>
 				</s:a>-->		
 			</div>
+		</div>	
+		<%@include file="_footer.jsp" %>	
 	</body>
 </html>

@@ -554,8 +554,8 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="obtenirEmpruntUtilisateur">
-  		<soap:operation
-  			soapAction="http://yogj.fr/biblioWS/obtenirEmpruntUtilisateur" />
+  		<soap:operation soapAction=""/>
+  			<!--  soapAction="http://yogj.fr/biblioWS/obtenirEmpruntUtilisateur" />-->
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>

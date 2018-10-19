@@ -145,9 +145,10 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 			for (LivreEmprunt le : this.getDaoFactory().getLivreEmpruntDao().findByUtilisateurId(pIdUtilisateur)) {
 				empruntsUtilisateur.add(MapperLivreEmprunt.fromLivreEmpruntToLivreEmpruntType(le));
 			}
-			return empruntsUtilisateur;
+
 		} else {
 			throw new RuntimeException("L'utilisateur n'a pas d'emprunt en cours.");
 		}
+		return empruntsUtilisateur;
 	}
 }

@@ -9,23 +9,37 @@
 	</head>
 	
 	<body>
-		<div class="container">
-			<s:actionmessage/>		
-			<div class="row">
-				<div class="col-lg-12">
-					<h1 id="titre"><s:property value="livreType.titre"/></h1>
-					<div class="row text-center">
-						<div class="col-lg-6"><s:text name="livre.auteur"/> <s:property value="livreType.auteurs.nom"/></div>
-						<div class="col-lg-6"><s:text name="livre.genre"/> <s:property value="livreType.genre"/></div>
+		<%@include file="_navigation.jsp" %>
+		<div id=blocPge>
+			<div class="container">
+				<s:actionmessage/>		
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 id="titre"><s:property value="livreType.titre"/></h1>
+						<div class="row text-center">
+							<div class="col-lg-6"><s:text name="livre.genre"/> <s:property value="livreType.genre"/></div>
+						</div>
+						<div>
+							<s:iterator value="auteurs" var="auteurType">
+								<h2><s:text name="livre.auteur"/></h2>
+								<div><s:property value="#auteurType.nom"/></div>
+								<div><s:property value="#auteurType.prenom"/></div>
+								<div><s:property value="#auteurType.dateDeNaissance"/></div>
+								<div><s:property value="#auteurType.nationalite"/></div>
+							</s:iterator>
+						</div>
+						<!--  <p><s:property value="livreType.resume"/></br></p>-->			
 					</div>
-					<!--  <p><s:property value="livreType.resume"/></br></p>-->			
 				</div>
+				<!-- un bouton pour emprunter -->
+				<s:if test="#session.utilisateur">
+					<s:a action="emprunt_livre" namespace="/utilisateur">
+						<s:param name="idLivre" value="livreType.id"/>
+						<s:submit class="btn btn-default" value="%{getText('bouton.emprunt')}"/>
+					</s:a>
+				</s:if>						
 			</div>
-			<!-- un bouton pour emprunter -->
-			<s:a action="emprunt_livre" namespace="/utilisateur">
-				<s:param name="idLivre" value="livreType.id"/>
-				<s:submit class="btn btn-default" value="%{getText('bouton.emprunt')}"/>
-			</s:a>						
 		</div>
+		<%@include file="_footer.jsp" %>
 	</body>
 </html>

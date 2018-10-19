@@ -1,7 +1,11 @@
 package oc.webApp.nicolas.actions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -9,6 +13,7 @@ import fr.yogj.bibliows.BiblioWS_Service;
 import fr.yogj.bibliows.DetailsOuvrageFault_Exception;
 import fr.yogj.bibliows.RechercheOuvrage;
 import fr.yogj.bibliows.RechercheOuvrageResponse;
+import fr.yogj.bibliows.types.AuteurType;
 import fr.yogj.bibliows.types.LivreType;
 
 /**
@@ -17,6 +22,7 @@ import fr.yogj.bibliows.types.LivreType;
  * @author nicolas
  *
  */
+@Service
 public class GoLivre extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
@@ -24,6 +30,7 @@ public class GoLivre extends ActionSupport {
 	private BiblioWS_Service biblioWS = new BiblioWS_Service();
 	private String idLivre;
 	private LivreType livreType = new LivreType();
+	private List<AuteurType> auteurs = new ArrayList<AuteurType>();
 
 	/**
 	 * Méthode qui construit et envoie les données à la jsp
@@ -44,6 +51,8 @@ public class GoLivre extends ActionSupport {
 		try {
 			RechercheOuvrageResponse rop = this.biblioWS.getBiblioWSSOAP().rechercheOuvrage(param);
 			this.livreType = rop.getOuvrages().get(0);
+			this.auteurs = this.livreType.getAuteurs();
+			System.out.println("auteur : " + this.livreType.getAuteurs().get(0).getNom());
 			return ActionSupport.SUCCESS;
 		} catch (DetailsOuvrageFault_Exception e) {
 			this.addActionMessage(e.getMessage());
@@ -76,5 +85,13 @@ public class GoLivre extends ActionSupport {
 
 	public void setIdLivre(String idLivre) {
 		this.idLivre = idLivre;
+	}
+
+	public List<AuteurType> getAuteurs() {
+		return this.auteurs;
+	}
+
+	public void setAuteurs(List<AuteurType> auteurs) {
+		this.auteurs = auteurs;
 	}
 }

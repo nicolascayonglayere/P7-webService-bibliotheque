@@ -22,7 +22,7 @@ public class Accueil extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	private List<LivreType> livresAccueil = new ArrayList<LivreType>();
-	private List<String> listGenre = new ArrayList<String>();
+
 	private BiblioWS_Service biblioWS = new BiblioWS_Service();
 
 	/**
@@ -30,9 +30,7 @@ public class Accueil extends ActionSupport {
 	 */
 	@Override
 	public String execute() {
-		this.listGenre.add("ROMAN");
-		this.listGenre.add("SCIENCES-FICTION");
-		this.listGenre.add("HEROIC-FANTASY");
+
 		ListNouveautesResponse lnr = this.biblioWS.getBiblioWSSOAP().listNouveautes("");
 		this.livresAccueil = lnr.getNouveautes();
 
@@ -45,13 +43,5 @@ public class Accueil extends ActionSupport {
 
 	public void setLivresAccueil(List<LivreType> livresAccueil) {
 		this.livresAccueil = livresAccueil;
-	}
-
-	public List<String> getListGenre() {
-		return this.listGenre;
-	}
-
-	public void setListGenre(List<String> listGenre) {
-		this.listGenre = listGenre;
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -19,6 +20,7 @@ import fr.yogj.bibliows.types.LivreType;
  * @author nicolas
  *
  */
+@Service
 public class RechercheMultiCritere extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
@@ -27,6 +29,7 @@ public class RechercheMultiCritere extends ActionSupport {
 	private String titre;
 	private String nomAuteur;
 	private String selectedGenre;
+	private List<String> listGenre = new ArrayList<String>();
 	private List<LivreType> listResultat = new ArrayList<LivreType>();
 
 	/**
@@ -40,6 +43,9 @@ public class RechercheMultiCritere extends ActionSupport {
 				+ this.selectedGenre);
 		System.out.println("recherche multi : titre = " + this.titre + " - auteur = " + this.nomAuteur + " - genre = "
 				+ this.selectedGenre);
+		this.listGenre.add("ROMAN");
+		this.listGenre.add("SCIENCES-FICTION");
+		this.listGenre.add("HEROIC-FANTASY");
 		RechercheOuvrage parameters = new RechercheOuvrage();
 		// parameters.setIdLivre(0);
 		if (this.titre.length() > 0) {
@@ -60,6 +66,14 @@ public class RechercheMultiCritere extends ActionSupport {
 			e.printStackTrace();
 			return ActionSupport.INPUT;
 		}
+		return ActionSupport.SUCCESS;
+	}
+
+	@Override
+	public String input() {
+		this.listGenre.add("ROMAN");
+		this.listGenre.add("SCIENCES-FICTION");
+		this.listGenre.add("HEROIC-FANTASY");
 		return ActionSupport.SUCCESS;
 	}
 
@@ -93,6 +107,14 @@ public class RechercheMultiCritere extends ActionSupport {
 
 	public void setListResultat(List<LivreType> listResultat) {
 		this.listResultat = listResultat;
+	}
+
+	public List<String> getListGenre() {
+		return this.listGenre;
+	}
+
+	public void setListGenre(List<String> listGenre) {
+		this.listGenre = listGenre;
 	}
 
 }

@@ -2,9 +2,12 @@ package oc.webApp.nicolas.actions;
 
 import java.util.Map;
 
+import javax.xml.ws.soap.SOAPFaultException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -22,12 +25,14 @@ import fr.yogj.bibliows.types.UtilisateurType;
  * @author nicolas
  *
  */
+@Service
 public class GestionPret extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
 	static final Logger logger = LogManager.getLogger();
 	private BiblioWS_Service biblioWS = new BiblioWS_Service();
 	private String idLivre;
+	private String idEmprunt;
 	private LivreType livreType;// = new LivreType();
 	private UtilisateurType utilisateur;// = new UtilisateurType();
 	private LivreEmpruntType monEmprunt;// = new LivreEmpruntType();
@@ -41,8 +46,7 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	public String emprunter() {
 
 		this.utilisateur = ((UtilisateurType) this.session.get("utilisateur"));
-		// logger.debug("emprunt : " + this.idLivre + " - user :" +
-		// this.utilisateur.getPseudo());
+		logger.debug("emprunt : " + this.idLivre + " - user :" + this.utilisateur.getPseudo());
 		System.out.println("emprunt : " + this.idLivre + " - user :" + this.utilisateur.getPseudo());
 		try {
 			this.monEmprunt = this.biblioWS.getBiblioWSSOAP().empruntOuvrage(Integer.valueOf(this.idLivre),
@@ -54,6 +58,11 @@ public class GestionPret extends ActionSupport implements SessionAware {
 			this.addActionMessage(e.getMessage());
 			e.printStackTrace();
 			return ActionSupport.INPUT;
+		} catch (SOAPFaultException e1) {
+			logger.debug(e1.getMessage());
+			this.addActionMessage(e1.getMessage());
+			e1.printStackTrace();
+			return ActionSupport.INPUT;
 		}
 
 	}
@@ -64,12 +73,13 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	 * @return
 	 */
 	public String retourner() {
-		logger.debug("nom ouvrage retourner " + this.monEmprunt.getOuvrage().getTitre() + " nom emprunteur "
-				+ this.utilisateur.getPseudo());
-		this.utilisateur = (UtilisateurType) this.session.get("utilisateur");
 
+		this.utilisateur = (UtilisateurType) this.session.get("utilisateur");
+		// logger.debug("nom ouvrage retourner " +
+		// this.monEmprunt.getOuvrage().getTitre() + " nom emprunteur "+
+		// this.utilisateur.getPseudo());
 		try {
-			this.livreType = this.biblioWS.getBiblioWSSOAP().retourOuvrage(this.monEmprunt.getId());
+			this.livreType = this.biblioWS.getBiblioWSSOAP().retourOuvrage(Integer.valueOf(this.idEmprunt));
 			this.addActionMessage("Vous avez rendu le livre : " + this.livreType.getTitre());
 			return ActionSupport.SUCCESS;
 		} catch (RetourOuvrageFault1_Exception e) {
@@ -87,13 +97,14 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	 * @return
 	 */
 	public String prolonger() {
-		logger.debug("nom ouvrage retourner " + this.monEmprunt.getOuvrage().getTitre() + " nom emprunteur "
-				+ this.utilisateur.getPseudo());
-		this.utilisateur = (UtilisateurType) this.session.get("utilisateur");
 
+		this.utilisateur = (UtilisateurType) this.session.get("utilisateur");
+		// logger.debug("nom ouvrage retourner " +
+		// this.monEmprunt.getOuvrage().getTitre() + " nom emprunteur "+
+		// this.utilisateur.getPseudo());
 		try {
-			this.monEmprunt = this.biblioWS.getBiblioWSSOAP().prolongationOuvrage(this.monEmprunt.getId());
-			this.addActionMessage("Vous avez prolongé l'emprunt n° : " + this.monEmprunt.getId());
+			this.monEmprunt = this.biblioWS.getBiblioWSSOAP().prolongationOuvrage(Integer.valueOf(this.idEmprunt));
+			this.addActionMessage("Vous avez prolongé l'emprunt n° : " + this.idEmprunt);
 			return ActionSupport.SUCCESS;
 		} catch (ProlongationOuvrageFault1_Exception e) {
 			logger.debug(e.getMessage());
@@ -146,6 +157,14 @@ public class GestionPret extends ActionSupport implements SessionAware {
 
 	public void setIdLivre(String idLivre) {
 		this.idLivre = idLivre;
+	}
+
+	public String getIdEmprunt() {
+		return this.idEmprunt;
+	}
+
+	public void setIdEmprunt(String idEmprunt) {
+		this.idEmprunt = idEmprunt;
 	}
 
 }

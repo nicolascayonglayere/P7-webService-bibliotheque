@@ -167,10 +167,12 @@ public class BiblioWSEndPoint implements BiblioWS {
 	public List<LivreEmpruntType> obtenirEmpruntUtilisateur(int idUtilisateur)
 			throws ObtenirEmpruntUtilisateurFault_Exception {
 		// TODO Auto-generated method stub
+
 		try {
 			List<LivreEmpruntType> livresEmpruntes = this.manageFacto.getLivreEmpruntManager()
 					.obtenirEmpruntUtilisateur(idUtilisateur);
 			return livresEmpruntes;
+
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 			logger.debug(e.getMessage());

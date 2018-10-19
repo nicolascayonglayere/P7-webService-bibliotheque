@@ -1,4 +1,5 @@
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\types\ObjectFactory.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\actions\Login.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\Recherche.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\RetourOuvrageResponse.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\types\package-info.java
@@ -14,8 +15,11 @@ I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webAp
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\RechercheOuvrage.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\App.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\types\LivreType.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\actions\RechercheMultiCritere.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\interceptor\LoginInterceptor.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\ListRetardatairesResponse.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\EmpruntOuvrageResponse.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\configurations\BiblioWebAppConfiguration.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\ObtenirEmpruntUtilisateurResponse.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\ObtenirEmpruntUtilisateur.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\EmpruntOuvrage.java
@@ -25,6 +29,7 @@ I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webAp
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\types\AuteurType.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\RetourOuvrageFault1_Exception.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\BiblioWS_Service.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\actions\BilanEmpruntAjax.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\EmpruntOuvrageFault.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\DeconnexionFault_Exception.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\DeconnexionFault.java
@@ -34,14 +39,18 @@ I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webAp
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\RetourOuvrage.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\ObtenirEmpruntUtilisateurFault_Exception.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\LoginFault.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\configurations\MaWebAppStrutsServlet.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\actions\GestionPret.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\actions\Accueil.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\UneOperationResponse.java
-I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\BiblioWebAppConfiguration.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\actions\GoLivre.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\ProlongationOuvrageFault1.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\UneOperation.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\actions\MonCompte.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\types\UtilisateurType.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\RetourOuvrageFault.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\RechercheOuvrageResponse.java
+I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\src\main\java\oc\webApp\nicolas\configurations\WebAppInitializer.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\types\EditeurType.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\types\LivreEmpruntType.java
 I:\Documents\openclassrooms formation\P7\P7-webService-bibliotheque\client_webApp\bibliothequeWebApp\target\generated-sources\cxf\fr\yogj\bibliows\ProlongationOuvrageFault1_Exception.java

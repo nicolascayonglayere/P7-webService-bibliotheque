@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -24,6 +25,7 @@ import fr.yogj.bibliows.types.UtilisateurType;
  * @author nicolas
  *
  */
+@Service
 public class Login extends ActionSupport implements SessionAware, ServletRequestAware {
 
 	private static final long serialVersionUID = 1L;

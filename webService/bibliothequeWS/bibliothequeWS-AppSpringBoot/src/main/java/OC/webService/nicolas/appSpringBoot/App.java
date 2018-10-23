@@ -19,6 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 // @EnableAutoConfiguration
 @EntityScan(basePackages = "OC.webService.nicolas")
 // @RepositoryScan(basePackages="OC.webService.nicolas")
+
 public class App extends SpringBootServletInitializer {
 
 	// @Override

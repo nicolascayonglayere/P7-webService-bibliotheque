@@ -53,6 +53,7 @@ public class BiblioWSConfiguration extends WsConfigurerAdapter {
 		EndpointImpl endpoint = new EndpointImpl(this.springBus(), this.biblioService());
 		endpoint.publish("/biblioWS");
 		endpoint.setWsdlLocation("biblioWS.wsdl");
+		// endpoint.getInInterceptors();
 		return endpoint;
 	}
 
@@ -76,7 +77,7 @@ public class BiblioWSConfiguration extends WsConfigurerAdapter {
 	// }
 	//
 	// @Override
-	// public void addInterceptors(List interceptors) {
+	// public void addInterceptors(List<EndpointInterceptor> interceptors) {
 	// interceptors.add(this.securityInterceptor());
 	// }
 }

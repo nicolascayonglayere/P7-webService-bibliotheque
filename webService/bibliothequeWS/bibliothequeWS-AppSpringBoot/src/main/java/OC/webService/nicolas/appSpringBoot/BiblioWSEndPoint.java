@@ -35,6 +35,7 @@ import fr.yogj.bibliows.types.UtilisateurType;
  */
 // @Transactional
 // @Service
+
 public class BiblioWSEndPoint implements BiblioWS {
 
 	static final Logger logger = LogManager.getLogger();

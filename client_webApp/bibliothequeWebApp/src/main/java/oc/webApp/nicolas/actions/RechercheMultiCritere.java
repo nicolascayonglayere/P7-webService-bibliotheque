@@ -3,6 +3,8 @@ package oc.webApp.nicolas.actions;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.ws.soap.SOAPFaultException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -64,6 +66,11 @@ public class RechercheMultiCritere extends ActionSupport {
 			logger.debug(e.getMessage());
 			this.addActionMessage(e.getMessage());
 			e.printStackTrace();
+			return ActionSupport.INPUT;
+		} catch (SOAPFaultException e) {
+			this.addActionMessage(e.getMessage());
+			e.printStackTrace();
+			logger.debug(e.getMessage());
 			return ActionSupport.INPUT;
 		}
 		return ActionSupport.SUCCESS;

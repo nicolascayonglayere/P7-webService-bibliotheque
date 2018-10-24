@@ -3,6 +3,8 @@ package oc.webApp.nicolas.actions;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.ws.soap.SOAPFaultException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -58,6 +60,11 @@ public class GoLivre extends ActionSupport {
 			this.addActionMessage(e.getMessage());
 			e.printStackTrace();
 			logger.debug(e.getMessage());
+			return ActionSupport.INPUT;
+		} catch (SOAPFaultException e1) {
+			logger.debug(e1.getMessage());
+			this.addActionMessage(e1.getMessage());
+			e1.printStackTrace();
 			return ActionSupport.INPUT;
 		}
 

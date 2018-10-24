@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.ws.soap.SOAPFaultException;
+
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,10 @@ public class BilanEmpruntAjax extends ActionSupport implements SessionAware {
 		} catch (ObtenirEmpruntUtilisateurFault_Exception e) {
 			this.addActionMessage(e.getMessage());
 			e.printStackTrace();
+			return ActionSupport.INPUT;
+		} catch (SOAPFaultException e1) {
+			this.addActionMessage(e1.getMessage());
+			e1.printStackTrace();
 			return ActionSupport.INPUT;
 		}
 		return ActionSupport.SUCCESS;

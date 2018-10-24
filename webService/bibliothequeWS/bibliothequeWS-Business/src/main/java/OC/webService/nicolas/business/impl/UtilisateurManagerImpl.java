@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import OC.webService.nicolas.business.contract.UtilisateurManager;
@@ -29,12 +30,20 @@ public class UtilisateurManagerImpl extends AbstractManager implements Utilisate
 	 */
 	@Override
 	public UtilisateurType getUtilisateur(String pseudo, String motDePasse) throws RuntimeException {
-		if (this.getDaoFactory().getUtilisateurDao().findByPseudoAndMotDePasse(pseudo, motDePasse).getId() != 0) {
-			this.user = this.getDaoFactory().getUtilisateurDao().findByPseudoAndMotDePasse(pseudo, motDePasse);
-			// this.user.setEmprunts(this.getDaoFactory().getLivreEmpruntDao().findByUtilisateurId(this.user.getId()));
-			return MapperUtilisateur.fromUtilisateurToUtilisateurType(this.user);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+		if (this.getDaoFactory().getUtilisateurDao().findByPseudo(pseudo).getId() > 0) {
+			this.user = this.getDaoFactory().getUtilisateurDao().findByPseudo(pseudo);
+			System.out.println("comparaison mot de passe : in " + motDePasse + " - bdd " + this.user.getMotDePasse());
+			if (passwordEncoder.matches(motDePasse, this.user.getMotDePasse())) {
+				// this.user.setEmprunts(this.getDaoFactory().getLivreEmpruntDao().findByUtilisateurId(this.user.getId()));
+				return MapperUtilisateur.fromUtilisateurToUtilisateurType(this.user);
+			} else {
+				throw new RuntimeException("Mot de passe invalide !");
+			}
+
 		} else {
-			throw new RuntimeException("Identifiants invalides pseudo : " + pseudo + " - mot de passe : " + motDePasse);
+			throw new RuntimeException("Pseudo invalide : " + pseudo);
 		}
 
 	}

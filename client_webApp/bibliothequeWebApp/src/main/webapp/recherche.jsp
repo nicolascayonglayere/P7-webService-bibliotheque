@@ -24,6 +24,7 @@
 					</s:submit>					
 				</s:form>	
 				
+				<s:actionmessage/>
 				<s:if test="listResultat">
 					<s:iterator value="listResultat" var="livreType">
 						<s:a action="go_livre" namespace="/">				

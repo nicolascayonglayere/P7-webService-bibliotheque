@@ -3,11 +3,13 @@ package oc.webApp.nicolas.actions;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.soap.SOAPFaultException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -69,11 +71,19 @@ public class Login extends ActionSupport implements SessionAware, ServletRequest
 		logger.debug(this.utilisateur.getPseudo() + " - " + this.utilisateur.getMotDePasse());
 		UtilisateurType vUser;
 		try {
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			System.out.println("mdp yogj : " + passwordEncoder.encode(this.utilisateur.getMotDePasse()));
 			vUser = this.biblioWS.getBiblioWSSOAP().login(this.utilisateur.getPseudo(),
 					this.utilisateur.getMotDePasse());
+			// passwordEncoder.encode(this.utilisateur.getMotDePasse()));
 			logger.debug("mdp : " + vUser.getMotDePasse());
+
+			// --je pense que ce controle est inutile
 			if ((this.utilisateur.getPseudo().equals(vUser.getPseudo()))
-					&& (this.utilisateur.getMotDePasse().equals(vUser.getMotDePasse()))) {
+					&& (passwordEncoder.matches(this.utilisateur.getMotDePasse(), vUser.getMotDePasse()))) { // --avec
+																												// cryptage
+				// && (this.utilisateur.getMotDePasse().equals(vUser.getMotDePasse()))) { --sans
+				// cryptage
 				this.session.put("utilisateur", vUser);
 				vResult = ActionSupport.SUCCESS;
 			} else {
@@ -81,24 +91,12 @@ public class Login extends ActionSupport implements SessionAware, ServletRequest
 				vResult = ActionSupport.LOGIN;
 			}
 
-			// BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-			// if(!(vUser.getRole().equals("banni"))) {
-			// ((utilisateur.getPseudo().equals(vUser.getPseudo()))&&(passwordEncoder.matches(utilisateur.getPassword(),
-			// vUser.getPassword()))) {
-			// session.put("utilisateur", vUser);
-			// vResult = ActionSupport.SUCCESS;
-			// }
-			// else {
-			// addActionError("Entrer un mot de passe valide !");
-			// vResult = ActionSupport.LOGIN;
-			// }
-			// }
-			// else {
-			// addActionError("Vous avez été banni de ce site.");
-			// vResult = ActionSupport.LOGIN;
-			// }
 		} catch (LoginFault_Exception e) {
+			this.addActionMessage(e.getMessage());
+			e.printStackTrace();
+			logger.debug(e.getMessage());
+			vResult = ActionSupport.LOGIN;
+		} catch (SOAPFaultException e) {
 			this.addActionMessage(e.getMessage());
 			e.printStackTrace();
 			logger.debug(e.getMessage());

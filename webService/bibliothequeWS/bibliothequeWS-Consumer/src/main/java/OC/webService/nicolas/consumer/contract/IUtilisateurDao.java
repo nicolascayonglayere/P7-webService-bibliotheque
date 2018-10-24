@@ -22,5 +22,5 @@ public interface IUtilisateurDao extends JpaRepository<Utilisateur, Integer> {
 	 * @param motDePasse
 	 * @return {@link Utilisateur}
 	 */
-	public Utilisateur findByPseudoAndMotDePasse(String pseudo, String motDePasse);
+	public Utilisateur findByPseudo(String pseudo);
 }

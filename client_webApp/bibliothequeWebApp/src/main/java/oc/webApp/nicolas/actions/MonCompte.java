@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.ws.soap.SOAPFaultException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
@@ -54,6 +56,11 @@ public class MonCompte extends ActionSupport implements SessionAware {
 			this.addActionMessage(e.getMessage());
 			e.printStackTrace();
 			logger.debug(e.getMessage());
+			return ActionSupport.INPUT;
+		} catch (SOAPFaultException e1) {
+			logger.debug(e1.getMessage());
+			this.addActionMessage(e1.getMessage());
+			e1.printStackTrace();
 			return ActionSupport.INPUT;
 		}
 

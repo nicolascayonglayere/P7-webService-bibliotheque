@@ -3,10 +3,10 @@
 
 <struts>
 
-	<!--  <constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="true" />
 	<constant name="struts.ui.theme" value="bootstrap" />
-	<constant name="struts.custom.i18n.resources" value="package" />
-	<constant name="struts.objectFactory" value="spring"/>-->
+	<constant name="struts.custom.i18n.resources" value="messages" />
+	<constant name="struts.objectFactory" value="spring"/>
 
 	<package name="default" extends="struts-default" namespace="/">
 

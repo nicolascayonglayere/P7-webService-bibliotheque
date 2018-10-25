@@ -108,3 +108,17 @@ body
 {
 	text-align: right;
 }
+
+#empruntLivre{
+	text-align : center;
+	border-color: #fd7e14; 
+	border-style: solid; 
+	border-width: medium;
+	padding : 5px;
+}
+
+ul {
+list-style:none;
+margin-left:0;
+padding-left:0;
+}

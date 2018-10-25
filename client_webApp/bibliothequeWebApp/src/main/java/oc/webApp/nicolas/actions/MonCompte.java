@@ -1,6 +1,7 @@
 package oc.webApp.nicolas.actions;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +37,7 @@ public class MonCompte extends ActionSupport implements SessionAware {
 	private UtilisateurType utilisateur;// = new UtilisateurType();
 	private List<LivreEmpruntType> listEmprunt = new ArrayList<LivreEmpruntType>();
 	private CoordonneeUtilisateurType coordonneeUtilisateur = new CoordonneeUtilisateurType();
-	private Date dateRetour;
+	private List<Date> listDate = new ArrayList<Date>();
 
 	/**
 	 * Méthode retournant les données nécessaires à la jsp affichant le compte d'un
@@ -50,7 +51,12 @@ public class MonCompte extends ActionSupport implements SessionAware {
 			this.listEmprunt = this.biblioWS.getBiblioWSSOAP().obtenirEmpruntUtilisateur(this.utilisateur.getId());
 			this.coordonneeUtilisateur.setAdresse(this.utilisateur.getCoordonnee().get(0).getAdresse());
 			this.coordonneeUtilisateur.setEmail(this.utilisateur.getCoordonnee().get(0).getEmail());
-			// this.dateRetour = ;
+			for (LivreEmpruntType let : this.listEmprunt) {
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(let.getDateEmprunt().toGregorianCalendar().getTime());
+				cal.add(Calendar.DATE, 28);
+				this.listDate.add(cal.getTime());
+			}
 			return ActionSupport.SUCCESS;
 		} catch (ObtenirEmpruntUtilisateurFault_Exception e) {
 			this.addActionMessage(e.getMessage());
@@ -103,12 +109,12 @@ public class MonCompte extends ActionSupport implements SessionAware {
 		this.coordonneeUtilisateur = coordonneeUtilisateur;
 	}
 
-	public Date getDateRetour() {
-		return this.dateRetour;
+	public List<Date> getListDate() {
+		return this.listDate;
 	}
 
-	public void setDateRetour(Date dateRetour) {
-		this.dateRetour = dateRetour;
+	public void setListDate(List<Date> listDate) {
+		this.listDate = listDate;
 	}
 
 }

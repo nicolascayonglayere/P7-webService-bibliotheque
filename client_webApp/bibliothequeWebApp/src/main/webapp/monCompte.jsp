@@ -25,23 +25,23 @@
 				<h4 id="titre"><s:text name="compteUser.emprunt"/></h4>
 				
 				<!-- un tab recapitulatif des enmprunts en cours-->
-				<s:iterator value="listEmprunt" var="livreEmpruntType" status="stat">
+				<s:iterator value="listEmprunt"> <!--   var="livreEmpruntType" status="stat">-->
 					<ul>
 						<li id="empruntLivre">
-							<div><s:property value="#livreEmpruntType.ouvrage.titre"/> </div>
+							<div><s:property value="key.ouvrage.titre"/> <!--  "#livreEmpruntType.ouvrage.titre"/>--> </div>
 							<div>
-								<s:text name="compteUser.dateEmprunt"/> <s:property value="#livreEmpruntType.dateEmprunt"/>
-								<s:text name="compteUser.dateRetour"/> <s:property value="%{listDate.get(stat.index)}"/>
+								<s:text name="compteUser.dateEmprunt"/> <s:property value="key.dateEmprunt"/> <!--  "#livreEmpruntType.dateEmprunt"/>-->
+								<s:text name="compteUser.dateRetour"/> <s:property value="value"/> <!--  "%{listDate.get(stat.index)}"/>-->
 							</div>
 							<!-- un bouton pour le retour -->
 				    		<s:a action="retour_ouvrage" namespace="/utilisateur">
-				    			<s:param name="idEmprunt" value="#livreEmpruntType.id"/>
+				    			<s:param name="idEmprunt" value="key.id"/>
 				    			<s:submit class="btn btn-default" value="%{getText('bouton.retour')}"/>
 				    		</s:a>	
 				    		<!-- un bouton pour la prolongation -->
-				    		<s:if test="%{#livreEmpruntType.prolongation==false}">
+				    		<s:if test="%{key.prolongation==false}">
 					    		<s:a action="prolongation_ouvrage" namespace="/utilisateur">
-					    			<s:param name="idEmprunt" value="#livreEmpruntType.id"/>
+					    			<s:param name="idEmprunt" value="key.id"/>
 					    			<s:submit class="btn btn-default" value="%{getText('bouton.prolongation')}"/>
 					    		</s:a>
 				    		</s:if>

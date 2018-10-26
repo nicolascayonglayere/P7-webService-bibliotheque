@@ -49,6 +49,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		if (nbEx > 0) {
 			Optional<Utilisateur> myUserOptional = this.getDaoFactory().getUtilisateurDao().findById(pIdEmprunteur);
 			Utilisateur user = myUserOptional.get();
+			this.livreEmprunt = new LivreEmprunt();
 			this.livreEmprunt.setLivre(l);
 			this.livreEmprunt.setProlongation(false);
 			this.livreEmprunt.setDateEmprunt(Calendar.getInstance().getTime());

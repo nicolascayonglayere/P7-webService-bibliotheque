@@ -98,6 +98,7 @@
 		<!-- page mon compte -->
 		<action name="go_monCompte" class="oc.webApp.nicolas.actions.MonCompte" method="execute">
 			<result name="success">/monCompte.jsp</result>
+			<result name="input">/monCompte.jsp</result>
 		</action>
 	
 		<!-- action pour emprunter un livre -->               

@@ -17,17 +17,21 @@
 			<div class="container">
 				<h1 id="titre"><s:text name="login.titre"/></h1>
 				<s:actionerror/>
-				
-				<s:form id="idLoginForm" action="loginUser" cssClass="form-vertical" namespace="/" validate="true">
-					<s:textfield name="utilisateur.pseudo" placeholder="pseudo" label="%{getText('form.pseudo')}" requiredLabel="true"/>
-					<s:password name="utilisateur.motDePasse" placeholder="motDePasse" label="%{getText('form.mdp')}" requiredLabel="true"/>
-					<s:submit id="btOK" class="btn btn-default" value="%{getText('login.titre')}">	
-	       				<s:param name="pseudo">${utilisateur.pseudo }</s:param>
-	      				<s:param name="motDePasse">${utilisateur.motDePasse }</s:param>
-	     			 </s:submit>
-	     			 <s:token/>		
-				</s:form>	
-				
+				<!-- un if test de la session pour eviter la connexion alors qu'on est deja connecte -->
+				<s:if test="#session.utilisateur">
+					<s:form id="idLoginForm" action="loginUser" cssClass="form-vertical" namespace="/" validate="true">
+						<s:textfield name="utilisateur.pseudo" placeholder="pseudo" label="%{getText('form.pseudo')}" requiredLabel="true"/>
+						<s:password name="utilisateur.motDePasse" placeholder="motDePasse" label="%{getText('form.mdp')}" requiredLabel="true"/>
+						<s:submit id="btOK" class="btn btn-default" value="%{getText('login.titre')}">	
+		       				<s:param name="pseudo">${utilisateur.pseudo }</s:param>
+		      				<s:param name="motDePasse">${utilisateur.motDePasse }</s:param>
+		     			 </s:submit>
+		     			 <s:token/>		
+					</s:form>	
+				</s:if>
+				<s:else>
+					<h2 id="titre"><s:text name="login.message"/></h2>
+				</s:else>
 				<!-- Lien pour créer un utilisateur -->
 				<!--<s:text name="login.inscription"/>
 				<s:url var="goInscription" action="inscription" namespace="/"/>

@@ -2,7 +2,6 @@ package OC.webService.nicolas.business.mapper;
 
 import java.util.Date;
 
-import javax.transaction.Transactional;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import OC.webService.nicolas.model.entites.Auteur;
@@ -17,7 +16,7 @@ import fr.yogj.bibliows.types.LivreType;
  * @author nicolas
  *
  */
-@Transactional
+// @Transactional
 public class MapperAuteur {
 
 	// @Autowired

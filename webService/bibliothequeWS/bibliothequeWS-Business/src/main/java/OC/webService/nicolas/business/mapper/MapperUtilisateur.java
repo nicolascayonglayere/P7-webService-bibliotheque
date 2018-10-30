@@ -1,10 +1,10 @@
 package OC.webService.nicolas.business.mapper;
 
-import javax.transaction.Transactional;
-
 import OC.webService.nicolas.model.entites.CoordonneeUtilisateur;
+import OC.webService.nicolas.model.entites.LivreEmprunt;
 import OC.webService.nicolas.model.entites.Utilisateur;
 import fr.yogj.bibliows.types.CoordonneeUtilisateurType;
+import fr.yogj.bibliows.types.LivreEmpruntType;
 import fr.yogj.bibliows.types.UtilisateurType;
 
 /**
@@ -14,7 +14,7 @@ import fr.yogj.bibliows.types.UtilisateurType;
  * @author nicolas
  *
  */
-@Transactional
+// @Transactional
 public class MapperUtilisateur {
 
 	/**
@@ -29,6 +29,9 @@ public class MapperUtilisateur {
 		myUser.setId(pUtilisateurType.getId());
 		for (CoordonneeUtilisateurType cut : pUtilisateurType.getCoordonnee()) {
 			myUser.getCoordonnee().add(MapperCoordonneeUtilisateur.frommCoordonneeTypeToCoordonnee(cut));
+		}
+		for (LivreEmpruntType let : pUtilisateurType.getEmprunt()) {
+			myUser.getEmprunts().add(MapperLivreEmprunt.fromLivreEmpruntTypeToLivreEmprunt(let));
 		}
 
 		return myUser;
@@ -49,6 +52,9 @@ public class MapperUtilisateur {
 		myUt.setMotDePasse(pUtilisateur.getMotDePasse());
 		for (CoordonneeUtilisateur cu : pUtilisateur.getCoordonnee()) {
 			myUt.getCoordonnee().add(MapperCoordonneeUtilisateur.fromCoordoonneeToCoordonneeType(cu));
+		}
+		for (LivreEmprunt le : pUtilisateur.getEmprunts()) {
+			myUt.getEmprunt().add(MapperLivreEmprunt.fromLivreEmpruntToLivreEmpruntType(le));
 		}
 
 		return myUt;

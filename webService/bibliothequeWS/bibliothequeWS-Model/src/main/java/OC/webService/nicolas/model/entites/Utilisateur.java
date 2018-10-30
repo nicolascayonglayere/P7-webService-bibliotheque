@@ -13,9 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 /**
  * Entite Hibernate correspondant à la table utilisateur
  * 
@@ -41,7 +38,7 @@ public class Utilisateur implements Serializable {
 	@Column(name = "mot_de_passe", length = 100, nullable = false)
 	private String motDePasse;
 	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-	@Fetch(value = FetchMode.SUBSELECT)
+	// @Fetch(value = FetchMode.SUBSELECT)
 	private List<CoordonneeUtilisateur> coordonnee;
 	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.DETACH,
 			CascadeType.MERGE, CascadeType.REFRESH })

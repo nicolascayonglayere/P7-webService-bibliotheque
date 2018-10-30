@@ -2,11 +2,14 @@ package OC.webService.nicolas.business.mapper;
 
 import java.util.Date;
 
-import javax.transaction.Transactional;
 import javax.xml.datatype.DatatypeConfigurationException;
 
+import OC.webService.nicolas.model.entites.CoordonneeUtilisateur;
 import OC.webService.nicolas.model.entites.LivreEmprunt;
+import OC.webService.nicolas.model.entites.Utilisateur;
+import fr.yogj.bibliows.types.CoordonneeUtilisateurType;
 import fr.yogj.bibliows.types.LivreEmpruntType;
+import fr.yogj.bibliows.types.UtilisateurType;
 
 /**
  * Classe MapperLivreEmprunt pour mapper les propriétés d'un objet
@@ -15,7 +18,7 @@ import fr.yogj.bibliows.types.LivreEmpruntType;
  * @author nicolas
  *
  */
-@Transactional
+// @Transactional
 public class MapperLivreEmprunt {
 
 	// @Autowired
@@ -32,8 +35,14 @@ public class MapperLivreEmprunt {
 		LivreEmprunt monEmprunt = new LivreEmprunt(dateEmprunt, pLivreEmpruntType.isProlongation());
 		monEmprunt.setId(pLivreEmpruntType.getId());
 		monEmprunt.setLivre(MapperLivre.fromLivreTypeToLivre(pLivreEmpruntType.getOuvrage()));
-		monEmprunt
-				.setUtilisateur(MapperUtilisateur.fromUtilisateurTypeToUtilisateur(pLivreEmpruntType.getEmprunteur()));
+		Utilisateur monUser = new Utilisateur(pLivreEmpruntType.getEmprunteur().getNom(),
+				pLivreEmpruntType.getEmprunteur().getPrenom(), pLivreEmpruntType.getEmprunteur().getPseudo(),
+				pLivreEmpruntType.getEmprunteur().getMotDePasse());
+		monUser.setId(pLivreEmpruntType.getEmprunteur().getId());
+		for (CoordonneeUtilisateurType cu : pLivreEmpruntType.getEmprunteur().getCoordonnee()) {
+			monUser.getCoordonnee().add(MapperCoordonneeUtilisateur.frommCoordonneeTypeToCoordonnee(cu));
+		}
+		monEmprunt.setUtilisateur(monUser);
 
 		return monEmprunt;
 
@@ -56,7 +65,16 @@ public class MapperLivreEmprunt {
 			e.printStackTrace();
 		}
 		myLet.setOuvrage(MapperLivre.fromLivreToLivreType(pLivreEmprunt.getLivre()));
-		myLet.setEmprunteur(MapperUtilisateur.fromUtilisateurToUtilisateurType(pLivreEmprunt.getUtilisateur()));
+		UtilisateurType myUserType = new UtilisateurType();
+		myUserType.setId(pLivreEmprunt.getUtilisateur().getId());
+		myUserType.setNom(pLivreEmprunt.getUtilisateur().getNom());
+		myUserType.setPrenom(pLivreEmprunt.getUtilisateur().getPrenom());
+		myUserType.setPseudo(pLivreEmprunt.getUtilisateur().getPseudo());
+		myUserType.setMotDePasse(pLivreEmprunt.getUtilisateur().getMotDePasse());
+		for (CoordonneeUtilisateur cu : pLivreEmprunt.getUtilisateur().getCoordonnee()) {
+			myUserType.getCoordonnee().add(MapperCoordonneeUtilisateur.fromCoordoonneeToCoordonneeType(cu));
+		}
+		myLet.setEmprunteur(myUserType);
 
 		return myLet;
 	}

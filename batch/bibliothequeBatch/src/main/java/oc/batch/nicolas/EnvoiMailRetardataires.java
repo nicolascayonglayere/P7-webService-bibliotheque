@@ -29,7 +29,9 @@ public class EnvoiMailRetardataires implements Tasklet {
 		cal.add(Calendar.DATE, -28);
 		ListRetardatairesResponse lrr = this.biblioWS.getBiblioWSSOAP().listRetardataires("");
 		this.retardataires = lrr.getUtilisateur();
+		System.out.println("nb retardataire : " + this.retardataires.size());
 		for (UtilisateurType u : this.retardataires) {
+			System.out.println("nb retard : " + u.getEmprunt().size());
 			for (LivreEmpruntType et : u.getEmprunt()) {
 				if ((et.getDateEmprunt().toGregorianCalendar().getTime()).before(cal.getTime())) {
 					// --envoi de mail

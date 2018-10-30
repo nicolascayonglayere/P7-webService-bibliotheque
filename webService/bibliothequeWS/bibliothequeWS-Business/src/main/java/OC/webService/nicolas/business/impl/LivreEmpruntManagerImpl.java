@@ -45,19 +45,43 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		Livre l = myOptional.get();
 		List<LivreEmprunt> ouvragesEmpruntes = this.getDaoFactory().getLivreEmpruntDao().findByLivreId(pIdLivre);
 		int nbEx = l.getNbExemplaire() - ouvragesEmpruntes.size();
-		logger.debug("nb exemplaires restants : " + nbEx);
+		logger.debug("nb exemplaires restants : " + nbEx + " - id : " + l.getId() + " - emprunteur : " + pIdEmprunteur);
 		if (nbEx > 0) {
+
+			// logger.debug("CTRL " +
+			// this.getDaoFactory().getLivreEmpruntDao().findByLivreIdAndUtilisateurId(pIdLivre,
+			// pIdEmprunteur).getId());
+			// if
+			// ((this.getDaoFactory().getLivreEmpruntDao().findByLivreIdAndUtilisateurId(pIdLivre,
+			// pIdEmprunteur) != null)) {
 			Optional<Utilisateur> myUserOptional = this.getDaoFactory().getUtilisateurDao().findById(pIdEmprunteur);
 			Utilisateur user = myUserOptional.get();
-			this.livreEmprunt = new LivreEmprunt();
-			this.livreEmprunt.setLivre(l);
-			this.livreEmprunt.setProlongation(false);
-			this.livreEmprunt.setDateEmprunt(Calendar.getInstance().getTime());
-			this.livreEmprunt.setUtilisateur(user);
-			this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(this.livreEmprunt);
-			return MapperLivreEmprunt.fromLivreEmpruntToLivreEmpruntType(this.livreEmprunt);
+			logger.debug("emprunteur " + user.toString());
+			boolean dejaEmprunte = false;
+			for (LivreEmprunt le : user.getEmprunts()) {
+				if (le.getLivre().getId() == pIdLivre) {
+					dejaEmprunte = true;
+					break;
+				}
+			}
+			if (!dejaEmprunte) {
+				this.livreEmprunt = new LivreEmprunt();
+				this.livreEmprunt.setLivre(l);
+				this.livreEmprunt.setProlongation(false);
+				this.livreEmprunt.setDateEmprunt(Calendar.getInstance().getTime());
+				this.livreEmprunt.setUtilisateur(user);
+				this.getDaoFactory().getLivreEmpruntDao().saveAndFlush(this.livreEmprunt);
+				return MapperLivreEmprunt.fromLivreEmpruntToLivreEmpruntType(this.livreEmprunt);
+			} else {
+				logger.debug("Erreur : Vous avez deja emprunté ce livre ");
+				throw new RuntimeException("Vous avez deja emprunté ce livre : " + this.getDaoFactory()
+						.getLivreEmpruntDao().findByLivreIdAndUtilisateurId(pIdLivre, pIdEmprunteur).getId());
+			}
 
-		} else {
+		} else
+
+		{
+			logger.debug("TRACE");
 			// recupérer la date de retour la plus proche
 			Calendar cal = Calendar.getInstance();
 			Date dateRetour = ouvragesEmpruntes.get(0).getDateEmprunt();
@@ -68,7 +92,9 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 					dateRetour = cal.getTime();
 				}
 			}
+			logger.debug("Erreur : pas d'exemplaire");
 			throw new RuntimeException("Pas d'exemplaire disponible avant " + dateRetour);
+
 		}
 	}
 
@@ -130,6 +156,8 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		cal.add(Calendar.DATE, -28);
 		logger.debug("date emprunt en retard : " + cal.getTime());
 		for (Utilisateur u : this.getDaoFactory().getLivreEmpruntDao().findRetardataires(cal.getTime())) {
+			System.out.println("taille liste retard : " + u.getEmprunts().size());
+			// u.setEmprunts(this.getDaoFactory().getLivreEmpruntDao().);
 			retardataires.add(MapperUtilisateur.fromUtilisateurToUtilisateurType(u));
 		}
 		return retardataires;

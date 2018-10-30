@@ -1,7 +1,5 @@
 package OC.webService.nicolas.business.mapper;
 
-import javax.transaction.Transactional;
-
 import OC.webService.nicolas.model.entites.CoordonneeUtilisateur;
 import OC.webService.nicolas.model.entites.Utilisateur;
 import fr.yogj.bibliows.types.CoordonneeUtilisateurType;
@@ -15,7 +13,7 @@ import fr.yogj.bibliows.types.UtilisateurType;
  * @author nicolas
  *
  */
-@Transactional
+// @Transactional
 public class MapperCoordonneeUtilisateur {
 
 	/**

@@ -18,7 +18,7 @@
 				<h1 id="titre"><s:text name="login.titre"/></h1>
 				<s:actionerror/>
 				<!-- un if test de la session pour eviter la connexion alors qu'on est deja connecte -->
-				<s:if test="#session.utilisateur">
+				<s:if test="#session.utilisateur==null">
 					<s:form id="idLoginForm" action="loginUser" cssClass="form-vertical" namespace="/" validate="true">
 						<s:textfield name="utilisateur.pseudo" placeholder="pseudo" label="%{getText('form.pseudo')}" requiredLabel="true"/>
 						<s:password name="utilisateur.motDePasse" placeholder="motDePasse" label="%{getText('form.mdp')}" requiredLabel="true"/>

@@ -10,6 +10,11 @@
 
 	<package name="default" extends="struts-default" namespace="/">
 
+		<!-- Resultat de type imageResult pour afficher des images -->
+		<result-types>
+			<result-type name="imageResult"	class="oc.webApp.nicolas.actions.images.CustomImageBytesResult"/>
+		</result-types>
+		
 		<!-- pile d'interceptor personnalisee pour vérifier les droits de l'utilisateur-->	
 		<interceptors>
 			<interceptor class="oc.webApp.nicolas.interceptor.LoginInterceptor" name="loginInterceptor"/>
@@ -82,7 +87,12 @@
 		<action name="rechMulti" class="oc.webApp.nicolas.actions.RechercheMultiCritere" method="execute">
 			<result name="input">/recherche.jsp</result>
 			<result name="success">/recherche.jsp</result>
-		</action>        					
+		</action>
+		
+		<!-- Action pour obtenir une image -->
+   		<action name="ImageAction" class="oc.webApp.nicolas.actions.images.ImageAction">
+			<result name="success" type="imageResult"/>
+		</action>
 	</package>
 	
 	<package name="utilisateur" extends="default" namespace="/utilisateur">

@@ -31,11 +31,11 @@
 					<s:iterator value="livresAccueil" var="livreType">
 				    	<div class="col-lg-3" id="imageTopo" >
 				    		<s:a action="go_livre" namespace="/">
-				    			<!-- mettre l'image de couv 
+				    			<!-- mettre l'image de couv -->
 								<s:url action="ImageAction" namespace="/" var="URLTag">
-									<s:param name="imageId" value="%{#topo.image}"/>
+									<s:param name="imageId" value="%{#livreType.id}"/>
 								</s:url>
-								<img src="<s:property value="#URLTag"/>" class="thumbnail, rounded" />-->			    			
+								<img src="<s:property value="#URLTag"/>" class="thumbnail, rounded" />			    			
 				            	<s:property value="#livreType.titre"/></br>
 				            	<s:property value="#livreType.auteurType.nom"/>
 			                    <s:param name="idLivre" value="#livreType.id" />	

@@ -1,0 +1,9 @@
+FROM java:8
+
+COPY /bibliothequeBatch-1.0-SNAPSHOT.jar /opt/spring-cloud/lib/
+
+
+ENTRYPOINT ["/usr/bin/java"]
+CMD ["-jar", "/opt/spring-cloud/lib/bibliothequeBatch-1.0-SNAPSHOT.jar"]
+VOLUME /var/lib/spring-cloud/config-repo
+EXPOSE 8888

@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="pseudo" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="motDePasse" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,16 +29,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "pseudo",
-    "motDePasse"
+    "pseudo"
 })
 @XmlRootElement(name = "login")
 public class Login {
 
     @XmlElement(required = true)
     protected String pseudo;
-    @XmlElement(required = true)
-    protected String motDePasse;
 
     /**
      * Obtient la valeur de la propriété pseudo.
@@ -63,30 +59,6 @@ public class Login {
      */
     public void setPseudo(String value) {
         this.pseudo = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété motDePasse.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMotDePasse() {
-        return motDePasse;
-    }
-
-    /**
-     * Définit la valeur de la propriété motDePasse.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMotDePasse(String value) {
-        this.motDePasse = value;
     }
 
 }

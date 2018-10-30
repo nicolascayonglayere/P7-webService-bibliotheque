@@ -14,16 +14,13 @@
             <xsd:element name="login">
         <xsd:complexType>
           <xsd:sequence>
-
           	<xsd:element name="pseudo" type="xsd:string" minOccurs="1"></xsd:element>
-          	<xsd:element name="motDePasse" type="xsd:string" minOccurs="1"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="loginResponse">
         <xsd:complexType>
           <xsd:sequence>
-
           	<xsd:element name="utilisateur" type="Q1:UtilisateurType" minOccurs="1" maxOccurs="1"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
@@ -31,21 +28,18 @@
       <xsd:element name="loginFault">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:choice>
       				<xsd:element name="idUtilisateur" type="xsd:int" minOccurs="1"></xsd:element>
       				<xsd:element name="pseudo" type="xsd:string" minOccurs="1"></xsd:element>
-      			</xsd:choice>
-      			
+      			</xsd:choice>      			
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="deconnexion">
       	<xsd:complexType>
       		<xsd:sequence>
-
-                        <xsd:element name="id" type="xsd:int" minOccurs="1"></xsd:element>
-                    </xsd:sequence>
+                  <xsd:element name="id" type="xsd:int" minOccurs="1"></xsd:element>
+            </xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="deconnexionResponse" type="xsd:string">
@@ -53,7 +47,6 @@
       <xsd:element name="deconnexionFault">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:choice>
       				<xsd:element name="id" type="xsd:int" minOccurs="1"></xsd:element>
       				<xsd:element name="pseudo" type="xsd:string" minOccurs="1"></xsd:element>
@@ -66,7 +59,6 @@
       <xsd:element name="listNouveautesResponse">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:element name="nouveautes" type="Q1:LivreType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
@@ -74,33 +66,18 @@
       <xsd:element name="rechercheOuvrage">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:choice>
-
-
-      				<xsd:element name="titre" type="xsd:string"
-      					minOccurs="0">
-      				</xsd:element>
-
-      				<xsd:element name="genre" type="xsd:string"
-      					minOccurs="0">
-      				</xsd:element>
-
-      				<xsd:element name="auteurNom" type="xsd:string"
-      					minOccurs="0">
-      				</xsd:element>
-      				<xsd:element name="idLivre"
-      					type="xsd:int" minOccurs="0" maxOccurs="1">
-      				</xsd:element>
+      				<xsd:element name="titre" type="xsd:string" minOccurs="0"></xsd:element>
+      				<xsd:element name="genre" type="xsd:string" minOccurs="0"></xsd:element>
+      				<xsd:element name="auteurNom" type="xsd:string" minOccurs="0"></xsd:element>
+      				<xsd:element name="idLivre" type="xsd:int" minOccurs="0" maxOccurs="1"></xsd:element>
       			</xsd:choice>
-
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="rechercheOuvrageResponse">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:element name="ouvrages" type="Q1:LivreType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
@@ -108,7 +85,6 @@
       <xsd:element name="detailsOuvrageFault">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:choice>
       				<xsd:element name="id" type="xsd:int" minOccurs="1"></xsd:element>
       				<xsd:element name="titre" type="xsd:string" minOccurs="1"></xsd:element>
@@ -116,7 +92,7 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="recherche">
+      <!--  <xsd:element name="recherche">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -131,30 +107,25 @@
       			<xsd:element name="out" type="xsd:string"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
-      </xsd:element>
+      </xsd:element>-->
       <xsd:element name="empruntOuvrage">
       	<xsd:complexType>
       		<xsd:sequence>
-
-                        <xsd:element name="idLivre" type="xsd:int" minOccurs="1">
-      				</xsd:element>
-                        <xsd:element name="idEmprunteur" type="xsd:int" minOccurs="1">
-      				</xsd:element>
-                    </xsd:sequence>
+                  <xsd:element name="idLivre" type="xsd:int" minOccurs="1"></xsd:element>
+                  <xsd:element name="idEmprunteur" type="xsd:int" minOccurs="1"></xsd:element>
+            </xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="empruntOuvrageResponse">
       	<xsd:complexType>
       		<xsd:sequence>
-
-      			<xsd:element name="livre" type="Q1:LivreEmpruntType" minOccurs="1"></xsd:element>
+      			<xsd:element name="livre" type="Q1:LivreEmpruntType" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="empruntOuvrageFault">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:choice>
       				<xsd:element name="id" type="xsd:int" minOccurs="1"></xsd:element>
       				<xsd:element name="titre" type="xsd:string" minOccurs="1"></xsd:element>
@@ -165,16 +136,13 @@
       <xsd:element name="retourOuvrage">
       	<xsd:complexType>
       		<xsd:sequence>
-
-                        <xsd:element name="idLivreEmprunt" type="xsd:int" minOccurs="1">
-      				</xsd:element>
-                    </xsd:sequence>
+                 <xsd:element name="idLivreEmprunt" type="xsd:int" minOccurs="1"></xsd:element>
+            </xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="retourOuvrageResponse">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:element name="livre" type="Q1:LivreType" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
@@ -182,7 +150,6 @@
       <xsd:element name="retourOuvrageFault">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:choice>
       				<xsd:element name="id" type="xsd:int" minOccurs="1"></xsd:element>
       				<xsd:element name="titre" type="xsd:string" minOccurs="1"></xsd:element>
@@ -193,7 +160,6 @@
       <xsd:element name="retourOuvrageFault1">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:choice>
       				<xsd:element name="id" type="xsd:int" minOccurs="1"></xsd:element>
       				<xsd:element name="dateEmprunt" type="xsd:date" minOccurs="1"></xsd:element>
@@ -204,15 +170,13 @@
       <xsd:element name="prolongationOuvrage">
       	<xsd:complexType>
       		<xsd:sequence>
-
-                        <xsd:element name="idEmprunt" type="xsd:int" minOccurs="1"></xsd:element>
-                    </xsd:sequence>
+                 <xsd:element name="idEmprunt" type="xsd:int" minOccurs="1"></xsd:element>
+            </xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
       <xsd:element name="prolongationOuvrageResponse">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:element name="emprunt" type="Q1:LivreEmpruntType" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
@@ -220,7 +184,6 @@
       <xsd:element name="prolongationOuvrageFault">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:choice>
       				<xsd:element name="id" type="xsd:int" minOccurs="1"></xsd:element>
       				<xsd:element name="titre" type="xsd:string" minOccurs="1"></xsd:element>
@@ -231,7 +194,6 @@
       <xsd:element name="prolongationOuvrageFault1">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:choice>
       				<xsd:element name="id" type="xsd:int" minOccurs="1"></xsd:element>
       				<xsd:element name="dateEmprunt" type="xsd:date" minOccurs="1"></xsd:element>
@@ -244,13 +206,12 @@
       <xsd:element name="listRetardatairesResponse">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:element name="utilisateur" type="Q1:UtilisateurType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
       			<xsd:element name="coordonnee" type="Q1:CoordonneeUtilisateurType" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="uneOperation">
+      <!--  <xsd:element name="uneOperation">
       	<xsd:complexType>
       		<xsd:sequence>
 
@@ -264,11 +225,10 @@
       			<xsd:element name="out" type="xsd:string"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
-      </xsd:element>
+      </xsd:element>-->
       <xsd:element name="obtenirEmpruntUtilisateur">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:element name="idUtilisateur" type="xsd:int" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
@@ -276,7 +236,6 @@
       <xsd:element name="obtenirEmpruntUtilisateurResponse">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:element name="livreEmprunt" type="Q1:LivreEmpruntType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
@@ -284,7 +243,6 @@
       <xsd:element name="obtenirEmpruntUtilisateurFault">
       	<xsd:complexType>
       		<xsd:sequence>
-
       			<xsd:element name="idUtilisateur" type="xsd:int" minOccurs="1"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
@@ -324,12 +282,12 @@
   <wsdl:message name="detailsOuvrageFault">
   	<wsdl:part name="parameters" element="ybs:detailsOuvrageFault"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="rechercheRequest">
+  <!--  <wsdl:message name="rechercheRequest">
   	<wsdl:part name="parameters" element="ybs:recherche"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="rechercheResponse">
   	<wsdl:part name="parameters" element="ybs:rechercheResponse"></wsdl:part>
-  </wsdl:message>
+  </wsdl:message>-->
   <wsdl:message name="empruntOuvrageRequest">
   	<wsdl:part name="parameters" element="ybs:empruntOuvrage"></wsdl:part>
   </wsdl:message>
@@ -369,12 +327,12 @@
   <wsdl:message name="listRetardatairesResponse">
   	<wsdl:part name="parameters" element="ybs:listRetardatairesResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="uneOperationRequest">
+  <!--  <wsdl:message name="uneOperationRequest">
   	<wsdl:part name="parameters" element="ybs:uneOperation"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="uneOperationResponse">
   	<wsdl:part name="parameters" element="ybs:uneOperationResponse"></wsdl:part>
-  </wsdl:message>
+  </wsdl:message>-->
   <wsdl:message name="obtenirEmpruntUtilisateurRequest">
   	<wsdl:part name="parameters" element="ybs:obtenirEmpruntUtilisateur"></wsdl:part>
   </wsdl:message>
@@ -434,7 +392,7 @@
   	<!--  <wsp:PolicyReference URI="#BindingPolicy" />-->
   	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
   	<wsdl:operation name="login">
-  		<soap:operation soapAction=""/> <!--  "http://yogj.fr/biblioWS/login" />-->
+  		<soap:operation soapAction=""/> 
   		<wsdl:input>
   			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
@@ -445,7 +403,7 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="deconnexion">
-  		<soap:operation soapAction=""/> <!--  "http://yogj.fr/biblioWS/deconnexion" />-->
+  		<soap:operation soapAction=""/> 
   		<wsdl:input>
   			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
@@ -459,7 +417,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="listNouveautes">
-  		<soap:operation soapAction=""/> <!--  "http://yogj.fr/biblioWS/listNouveautes" />-->
+  		<soap:operation soapAction=""/> 
   		<wsdl:input>
   			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
@@ -470,7 +428,7 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="rechercheOuvrage">
-  		<soap:operation soapAction=""/> <!--  "http://yogj.fr/biblioWS/rechercheOuvrage" />-->
+  		<soap:operation soapAction=""/> 
   		<wsdl:input>
   			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
@@ -484,7 +442,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="empruntOuvrage">
-  		<soap:operation soapAction=""/> <!--  "http://yogj.fr/biblioWS/empruntOuvrage" />-->
+  		<soap:operation soapAction=""/> 
   		<wsdl:input>
   			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
@@ -498,7 +456,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="retourOuvrage">
-  		<soap:operation soapAction=""/> <!--  "http://yogj.fr/biblioWS/retourOuvrage" />-->
+  		<soap:operation soapAction=""/> 
   		<wsdl:input>
   			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
@@ -512,7 +470,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="prolongationOuvrage">
-  		<soap:operation soapAction=""/> <!--  "http://yogj.fr/biblioWS/prolongationOuvrage" />-->
+  		<soap:operation soapAction=""/> 
   		<wsdl:input>
   			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
@@ -526,7 +484,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="listRetardataires">
-  		<soap:operation soapAction=""/> <!--  "http://yogj.fr/biblioWS/listRetardataires" />-->
+  		<soap:operation soapAction=""/> 
   		<wsdl:input>
   			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
@@ -538,7 +496,6 @@
   	</wsdl:operation>
   	<wsdl:operation name="obtenirEmpruntUtilisateur">
   		<soap:operation soapAction=""/>
-  			<!--  soapAction="http://yogj.fr/biblioWS/obtenirEmpruntUtilisateur" />-->
   		<wsdl:input>
   			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />

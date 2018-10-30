@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import OC.webService.nicolas.business.contract.UtilisateurManager;
@@ -29,19 +28,11 @@ public class UtilisateurManagerImpl extends AbstractManager implements Utilisate
 	 * mot de passe donnés en paramètre
 	 */
 	@Override
-	public UtilisateurType getUtilisateur(String pseudo, String motDePasse) throws RuntimeException {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	public UtilisateurType getUtilisateur(String pseudo) throws RuntimeException {
 
 		if (this.getDaoFactory().getUtilisateurDao().findByPseudo(pseudo).getId() > 0) {
 			this.user = this.getDaoFactory().getUtilisateurDao().findByPseudo(pseudo);
-			System.out.println("comparaison mot de passe : in " + motDePasse + " - bdd " + this.user.getMotDePasse());
-			if (passwordEncoder.matches(motDePasse, this.user.getMotDePasse())) {
-				// this.user.setEmprunts(this.getDaoFactory().getLivreEmpruntDao().findByUtilisateurId(this.user.getId()));
-				return MapperUtilisateur.fromUtilisateurToUtilisateurType(this.user);
-			} else {
-				throw new RuntimeException("Mot de passe invalide !");
-			}
-
+			return MapperUtilisateur.fromUtilisateurToUtilisateurType(this.user);
 		} else {
 			throw new RuntimeException("Pseudo invalide : " + pseudo);
 		}

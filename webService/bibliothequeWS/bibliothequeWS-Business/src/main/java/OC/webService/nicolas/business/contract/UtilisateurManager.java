@@ -16,11 +16,10 @@ public interface UtilisateurManager {
 	 * mot de passe donné en paramètre
 	 * 
 	 * @param pseudo
-	 * @param motDePasse
 	 * @return {@link Utilisateur}
 	 * @throws RuntimeException
 	 */
-	public UtilisateurType getUtilisateur(String pseudo, String motDePasse) throws RuntimeException;
+	public UtilisateurType getUtilisateur(String pseudo) throws RuntimeException;
 
 	/**
 	 * Méthode pour obtenir l {@link Utilisateur} d'id donné en paramètre

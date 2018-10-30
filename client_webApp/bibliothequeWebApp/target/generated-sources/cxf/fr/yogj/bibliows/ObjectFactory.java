@@ -108,22 +108,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Recherche }
-     * 
-     */
-    public Recherche createRecherche() {
-        return new Recherche();
-    }
-
-    /**
-     * Create an instance of {@link RechercheResponse }
-     * 
-     */
-    public RechercheResponse createRechercheResponse() {
-        return new RechercheResponse();
-    }
-
-    /**
      * Create an instance of {@link EmpruntOuvrage }
      * 
      */
@@ -217,22 +201,6 @@ public class ObjectFactory {
      */
     public ListRetardatairesResponse createListRetardatairesResponse() {
         return new ListRetardatairesResponse();
-    }
-
-    /**
-     * Create an instance of {@link UneOperation }
-     * 
-     */
-    public UneOperation createUneOperation() {
-        return new UneOperation();
-    }
-
-    /**
-     * Create an instance of {@link UneOperationResponse }
-     * 
-     */
-    public UneOperationResponse createUneOperationResponse() {
-        return new UneOperationResponse();
     }
 
     /**

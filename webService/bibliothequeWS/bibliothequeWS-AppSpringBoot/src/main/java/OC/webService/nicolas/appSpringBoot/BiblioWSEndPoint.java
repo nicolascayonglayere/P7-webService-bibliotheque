@@ -47,10 +47,10 @@ public class BiblioWSEndPoint implements BiblioWS {
 	 * son mot de passe donnés en paramètre
 	 */
 	@Override
-	public UtilisateurType login(String pseudo, String motDePasse) throws LoginFault_Exception {
+	public UtilisateurType login(String pseudo) throws LoginFault_Exception {
 		// TODO Auto-generated method stub on vérifie les login
 		try {
-			UtilisateurType user = this.manageFacto.getUtilisateurManager().getUtilisateur(pseudo, motDePasse);
+			UtilisateurType user = this.manageFacto.getUtilisateurManager().getUtilisateur(pseudo);
 			return user;
 		} catch (RuntimeException e) {
 			logger.debug(e.getMessage());

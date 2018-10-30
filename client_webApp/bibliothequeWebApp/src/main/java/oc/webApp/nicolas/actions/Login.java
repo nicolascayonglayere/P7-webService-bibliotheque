@@ -73,21 +73,17 @@ public class Login extends ActionSupport implements SessionAware, ServletRequest
 		try {
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			System.out.println("mdp yogj : " + passwordEncoder.encode(this.utilisateur.getMotDePasse()));
-			vUser = this.biblioWS.getBiblioWSSOAP().login(this.utilisateur.getPseudo(),
-					this.utilisateur.getMotDePasse());
+			vUser = this.biblioWS.getBiblioWSSOAP().login(this.utilisateur.getPseudo());
 			// passwordEncoder.encode(this.utilisateur.getMotDePasse()));
 			logger.debug("mdp : " + vUser.getMotDePasse());
 
-			// --je pense que ce controle est inutile
 			if ((this.utilisateur.getPseudo().equals(vUser.getPseudo()))
 					&& (passwordEncoder.matches(this.utilisateur.getMotDePasse(), vUser.getMotDePasse()))) { // --avec
 																												// cryptage
-				// && (this.utilisateur.getMotDePasse().equals(vUser.getMotDePasse()))) { --sans
-				// cryptage
 				this.session.put("utilisateur", vUser);
 				vResult = ActionSupport.SUCCESS;
 			} else {
-				this.addActionError("Identifiants invalides");
+				this.addActionError("Mot de passe invalide");
 				vResult = ActionSupport.LOGIN;
 			}
 

@@ -15,29 +15,23 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import fr.yogj.bibliows.types.LivreEmpruntType;
-import fr.yogj.bibliows.types.UtilisateurType;
+import oc.batch.nicolas.model.LivreEmprunt;
+import oc.batch.nicolas.model.Utilisateur;
 
 @Component
 public class MailHandler {
 
-	private UtilisateurType retardataire;
-	private LivreEmpruntType let;
+	private Utilisateur retardataire;
+	private LivreEmprunt let;
 
-	// @Value("${mail.smtp.starttls.enable}")
-	private String starttls;
-	@Value("${mail.smtp.host}")
-	private String host;
-	@Value("${mail.smtp.port}")
-	private String port;
-	@Value("${mail.smtp.auth}")
-	private String auth;
-	@Value("${mail.adresse}")
-	private String user;
-	@Value("${mail.pass}")
-	private String mdp;
+	public static String starttls;
+	public static String host;
+	public static String port;
+	public static String auth;
+	public static String user;
+	public static String mdp;
 
-	public MailHandler(UtilisateurType pRetardataire, LivreEmpruntType pLivreEmprunte) {
+	public MailHandler(Utilisateur pRetardataire, LivreEmprunt pLivreEmprunte) {
 		this.retardataire = pRetardataire;
 		this.let = pLivreEmprunte;
 	}
@@ -46,16 +40,16 @@ public class MailHandler {
 		// Setting up configurations for the email connection to the Google SMTP server
 		// using TLS
 		Properties props = new Properties();
-		props.put("mail.smtp.starttls.enable", this.starttls);
-		props.put("mail.smtp.host", this.host);
-		props.put("mail.smtp.port", this.port);
-		props.put("mail.smtp.auth", this.auth);
+		props.put("mail.smtp.starttls.enable", MailHandler.starttls);
+		props.put("mail.smtp.host", MailHandler.host);
+		props.put("mail.smtp.port", MailHandler.port);
+		props.put("mail.smtp.auth", MailHandler.auth);
 
 		// Establishing a session with required user details
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(MailHandler.this.user, MailHandler.this.mdp);
+				return new PasswordAuthentication(MailHandler.user, MailHandler.mdp);
 			}
 		});
 
@@ -94,69 +88,74 @@ public class MailHandler {
 		}
 	}
 
-	public UtilisateurType getRetardataire() {
+	public Utilisateur getRetardataire() {
 		return this.retardataire;
 	}
 
-	public void setRetardataire(UtilisateurType retardataire) {
+	public void setRetardataire(Utilisateur retardataire) {
 		this.retardataire = retardataire;
 	}
 
-	public LivreEmpruntType getLet() {
+	public LivreEmprunt getLet() {
 		return this.let;
 	}
 
-	public void setLet(LivreEmpruntType let) {
+	public void setLet(LivreEmprunt let) {
 		this.let = let;
 	}
 
 	public String getStarttls() {
-		return this.starttls;
+		return MailHandler.starttls;
 	}
 
 	@Value("${mail.smtp.starttls.enable}")
 	public void setStarttls(String starttls) {
-		this.starttls = starttls;
+		MailHandler.starttls = starttls;
 	}
 
 	public String getHost() {
-		return this.host;
+		return MailHandler.host;
 	}
 
+	@Value("${mail.smtp.host}")
 	public void setHost(String host) {
-		this.host = host;
+		MailHandler.host = host;
 	}
 
 	public String getPort() {
-		return this.port;
+		return MailHandler.port;
 	}
 
+	@Value("${mail.smtp.port}")
 	public void setPort(String port) {
-		this.port = port;
+		MailHandler.port = port;
 	}
 
 	public String getAuth() {
-		return this.auth;
+		return MailHandler.auth;
 	}
 
+	@Value("${mail.smtp.auth}")
 	public void setAuth(String auth) {
-		this.auth = auth;
+		MailHandler.auth = auth;
 	}
 
 	public String getUser() {
-		return this.user;
+		return MailHandler.user;
 	}
 
+	@Value("${mail.adresse}")
 	public void setUser(String user) {
-		this.user = user;
+		MailHandler.user = user;
 	}
 
 	public String getMdp() {
-		return this.mdp;
+		return MailHandler.mdp;
 	}
 
+	@Value("${mail.pass}")
 	public void setMdp(String mdp) {
-		this.mdp = mdp;
+		MailHandler.mdp = mdp;
 	}
 
 }

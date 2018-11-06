@@ -13,6 +13,10 @@ import fr.yogj.bibliows.BiblioWS_Service;
 import fr.yogj.bibliows.ListRetardatairesResponse;
 import fr.yogj.bibliows.types.LivreEmpruntType;
 import fr.yogj.bibliows.types.UtilisateurType;
+import oc.batch.nicolas.mapper.MapperLivreEmprunt;
+import oc.batch.nicolas.mapper.MapperUtilisateur;
+import oc.batch.nicolas.model.LivreEmprunt;
+import oc.batch.nicolas.model.Utilisateur;
 
 public class EnvoiMailRetardataires implements Tasklet {
 
@@ -35,7 +39,9 @@ public class EnvoiMailRetardataires implements Tasklet {
 			for (LivreEmpruntType et : u.getEmprunt()) {
 				if ((et.getDateEmprunt().toGregorianCalendar().getTime()).before(cal.getTime())) {
 					// --envoi de mail
-					this.mh = new MailHandler(u, et);
+					Utilisateur monUser = MapperUtilisateur.fromUtilisateurTypeToUtilisateur(u);
+					LivreEmprunt monEmprunt = MapperLivreEmprunt.fromLivreEmpruntTypeToLivreEmprunt(et);
+					this.mh = new MailHandler(monUser, monEmprunt);
 					this.mh.sendMail();
 				}
 			}

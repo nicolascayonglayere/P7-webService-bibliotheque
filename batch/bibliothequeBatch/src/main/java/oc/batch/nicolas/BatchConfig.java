@@ -29,7 +29,8 @@ public class BatchConfig extends DefaultBatchConfigurer {
 	}
 
 	@Bean
-	@Scheduled(cron = "0 1 1 * * ?")
+	// @Scheduled(cron = "0 1 1 * * ?")
+	@Scheduled(cron = "${frequence.cron}")
 	public Job job() {
 		return this.jobBuilderFactory.get("job").start(this.step()).build();
 	}

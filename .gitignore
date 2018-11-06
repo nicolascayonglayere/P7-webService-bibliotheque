@@ -27,3 +27,6 @@ target
 .settings
 *.classpath
 *.factorypath
+
+#fichiers .properties
+*.properties

@@ -30,3 +30,4 @@ target
 
 #fichiers .properties
 *.properties
+/batch/bibliothequeBatch/src/main/resources/application.properties

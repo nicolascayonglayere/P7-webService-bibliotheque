@@ -86,15 +86,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>  
-		
-        <!-- driver postgresSQL -->
-        <!--<dependency>-->
-        	<!--<groupId>org.postgresql</groupId>-->
-        	<!--<artifactId>postgresql</artifactId>-->
-        	<!--<version>42.2.2</version>-->
-        	<!--<scope>runtime</scope>-->
-        <!--</dependency>				-->
-		<!-- https://mvnrepository.com/artifact/io.fabric8/fabric8-project-bom-cxf-spring-boot -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -131,6 +122,10 @@
 	<build>
 	    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
 	      <plugins>
+	        <!--  <plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	        </plugin>-->	      
 	        <plugin>
 	          <groupId>org.apache.maven.plugins</groupId>
 	          <artifactId>maven-clean-plugin</artifactId>

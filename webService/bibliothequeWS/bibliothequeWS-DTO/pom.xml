@@ -55,6 +55,7 @@
                         <wsdlOptions>
                             <wsdlOption>
                                 <wsdl>${basedir}/src/main/resources/biblioWS.wsdl</wsdl>
+                                <wsdlLocation>classpath:biblioWS.wsdl</wsdlLocation>
 					            <extraargs>
 					                <extraarg>-impl</extraarg>
 					                <extraarg>-server</extraarg>
@@ -68,10 +69,6 @@
                 </execution>
             </executions>
         </plugin>
-	    <plugin>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-maven-plugin</artifactId>
-	    </plugin>
     </plugins>
   </build>
 </project>

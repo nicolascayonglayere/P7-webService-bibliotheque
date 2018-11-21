@@ -34,10 +34,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-		<!--  <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -77,20 +73,16 @@
             <artifactId>struts2-java8-support-plugin</artifactId>
             <version>2.5.2</version>
         </dependency>
-    <dependency>
-    	<groupId>org.apache.struts</groupId>
-    	<artifactId>struts2-json-plugin</artifactId>
-    </dependency>        
+	    <dependency>
+	    	<groupId>org.apache.struts</groupId>
+	    	<artifactId>struts2-json-plugin</artifactId>
+	    </dependency>        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
 		</dependency>
-		<!--  <dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
-			<version>3.2.5</version>
-		</dependency>-->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-client</artifactId>
@@ -106,79 +98,57 @@
 		    <artifactId>cxf-rt-frontend-jaxrs</artifactId>
 		    <version>3.2.5</version>
 		</dependency>
-    <dependency>
-    	<groupId>org.apache.cxf</groupId>
-    	<artifactId>cxf-rt-transports-http-jetty</artifactId>
-    	<version>3.2.5</version>
-    </dependency>
-	<dependency>
-		<groupId>org.apache.cxf</groupId>
-		<artifactId>cxf-rt-transports-local</artifactId>
-		<version>3.2.5</version>
-	</dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-rs-service-description-swagger</artifactId>
-            <version>3.2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-features-metrics</artifactId>
-            <version>3.2.5</version>
-	</dependency>	    	
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-core</artifactId>
-        <scope>runtime</scope>
-    </dependency>
-    <dependency>
-    	<groupId>org.springframework.boot</groupId>
-    	<artifactId>spring-boot-configuration-processor</artifactId>
-    	<optional>true</optional>
-    </dependency>
-    <dependency>
-    	<groupId>org.apache.cxf</groupId>
-    	<artifactId>cxf-rt-transports-http</artifactId>
-    	<version>3.2.5</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.springframework.boot</groupId>
-    	<artifactId>spring-boot-devtools</artifactId>
-    </dependency>
+	    <dependency>
+	    	<groupId>org.apache.cxf</groupId>
+	    	<artifactId>cxf-rt-transports-http-jetty</artifactId>
+	    	<version>3.2.5</version>
+	    </dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-local</artifactId>
+			<version>3.2.5</version>
+		</dependency>
+	    	
+	    <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <scope>test</scope>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.logging.log4j</groupId>
+	        <artifactId>log4j-core</artifactId>
+	        <scope>runtime</scope>
+	    </dependency>
+	
+	    <dependency>
+	    	<groupId>org.apache.cxf</groupId>
+	    	<artifactId>cxf-rt-transports-http</artifactId>
+	    	<version>3.2.5</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>org.springframework.boot</groupId>
+	    	<artifactId>spring-boot-devtools</artifactId>
+	    </dependency>
+	
+	    <dependency>
+	    	<groupId>org.apache.cxf</groupId>
+	    	<artifactId>cxf-rt-frontend-simple</artifactId>
+	    	<version>3.2.6</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>org.springframework.security</groupId>
+	    	<artifactId>spring-security-crypto</artifactId>
+	    </dependency>
 
-    <dependency>
-    	<groupId>org.apache.cxf</groupId>
-    	<artifactId>cxf-rt-frontend-simple</artifactId>
-    	<version>3.2.6</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.springframework.security</groupId>
-    	<artifactId>spring-security-crypto</artifactId>
-    </dependency>
-    
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-undertow</artifactId>
-        <scope>provided</scope>
-    </dependency>
-    
-        <dependency>
-            <groupId>org.springframework.ws</groupId>
-            <artifactId>spring-ws-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ws</groupId>
-            <artifactId>spring-ws-support</artifactId>
-</dependency>
         <dependency>
         	<groupId>com.jgeppert.struts2.bootstrap</groupId>
         	<artifactId>struts2-bootstrap-plugin</artifactId>
         	<version>2.5.2</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-configuration-processor</artifactId>
+        	<optional>true</optional>
         </dependency>
   </dependencies>
   
@@ -226,6 +196,7 @@
                         <wsdlOptions>
                             <wsdlOption>
                                 <wsdl>${basedir}/src/main/resources/biblioWS.wsdl</wsdl>
+                                <wsdlLocation>classpath:biblioWS.wsdl</wsdlLocation>
 					            <extraargs>
 					                <extraarg>-client</extraarg>
 					            </extraargs>                                

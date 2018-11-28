@@ -11,10 +11,17 @@ import javax.imageio.ImageIO;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Classe Action concernant les images
+ * 
+ * @author nicolas
+ *
+ */
 @Service
 public class ImageAction extends ActionSupport {
 
@@ -22,7 +29,11 @@ public class ImageAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	byte[] imageInByte = null;
 	String imageId;
+	private String cheminImg;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	public ImageAction() {
 		logger.debug("constructeur ImageAction");
 	}
@@ -32,6 +43,11 @@ public class ImageAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+	/**
+	 * Méthode pour convertir le fichier image en tableau de byte
+	 * 
+	 * @return un tableau de byte correspondant a l'image
+	 */
 	public byte[] getCustomImageInBytes() {
 		logger.debug("imageId " + this.imageId);
 		System.out.println("imageId " + this.imageId);
@@ -53,16 +69,21 @@ public class ImageAction extends ActionSupport {
 		return this.imageInByte;
 	}
 
+	/**
+	 * Méthode pour récupérer le fichier image
+	 * 
+	 * @param imageId
+	 * @return le fichier contenant l'image
+	 */
 	private File getImageFile(String imageId) {
-		// GestionFichierProperties gfp = new GestionFichierProperties();
-		String filePath = "I:\\Documents\\openclassrooms formation\\P7\\P7-webService-bibliotheque\\client_webApp\\bibliothequeWebApp\\src\\main\\webapp\\assets\\images\\"; // gfp.lireProp().getProperty("chemin.upload");
-		System.out.println("chemin : " + filePath);
-		File file = new File(filePath, imageId + ".jpg");
+		System.out.println("chemin : " + this.cheminImg);
+		File file = new File(this.cheminImg, imageId + ".jpg");
 		logger.debug(file.toString());
 		System.out.println(file.toString());
 		return file;
 	}
 
+	// --Getter et setter--
 	public String getCustomContentType() {
 		return "image/JPG";
 	}
@@ -77,6 +98,15 @@ public class ImageAction extends ActionSupport {
 
 	public void setImageId(String imageId) {
 		this.imageId = imageId;
+	}
+
+	public String getCheminImg() {
+		return this.cheminImg;
+	}
+
+	@Value("${chemin.image}")
+	public void setCheminImg(String cheminImg) {
+		this.cheminImg = cheminImg;
 	}
 
 }

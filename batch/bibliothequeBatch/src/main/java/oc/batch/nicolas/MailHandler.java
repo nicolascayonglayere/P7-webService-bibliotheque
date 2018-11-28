@@ -18,6 +18,12 @@ import org.springframework.stereotype.Component;
 import oc.batch.nicolas.model.LivreEmprunt;
 import oc.batch.nicolas.model.Utilisateur;
 
+/**
+ * Classe qui construit et envoie les emails
+ * 
+ * @author nicolas
+ *
+ */
 @Component
 public class MailHandler {
 
@@ -31,11 +37,20 @@ public class MailHandler {
 	public static String user;
 	public static String mdp;
 
+	/**
+	 * Constructeur avec paramètre
+	 * 
+	 * @param pRetardataire
+	 * @param pLivreEmprunte
+	 */
 	public MailHandler(Utilisateur pRetardataire, LivreEmprunt pLivreEmprunte) {
 		this.retardataire = pRetardataire;
 		this.let = pLivreEmprunte;
 	}
 
+	/**
+	 * Méthode pour construire et envoyer l'email
+	 */
 	public void sendMail() {
 		// Setting up configurations for the email connection to the Google SMTP server
 		// using TLS
@@ -88,6 +103,7 @@ public class MailHandler {
 		}
 	}
 
+	// --Getter et setter--
 	public Utilisateur getRetardataire() {
 		return this.retardataire;
 	}

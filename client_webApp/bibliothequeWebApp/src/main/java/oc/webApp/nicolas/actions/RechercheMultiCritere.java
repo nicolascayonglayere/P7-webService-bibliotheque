@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
 import fr.yogj.bibliows.BiblioWS_Service;
 import fr.yogj.bibliows.DetailsOuvrageFault_Exception;
@@ -37,7 +38,7 @@ public class RechercheMultiCritere extends ActionSupport {
 	/**
 	 * Méthode qui construit et envoie les donnees a la jsp
 	 * 
-	 * @return
+	 * @return le resultat de l'action
 	 */
 	@Override
 	public String execute() {
@@ -88,6 +89,7 @@ public class RechercheMultiCritere extends ActionSupport {
 		return this.titre;
 	}
 
+	@RequiredStringValidator(message = "Veuillez saisir un titre.")
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
@@ -96,6 +98,7 @@ public class RechercheMultiCritere extends ActionSupport {
 		return this.nomAuteur;
 	}
 
+	@RequiredStringValidator(message = "Veuillez saisir un nom d'auteur")
 	public void setNomAuteur(String nomAuteur) {
 		this.nomAuteur = nomAuteur;
 	}

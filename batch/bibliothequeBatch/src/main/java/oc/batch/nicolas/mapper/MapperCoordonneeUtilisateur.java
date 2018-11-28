@@ -7,21 +7,19 @@ import oc.batch.nicolas.model.Utilisateur;
 
 /**
  * Classe MapperCoordonneeUtilisateur pour mapper les propriétés d'un objet
- * {@link CoodonneeUtilisateurType} vers un objet {@link CoordonneeUtilisateur}
- * et inversement
+ * généré par cxf vers un objet {@link CoordonneeUtilisateur} et inversement
  * 
  * @author nicolas
  *
  */
-// @Transactional
+
 public class MapperCoordonneeUtilisateur {
 
 	/**
-	 * Méthode depuis {@link CoordonneeUtilisateur} vers
-	 * {@link CoordonneeUtilisateurType}
+	 * Méthode depuis {@link CoordonneeUtilisateur} vers un objet généré par cxf
 	 * 
 	 * @param pCoordonneeUtilisateur
-	 * @return {@link CoordonneeUTilisateurType}
+	 * @return un objet généré par cxf
 	 */
 	public static CoordonneeUtilisateurType fromCoordoonneeToCoordonneeType(
 			CoordonneeUtilisateur pCoordonneeUtilisateur) {
@@ -43,8 +41,7 @@ public class MapperCoordonneeUtilisateur {
 	}
 
 	/**
-	 * Méthode depuis {@link CoordonneeUtilisateurType} vers
-	 * {@link CoordonneeUtilisateur}
+	 * Méthode depuis un objet généré par cxf vers {@link CoordonneeUtilisateur}
 	 * 
 	 * @param pCoordonneeUtilisateurType
 	 * @return

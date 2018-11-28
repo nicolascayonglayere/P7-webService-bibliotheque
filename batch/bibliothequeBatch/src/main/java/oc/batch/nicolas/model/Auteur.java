@@ -7,6 +7,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Classe representant un auteur
+ * 
+ * @author nicolas
+ *
+ */
 @Component
 public class Auteur {
 
@@ -17,9 +23,21 @@ public class Auteur {
 	private String nationalite;
 	private List<Livre> manuscrits;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	public Auteur() {
 	}
 
+	/**
+	 * Constructeur avec paramètre
+	 * 
+	 * @param id
+	 * @param nom
+	 * @param prenom
+	 * @param dateDeNaissance
+	 * @param nationalite
+	 */
 	public Auteur(int id, String nom, String prenom, XMLGregorianCalendar dateDeNaissance, String nationalite) {
 		this.id = id;
 		this.nom = nom;
@@ -28,6 +46,7 @@ public class Auteur {
 		this.nationalite = nationalite;
 	}
 
+	// -- Getter et Setter--
 	public int getId() {
 		return this.id;
 	}

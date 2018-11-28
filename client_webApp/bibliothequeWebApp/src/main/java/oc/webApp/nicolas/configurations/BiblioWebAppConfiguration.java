@@ -17,24 +17,35 @@ import org.springframework.context.annotation.Configuration;
 
 import fr.yogj.bibliows.BiblioWS;
 
+/**
+ * Classe de configuration de la webApp
+ * 
+ * @author nicolas
+ *
+ */
 @Configuration
 @ConfigurationProperties(prefix = "cxf")
 public class BiblioWebAppConfiguration {
 
+	static final Logger logger = LogManager.getLogger();
+	private String url;
+
 	/**
-	 * Méthode pour obtenir le SpringBus
+	 * Méthode pour construire le SpringBus
 	 * 
-	 * @return
+	 * @return SpringBus
 	 */
 	@Bean(name = Bus.DEFAULT_BUS_ID)
 	public SpringBus springBus() {
 		return new SpringBus();
 	}
 
-	static final Logger logger = LogManager.getLogger();
-	@Value("${biblio.ws.endpoint-url}")
-	private String url;
-
+	/**
+	 * Méthode pour connecter le web-service
+	 * 
+	 * @param bus
+	 * @return BiblioWS
+	 */
 	@Bean
 	public BiblioWS bus(SpringBus bus) {
 		JaxWsProxyFactoryBean bean = new JaxWsProxyFactoryBean();
@@ -44,6 +55,11 @@ public class BiblioWebAppConfiguration {
 		return bean.create(BiblioWS.class);
 	}
 
+	/**
+	 * Méthode pour configurer Struts2
+	 * 
+	 * @return FilterRegistrationBean
+	 */
 	@Bean
 	public FilterRegistrationBean<Filter> someFilterRegistration() {
 		FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<Filter>();
@@ -53,4 +69,15 @@ public class BiblioWebAppConfiguration {
 		registration.setName("StrutsPrepareAndExecuteFilter");
 		return registration;
 	}
+
+	// --Getter et Setter
+	public String getUrl() {
+		return this.url;
+	}
+
+	@Value("${biblio.ws.endpoint.url}")
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 }

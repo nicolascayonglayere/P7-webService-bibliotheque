@@ -20,11 +20,11 @@ fr\yogj\bibliows\EmpruntOuvrageFault_Exception.class
 oc\webApp\nicolas\interceptor\LoginInterceptor.class
 fr\yogj\bibliows\RetourOuvrageFault.class
 oc\webApp\nicolas\actions\Login.class
-oc\webApp\nicolas\actions\BilanEmpruntAjax.class
 fr\yogj\bibliows\BiblioWS_BiblioWSSOAP_Client.class
 fr\yogj\bibliows\ObtenirEmpruntUtilisateurResponse.class
 fr\yogj\bibliows\ListNouveautesResponse.class
 fr\yogj\bibliows\RetourOuvrageFault1.class
+oc\webApp\nicolas\actions\Logout.class
 fr\yogj\bibliows\types\AuteurType.class
 fr\yogj\bibliows\ObtenirEmpruntUtilisateurFault.class
 fr\yogj\bibliows\LoginResponse.class
@@ -35,6 +35,7 @@ fr\yogj\bibliows\ProlongationOuvrageFault.class
 fr\yogj\bibliows\LoginFault.class
 fr\yogj\bibliows\RechercheOuvrage.class
 fr\yogj\bibliows\Deconnexion.class
+oc\webApp\nicolas\configurations\EmplacementWS.class
 fr\yogj\bibliows\ProlongationOuvrageFault1.class
 oc\webApp\nicolas\actions\RechercheMultiCritere.class
 fr\yogj\bibliows\EmpruntOuvrageFault.class

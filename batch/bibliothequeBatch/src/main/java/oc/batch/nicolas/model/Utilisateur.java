@@ -5,6 +5,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Classe représentant un utilisateur
+ * 
+ * @author nicolas
+ *
+ */
 @Component
 public class Utilisateur {
 
@@ -16,9 +22,21 @@ public class Utilisateur {
 	private List<CoordonneeUtilisateur> coordonnee;
 	private List<LivreEmprunt> emprunt;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	public Utilisateur() {
 	}
 
+	/**
+	 * Constructeur avec paramètre
+	 * 
+	 * @param id
+	 * @param nom
+	 * @param prenom
+	 * @param pseudo
+	 * @param motDePasse
+	 */
 	public Utilisateur(int id, String nom, String prenom, String pseudo, String motDePasse) {
 		this.id = id;
 		this.nom = nom;
@@ -27,6 +45,7 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 
+	// --Getter et Setter --
 	public int getId() {
 		return this.id;
 	}

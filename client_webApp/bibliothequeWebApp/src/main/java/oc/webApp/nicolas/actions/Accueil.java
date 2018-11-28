@@ -21,17 +21,21 @@ import fr.yogj.bibliows.types.LivreType;
 public class Accueil extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
+	/// private static String url_ws;
 	private List<LivreType> livresAccueil = new ArrayList<LivreType>();
+	// private EmplacementWS ws = new EmplacementWS();
 
-	private BiblioWS_Service biblioWS = new BiblioWS_Service();
+	// private BiblioWS biblioWS;
 
 	/**
 	 * Méthode qui construit et envoie les données nécessaires à la jsp
 	 */
 	@Override
 	public String execute() {
+		// URL url = new URL(url_ws);
+		BiblioWS_Service biblioWS = new BiblioWS_Service();// this.ws.getMonUrl());
+		ListNouveautesResponse lnr = biblioWS.getBiblioWSSOAP().listNouveautes("");
 
-		ListNouveautesResponse lnr = this.biblioWS.getBiblioWSSOAP().listNouveautes("");
 		this.livresAccueil = lnr.getNouveautes();
 
 		return ActionSupport.SUCCESS;
@@ -44,4 +48,12 @@ public class Accueil extends ActionSupport {
 	public void setLivresAccueil(List<LivreType> livresAccueil) {
 		this.livresAccueil = livresAccueil;
 	}
-}
+
+	// public static String getUrl_ws() {
+	// return url_ws;
+	// }
+	// @Value("${biblio.ws.endpoint.url}")
+	// public static void setUrl_ws(String url_ws) {
+	// Accueil.url_ws = url_ws;
+	// }
+} //

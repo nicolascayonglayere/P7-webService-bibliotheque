@@ -34,7 +34,7 @@ public class MonCompte extends ActionSupport implements SessionAware {
 	static final Logger logger = LogManager.getLogger();
 	private BiblioWS_Service biblioWS = new BiblioWS_Service();
 	private Map<String, Object> session;
-	private UtilisateurType utilisateur;// = new UtilisateurType();
+	private UtilisateurType utilisateur;
 	private Map<LivreEmpruntType, Date> listEmprunt = new HashMap<LivreEmpruntType, Date>();
 	private CoordonneeUtilisateurType coordonneeUtilisateur = new CoordonneeUtilisateurType();
 

@@ -33,15 +33,15 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	private BiblioWS_Service biblioWS = new BiblioWS_Service();
 	private String idLivre;
 	private String idEmprunt;
-	private LivreType livreType;// = new LivreType();
-	private UtilisateurType utilisateur;// = new UtilisateurType();
-	private LivreEmpruntType monEmprunt;// = new LivreEmpruntType();
+	private LivreType livreType;
+	private UtilisateurType utilisateur;
+	private LivreEmpruntType monEmprunt;
 	private Map<String, Object> session;
 
 	/**
 	 * Méthode pour emprunter un livre
 	 * 
-	 * @return
+	 * @return le resultat de l'action
 	 */
 	public String emprunter() {
 
@@ -70,14 +70,11 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	/**
 	 * Méthode pour rendre un livre
 	 * 
-	 * @return
+	 * @return le resultat de l'action
 	 */
 	public String retourner() {
 
 		this.utilisateur = (UtilisateurType) this.session.get("utilisateur");
-		// logger.debug("nom ouvrage retourner " +
-		// this.monEmprunt.getOuvrage().getTitre() + " nom emprunteur "+
-		// this.utilisateur.getPseudo());
 		try {
 			this.livreType = this.biblioWS.getBiblioWSSOAP().retourOuvrage(Integer.valueOf(this.idEmprunt));
 			this.addActionMessage("Vous avez rendu le livre : " + this.livreType.getTitre());
@@ -94,14 +91,11 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	/**
 	 * Méthode pour prolonger le pret d'un livre
 	 * 
-	 * @return
+	 * @return le resultat de l'action
 	 */
 	public String prolonger() {
 
 		this.utilisateur = (UtilisateurType) this.session.get("utilisateur");
-		// logger.debug("nom ouvrage retourner " +
-		// this.monEmprunt.getOuvrage().getTitre() + " nom emprunteur "+
-		// this.utilisateur.getPseudo());
 		try {
 			this.monEmprunt = this.biblioWS.getBiblioWSSOAP().prolongationOuvrage(Integer.valueOf(this.idEmprunt));
 			this.addActionMessage("Vous avez prolongé l'emprunt n° : " + this.idEmprunt);

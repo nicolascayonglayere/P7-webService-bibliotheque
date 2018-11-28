@@ -4,6 +4,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Classe représentant un {@link Livre} emprunté
+ * 
+ * @author nicolas
+ *
+ */
 @Component
 public class LivreEmprunt {
 
@@ -13,15 +19,26 @@ public class LivreEmprunt {
 	private XMLGregorianCalendar dateEmprunt;
 	private boolean prolongation;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	public LivreEmprunt() {
 	}
 
+	/**
+	 * Constructeur avec paramètre
+	 * 
+	 * @param id
+	 * @param dateEmprunt
+	 * @param prolongation
+	 */
 	public LivreEmprunt(int id, XMLGregorianCalendar dateEmprunt, boolean prolongation) {
 		this.id = id;
 		this.dateEmprunt = dateEmprunt;
 		this.prolongation = prolongation;
 	}
 
+	// --Getter et Setter--
 	public int getId() {
 		return this.id;
 	}

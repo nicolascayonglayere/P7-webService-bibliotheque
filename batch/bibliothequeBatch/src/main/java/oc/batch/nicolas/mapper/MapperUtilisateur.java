@@ -14,7 +14,7 @@ import oc.batch.nicolas.model.Utilisateur;
  * @author nicolas
  *
  */
-// @Transactional
+
 public class MapperUtilisateur {
 
 	/**

@@ -19,10 +19,6 @@
 							<s:text name="bouton.deconnexion" />
 						</s:a>
 					</div>
-					<s:submit class="btn btn-default" value="%{getText('bouton.mesEmprunts')}" onclick="bilanEmprunt()" id="bouton"/>
-					<div id="blocAjax">
-					
-					</div>
 				</s:if>
 				<s:else>
 					<div class="col-lg-3">
@@ -61,35 +57,3 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>				
-		<script>
-			//$("bouton").click(
-				function bilanEmprunt(){
-					//e.preventDefault();
-					var url = "<s:url action="jsp/ajax_listEmprunt" namespace="/jsp"/>";
-					
-					console.log(url);
-	
-		            // Action AJAX en POST
-		            jQuery.post(url, function (data) {
-		                    var $blocAjax = jQuery("#blocAjax");
-		                    $blocAjax.empty();
-		                    console.log(data);
-		                    jQuery.each(data, function (key, val) {
-		                    	console.log(val);
-		                        $blocAjax.append(
-		                            jQuery("<li>")
-		                                .append(val.livreType.titre)
-		                                .append(" ")
-		                                .append(val.dateEmprunt)
-		                                .append(" ")
-		                                .append(val.dateRetour)
-		                                .append("</li>")
-		                        );
-		                    });
-		                })
-		                .fail(function () {
-		                    alert("Une erreur s'est produite.");
-		                });				
-				}
-			//);
-		</script>

@@ -7,6 +7,8 @@ services:
          restart: always
          ports: 
           - "5496:5432"
+         expose: 
+          - "5496"
          environment: 
           POSTGRES_DB: P7_bibliothequeWS
           POSTGRES_USER: postgres
@@ -19,4 +21,6 @@ services:
           - "8181:8181"
          links: 
           - db
+         environment: 
+          SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/P7_bibliothequeWS
 

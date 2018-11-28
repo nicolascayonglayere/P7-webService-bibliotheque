@@ -23,7 +23,7 @@ public class MapperLivreEmprunt {
 	 * Méthode depuis un {@link LivreEmpruntType} vers un {@link LivreEmprunt}
 	 * 
 	 * @param pLivreEmpruntType
-	 * @return {@linkLivreEmprunt}
+	 * @return {@link LivreEmprunt}
 	 */
 	public static LivreEmprunt fromLivreEmpruntTypeToLivreEmprunt(LivreEmpruntType pLivreEmpruntType) {
 		XMLGregorianCalendar dateEmprunt = pLivreEmpruntType.getDateEmprunt();

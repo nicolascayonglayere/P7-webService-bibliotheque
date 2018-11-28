@@ -2,11 +2,7 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 				  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
 				  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-				  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
-				  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
-				  xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" 
 				  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				  xsi:schemaLocation="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/ws-securitypolicy.xsd"
 				  xmlns:ybs="http://yogj.fr/biblioWS/" name="biblioWS" targetNamespace="http://yogj.fr/biblioWS/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://yogj.fr/biblioWS/" xmlns:Q1="http://www.yogj.fr/biblioWS/types">
@@ -92,22 +88,6 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <!--  <xsd:element name="recherche">
-      	<xsd:complexType>
-      		<xsd:sequence>
-
-      			<xsd:element name="in" type="xsd:string"></xsd:element>
-      		</xsd:sequence>
-      	</xsd:complexType>
-      </xsd:element>
-      <xsd:element name="rechercheResponse">
-      	<xsd:complexType>
-      		<xsd:sequence>
-
-      			<xsd:element name="out" type="xsd:string"></xsd:element>
-      		</xsd:sequence>
-      	</xsd:complexType>
-      </xsd:element>-->
       <xsd:element name="empruntOuvrage">
       	<xsd:complexType>
       		<xsd:sequence>
@@ -211,21 +191,6 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <!--  <xsd:element name="uneOperation">
-      	<xsd:complexType>
-      		<xsd:sequence>
-
-      		</xsd:sequence>
-      	</xsd:complexType>
-      </xsd:element>
-      <xsd:element name="uneOperationResponse">
-      	<xsd:complexType>
-      		<xsd:sequence>
-
-      			<xsd:element name="out" type="xsd:string"></xsd:element>
-      		</xsd:sequence>
-      	</xsd:complexType>
-      </xsd:element>-->
       <xsd:element name="obtenirEmpruntUtilisateur">
       	<xsd:complexType>
       		<xsd:sequence>
@@ -282,12 +247,6 @@
   <wsdl:message name="detailsOuvrageFault">
   	<wsdl:part name="parameters" element="ybs:detailsOuvrageFault"></wsdl:part>
   </wsdl:message>
-  <!--  <wsdl:message name="rechercheRequest">
-  	<wsdl:part name="parameters" element="ybs:recherche"></wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="rechercheResponse">
-  	<wsdl:part name="parameters" element="ybs:rechercheResponse"></wsdl:part>
-  </wsdl:message>-->
   <wsdl:message name="empruntOuvrageRequest">
   	<wsdl:part name="parameters" element="ybs:empruntOuvrage"></wsdl:part>
   </wsdl:message>
@@ -327,12 +286,6 @@
   <wsdl:message name="listRetardatairesResponse">
   	<wsdl:part name="parameters" element="ybs:listRetardatairesResponse"></wsdl:part>
   </wsdl:message>
-  <!--  <wsdl:message name="uneOperationRequest">
-  	<wsdl:part name="parameters" element="ybs:uneOperation"></wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="uneOperationResponse">
-  	<wsdl:part name="parameters" element="ybs:uneOperationResponse"></wsdl:part>
-  </wsdl:message>-->
   <wsdl:message name="obtenirEmpruntUtilisateurRequest">
   	<wsdl:part name="parameters" element="ybs:obtenirEmpruntUtilisateur"></wsdl:part>
   </wsdl:message>
@@ -389,27 +342,22 @@
         </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="biblioWSSOAP" type="ybs:biblioWS">
-  	<!--  <wsp:PolicyReference URI="#BindingPolicy" />-->
   	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
   	<wsdl:operation name="login">
   		<soap:operation soapAction=""/> 
   		<wsdl:input>
-  			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
-  			<!--  <wsp:PolicyReference URI="#OutputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="deconnexion">
   		<soap:operation soapAction=""/> 
   		<wsdl:input>
-  			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
-  			<!--  <wsp:PolicyReference URI="#OutputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="UtilisateurNotFoundFault">
@@ -419,22 +367,18 @@
   	<wsdl:operation name="listNouveautes">
   		<soap:operation soapAction=""/> 
   		<wsdl:input>
-  			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
-  			<!--  <wsp:PolicyReference URI="#OutputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="rechercheOuvrage">
   		<soap:operation soapAction=""/> 
   		<wsdl:input>
-  			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
-  			<!--  <wsp:PolicyReference URI="#OutputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="LivreNotFoundFault">
@@ -444,11 +388,9 @@
   	<wsdl:operation name="empruntOuvrage">
   		<soap:operation soapAction=""/> 
   		<wsdl:input>
-  			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
-  			<!--  <wsp:PolicyReference URI="#OutputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="LivreNotFoundFault">
@@ -458,11 +400,9 @@
   	<wsdl:operation name="retourOuvrage">
   		<soap:operation soapAction=""/> 
   		<wsdl:input>
-  			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
-  			<!--  <wsp:PolicyReference URI="#OutputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="EmpruntLivreNotFoundFault">
@@ -472,11 +412,9 @@
   	<wsdl:operation name="prolongationOuvrage">
   		<soap:operation soapAction=""/> 
   		<wsdl:input>
-  			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
-  			<!--  <wsp:PolicyReference URI="#OutputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="EmpruntLivreNotFoundFault">
@@ -486,22 +424,18 @@
   	<wsdl:operation name="listRetardataires">
   		<soap:operation soapAction=""/> 
   		<wsdl:input>
-  			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
-  			<!--  <wsp:PolicyReference URI="#OutputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="obtenirEmpruntUtilisateur">
   		<soap:operation soapAction=""/>
   		<wsdl:input>
-  			<!--  <wsp:PolicyReference URI="#InputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
-  			<!--  <wsp:PolicyReference URI="#OutputBindingPolicy"/>-->
   			<soap:body use="literal" />
   		</wsdl:output>
   		<wsdl:fault name="UtilisateurNotFoundFault">
@@ -511,81 +445,7 @@
   </wsdl:binding>
   <wsdl:service name="biblioWS">
     <wsdl:port binding="ybs:biblioWSSOAP" name="biblioWSSOAP">
-      <soap:address location="http://localhost:8181/biblioWS/biblioWS"/>
+      <soap:address location="http://web-service:8181/biblioWS/biblioWS"/>
     </wsdl:port>
-  </wsdl:service>
-  
-	<!--  <wsp:Policy wsu:Id="BindingPolicy">
-		<wsp:ExactlyOne>
-			<wsp:All>
-				<sp:AsymmetricBinding>
-					<wsp:Policy>
-						<sp:InitiatorToken>
-							<wsp:Policy>
-								<sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
-									<wsp:Policy>
-										<sp:WssX509V3Token11 />
-									</wsp:Policy>
-								</sp:X509Token>
-							</wsp:Policy>
-						</sp:InitiatorToken>
-						<sp:RecipientToken>
-							<wsp:Policy>
-								<sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
-									<wsp:Policy>
-										<sp:WssX509V3Token11 />
-										<sp:RequireIssuerSerialReference />
-									</wsp:Policy>
-								</sp:X509Token>
-							</wsp:Policy>
-						</sp:RecipientToken>
-						<sp:Layout>
-							<wsp:Policy>
-								<sp:Strict />
-							</wsp:Policy>
-						</sp:Layout>
-						<sp:IncludeTimestamp />
-						<sp:OnlySignEntireHeadersAndBody />
-						<sp:AlgorithmSuite>
-							<wsp:Policy>
-								<sp:Basic128 />
-							</wsp:Policy>
-						</sp:AlgorithmSuite>
-						<sp:EncryptSignature />
-					</wsp:Policy>
-				</sp:AsymmetricBinding>
-				<sp:Wss11>
-					<wsp:Policy>
-						<sp:MustSupportRefIssuerSerial />
-					</wsp:Policy>
-				</sp:Wss11>
-			</wsp:All>
-		</wsp:ExactlyOne>
-	</wsp:Policy>
-	<wsp:Policy wsu:Id="InputBindingPolicy">
-		<wsp:ExactlyOne>
-			<wsp:All>
-				<sp:EncryptedParts>
-					<sp:Body />
-				</sp:EncryptedParts>
-				<sp:SignedParts>
-					<sp:Body />
-					<sp:Header Namespace="http://yogj.fr/biblioWS/"/>
-				</sp:SignedParts>
-			</wsp:All>
-		</wsp:ExactlyOne>
-	</wsp:Policy>
-	<wsp:Policy wsu:Id="OutputBindingPolicy">
-		<wsp:ExactlyOne>
-			<wsp:All>
-				<sp:EncryptedParts>
-					<sp:Body />
-				</sp:EncryptedParts>
-				<sp:SignedParts>
-					<sp:Body />
-					<sp:Header Namespace="http://yogj.fr/biblioWS/"/>
-				</sp:SignedParts>
-			</wsp:All>
-		</wsp:ExactlyOne>
-	</wsp:Policy>-->  
+  </wsdl:service>  
 </wsdl:definitions>

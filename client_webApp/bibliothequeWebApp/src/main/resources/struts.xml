@@ -98,11 +98,12 @@
 	<package name="utilisateur" extends="default" namespace="/utilisateur">
 		<default-interceptor-ref name="loginStack" />
 		<!--   logout action  -->
-		<action name="logOut" class="oc.webApp.nicolas.actions.Login" method="logOut">
+		<action name="logOut" class="oc.webApp.nicolas.actions.Logout" method="logOut">
 			<result name="success" type="redirectAction">
 				<param name="actionName">accueil</param>
 				<param name="namespace">/</param>
 			</result>
+		
 		</action>		
 		
 		<!-- page mon compte -->
@@ -146,17 +147,6 @@
         		<param name="actionName">go_monCompte</param>
          	</result>
         </action>              	
-	</package>
-
-    <!-- ===== Package pour les actions AJAX ===== -->
-    <package name="ajax" extends="default, json-default" namespace="/jsp">
-
-		<!-- action qui retourne les emprunts en cours -->
-        <action name="ajax_listEmprunt" class="oc.webApp.nicolas.actions.BilanEmpruntAjax">
-        	<result type="json">
-        		<param name="root">listTopoEmprunt</param>
-        	</result>
-        </action>
-    </package>	
+	</package>	
 	
 </struts>

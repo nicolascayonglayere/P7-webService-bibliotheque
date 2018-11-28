@@ -7,6 +7,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Classe représentant un livre
+ * 
+ * @author nicolas
+ *
+ */
 @Component
 public class Livre {
 
@@ -19,9 +25,21 @@ public class Livre {
 	private int nbExemplaire;
 	private List<LivreEmprunt> emprunts;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	public Livre() {
 	}
 
+	/**
+	 * Constructeur avec paramètre
+	 * 
+	 * @param id
+	 * @param titre
+	 * @param genre
+	 * @param date
+	 * @param nbExemplaire
+	 */
 	public Livre(int id, String titre, String genre, XMLGregorianCalendar date, int nbExemplaire) {
 		this.id = id;
 		this.titre = titre;
@@ -30,6 +48,7 @@ public class Livre {
 		this.nbExemplaire = nbExemplaire;
 	}
 
+	// --Getter et Setter--
 	public int getId() {
 		return this.id;
 	}

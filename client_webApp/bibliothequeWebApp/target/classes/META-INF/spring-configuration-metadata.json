@@ -7,5 +7,11 @@
       "type": "oc.webApp.nicolas.configurations.BiblioWebAppConfiguration"
     }
   ],
-  "properties": []
+  "properties": [
+    {
+      "sourceType": "oc.webApp.nicolas.configurations.BiblioWebAppConfiguration",
+      "name": "cxf.url",
+      "type": "java.lang.String"
+    }
+  ]
 }

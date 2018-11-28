@@ -20,11 +20,11 @@
 				<!-- un if test de la session pour eviter la connexion alors qu'on est deja connecte -->
 				<s:if test="#session.utilisateur==null">
 					<s:form id="idLoginForm" action="loginUser" cssClass="form-vertical" namespace="/" validate="true">
-						<s:textfield name="utilisateur.pseudo" placeholder="pseudo" label="%{getText('form.pseudo')}" requiredLabel="true"/>
-						<s:password name="utilisateur.motDePasse" placeholder="motDePasse" label="%{getText('form.mdp')}" requiredLabel="true"/>
+						<s:textfield name="pseudo" placeholder="pseudo" label="%{getText('form.pseudo')}" requiredLabel="true"/>
+						<s:password name="motDePasse" placeholder="mot de passe" label="%{getText('form.mdp')}" requiredLabel="true"/>
 						<s:submit id="btOK" class="btn btn-default" value="%{getText('login.titre')}">	
-		       				<s:param name="pseudo">${utilisateur.pseudo }</s:param>
-		      				<s:param name="motDePasse">${utilisateur.motDePasse }</s:param>
+		       				<s:param name="pseudo">${pseudo }</s:param>
+		      				<s:param name="motDePasse">${motDePasse }</s:param>
 		     			 </s:submit>
 		     			 <s:token/>		
 					</s:form>	

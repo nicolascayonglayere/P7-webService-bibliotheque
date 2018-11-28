@@ -59,6 +59,12 @@
     	<artifactId>cxf-rt-rs-client</artifactId>
     	<version>3.2.5</version>
     </dependency>
+    <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        <version>3.2.5</version>
+    </dependency>
+    
 	<dependency>
 	    <groupId>javax.xml.bind</groupId>
 	    <artifactId>jaxb-api</artifactId>
@@ -110,7 +116,7 @@
 			        <outputDirectory>${package.directory}/</outputDirectory>
 			        <excludes>
 			          <!-- les fichiers .properties ne seront pas dans le jar -->
-			          <exclude>*.properties</exclude>
+			          <!--  <exclude>*.properties</exclude>-->
 			        </excludes>
 			        <archive>
 			          <manifest>

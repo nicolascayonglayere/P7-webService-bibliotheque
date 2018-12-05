@@ -1,5 +1,7 @@
 FROM java:8
 
-ADD /target/bibliothequeBatch-1.0-SNAPSHOT.jar bibliothequeBatch-1.0-SNAPSHOT.jar
+ADD https://drive.google.com/uc?id=1j1UwYtV0GvV30usgjBOCuvB5ZvYUhntH&export=download BATCH.zip
 
-ENTRYPOINT ["java","-jar","bibliothequeBatch-1.0-SNAPSHOT.jar"]
+RUN unzip BATCH.zip
+
+ENTRYPOINT ["java","-jar","bibliothequeBatch-1.0-RELEASE.jar"]

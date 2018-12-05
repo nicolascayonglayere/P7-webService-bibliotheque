@@ -60,5 +60,5 @@ COMMIT;
 
 --tablelivre_emprunt--
 BEGIN TRANSACTION;
-INSERT INTO livre_emprunt (date_emprunt, prolongation, id_utilisateur, id_livre) VALUES ('01/01/2018', true, 1, 1);
+INSERT INTO livre_emprunt (id_emprunt, date_emprunt, prolongation, id_utilisateur, id_livre) VALUES (0, '01/01/2018', true, 1, 1);
 COMMIT;

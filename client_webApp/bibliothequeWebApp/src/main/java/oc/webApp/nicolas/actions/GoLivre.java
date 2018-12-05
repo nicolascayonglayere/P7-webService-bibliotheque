@@ -7,16 +7,18 @@ import javax.xml.ws.soap.SOAPFaultException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import fr.yogj.bibliows.BiblioWS_Service;
+import fr.yogj.bibliows.BiblioWS;
 import fr.yogj.bibliows.DetailsOuvrageFault_Exception;
 import fr.yogj.bibliows.RechercheOuvrage;
 import fr.yogj.bibliows.RechercheOuvrageResponse;
 import fr.yogj.bibliows.types.AuteurType;
 import fr.yogj.bibliows.types.LivreType;
+import oc.webApp.nicolas.configurations.BiblioWebAppConfiguration;
 
 /**
  * Classe action qui permet d'afficher la page d'un livre
@@ -29,7 +31,7 @@ public class GoLivre extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	static final Logger logger = LogManager.getLogger();
-	private BiblioWS_Service biblioWS = new BiblioWS_Service();
+	private BiblioWebAppConfiguration webAppConfig;
 	private String idLivre;
 	private LivreType livreType = new LivreType();
 	private List<AuteurType> auteurs = new ArrayList<AuteurType>();
@@ -39,6 +41,7 @@ public class GoLivre extends ActionSupport {
 	 */
 	@Override
 	public String execute() {
+		BiblioWS biblioWS = this.webAppConfig.accesWS();
 		RechercheOuvrage param = new RechercheOuvrage();
 		logger.debug(this.livreType.getId());
 		System.out.println(this.idLivre);
@@ -51,7 +54,7 @@ public class GoLivre extends ActionSupport {
 		}
 
 		try {
-			RechercheOuvrageResponse rop = this.biblioWS.getBiblioWSSOAP().rechercheOuvrage(param);
+			RechercheOuvrageResponse rop = biblioWS.rechercheOuvrage(param);
 			this.livreType = rop.getOuvrages().get(0);
 			this.auteurs = this.livreType.getAuteurs();
 			System.out.println("auteur : " + this.livreType.getAuteurs().get(0).getNom());
@@ -68,14 +71,6 @@ public class GoLivre extends ActionSupport {
 			return ActionSupport.INPUT;
 		}
 
-	}
-
-	public BiblioWS_Service getBiblioWS() {
-		return this.biblioWS;
-	}
-
-	public void setBiblioWS(BiblioWS_Service biblioWS) {
-		this.biblioWS = biblioWS;
 	}
 
 	public LivreType getLivreType() {
@@ -100,5 +95,14 @@ public class GoLivre extends ActionSupport {
 
 	public void setAuteurs(List<AuteurType> auteurs) {
 		this.auteurs = auteurs;
+	}
+
+	public BiblioWebAppConfiguration getWebAppConfig() {
+		return this.webAppConfig;
+	}
+
+	@Autowired
+	public void setWebAppConfig(BiblioWebAppConfiguration webAppConfig) {
+		this.webAppConfig = webAppConfig;
 	}
 }

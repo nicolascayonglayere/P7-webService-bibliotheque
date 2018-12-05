@@ -18,10 +18,9 @@ import fr.yogj.bibliows.types.UtilisateurType;
  * @author nicolas
  *
  */
-// @Transactional
+
 public class MapperLivreEmprunt {
 
-	// @Autowired
 	private static ConversionDate convDate = new ConversionDate();
 
 	/**
@@ -61,7 +60,6 @@ public class MapperLivreEmprunt {
 		try {
 			myLet.setDateEmprunt(getConvDate().convertirDateXML(pLivreEmprunt.getDateEmprunt()));
 		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		myLet.setOuvrage(MapperLivre.fromLivreToLivreType(pLivreEmprunt.getLivre()));

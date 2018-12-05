@@ -33,8 +33,6 @@ import fr.yogj.bibliows.types.UtilisateurType;
  * @author nicolas
  *
  */
-// @Transactional
-// @Service
 
 public class BiblioWSEndPoint implements BiblioWS {
 
@@ -48,7 +46,6 @@ public class BiblioWSEndPoint implements BiblioWS {
 	 */
 	@Override
 	public UtilisateurType login(String pseudo) throws LoginFault_Exception {
-		// TODO Auto-generated method stub on vérifie les login
 		try {
 			UtilisateurType user = this.manageFacto.getUtilisateurManager().getUtilisateur(pseudo);
 			return user;
@@ -63,7 +60,6 @@ public class BiblioWSEndPoint implements BiblioWS {
 	 */
 	@Override
 	public ListNouveautesResponse listNouveautes(String parameters) {
-		// TODO Auto-generated method stub
 		ListNouveautesResponse nouveautes = new ListNouveautesResponse();
 
 		for (LivreType l : this.manageFacto.getLivreManager().obtenirNouveautes()) {
@@ -77,7 +73,6 @@ public class BiblioWSEndPoint implements BiblioWS {
 	 */
 	@Override
 	public ListRetardatairesResponse listRetardataires(String parameters) {
-		// TODO Auto-generated method stub
 		ListRetardatairesResponse lrr = new ListRetardatairesResponse();
 		for (UtilisateurType u : this.manageFacto.getLivreEmpruntManager().obtenirRetardataires()) {
 			lrr.getUtilisateur().add(u);
@@ -90,12 +85,10 @@ public class BiblioWSEndPoint implements BiblioWS {
 	 */
 	@Override
 	public RechercheOuvrageResponse rechercheOuvrage(RechercheOuvrage parameters) throws DetailsOuvrageFault_Exception {
-		// TODO Auto-generated method stub
 		RechercheOuvrageResponse rop = new RechercheOuvrageResponse();
 		System.out.println(parameters.getIdLivre());
 		try {
-			if (parameters.getIdLivre() != null && parameters.getIdLivre() != 0) {// --modif de modif...... ca marche
-																					// maintenant....
+			if (parameters.getIdLivre() != null && parameters.getIdLivre() != 0) {
 				LivreType livre = this.manageFacto.getLivreManager().trouverParId(parameters.getIdLivre());
 				rop.getOuvrages().add(livre);
 			} else {
@@ -118,7 +111,6 @@ public class BiblioWSEndPoint implements BiblioWS {
 	 */
 	@Override
 	public LivreEmpruntType prolongationOuvrage(int idEmprunt) throws ProlongationOuvrageFault1_Exception {
-		// TODO Auto-generated method stub
 		try {
 			LivreEmpruntType livreEmprunte = this.manageFacto.getLivreEmpruntManager().prolongerEmprunt(idEmprunt);
 			return livreEmprunte;
@@ -133,7 +125,6 @@ public class BiblioWSEndPoint implements BiblioWS {
 	 */
 	@Override
 	public String deconnexion(Deconnexion parameters) throws DeconnexionFault_Exception {
-		// TODO Auto-generated method stub
 		try {
 			this.manageFacto.getUtilisateurManager().getUtilisateur(parameters.getId());
 			return "DECO OK";
@@ -148,7 +139,6 @@ public class BiblioWSEndPoint implements BiblioWS {
 	 */
 	@Override
 	public LivreEmpruntType empruntOuvrage(int idLivre, int idEmprunteur) throws EmpruntOuvrageFault_Exception {
-		// TODO Auto-generated method stub
 		try {
 			LivreEmpruntType empruntType = this.manageFacto.getLivreEmpruntManager().emprunterOuvrage(idLivre,
 					idEmprunteur);
@@ -167,7 +157,6 @@ public class BiblioWSEndPoint implements BiblioWS {
 	@Override
 	public List<LivreEmpruntType> obtenirEmpruntUtilisateur(int idUtilisateur)
 			throws ObtenirEmpruntUtilisateurFault_Exception {
-		// TODO Auto-generated method stub
 
 		try {
 			List<LivreEmpruntType> livresEmpruntes = this.manageFacto.getLivreEmpruntManager()
@@ -187,7 +176,6 @@ public class BiblioWSEndPoint implements BiblioWS {
 	 */
 	@Override
 	public LivreType retourOuvrage(int idLivreEmprunt) throws RetourOuvrageFault1_Exception {
-		// TODO Auto-generated method stub
 		try {
 			LivreType livreEmprunte = this.manageFacto.getLivreEmpruntManager().retournerOuvrage(idLivreEmprunt);
 			return livreEmprunte;

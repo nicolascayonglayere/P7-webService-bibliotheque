@@ -48,12 +48,6 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		logger.debug("nb exemplaires restants : " + nbEx + " - id : " + l.getId() + " - emprunteur : " + pIdEmprunteur);
 		if (nbEx > 0) {
 
-			// logger.debug("CTRL " +
-			// this.getDaoFactory().getLivreEmpruntDao().findByLivreIdAndUtilisateurId(pIdLivre,
-			// pIdEmprunteur).getId());
-			// if
-			// ((this.getDaoFactory().getLivreEmpruntDao().findByLivreIdAndUtilisateurId(pIdLivre,
-			// pIdEmprunteur) != null)) {
 			Optional<Utilisateur> myUserOptional = this.getDaoFactory().getUtilisateurDao().findById(pIdEmprunteur);
 			Utilisateur user = myUserOptional.get();
 			logger.debug("emprunteur " + user.toString());
@@ -110,7 +104,6 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		Livre l = myOptionalLivre.get();
 		if (l.getId() != 0) {
 			this.getDaoFactory().getLivreEmpruntDao().delete(this.livreEmprunt);
-			// l.setNbExemplaire(l.getNbExemplaire() + 1);
 			return MapperLivre.fromLivreToLivreType(l);
 		} else {
 			throw new RuntimeException("Vous n'avez pas emprunte cet ouvrage.");
@@ -146,7 +139,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 	}
 
 	/**
-	 * Méthode pour obtenir les {@link Utilisateurs} en retard
+	 * Méthode pour obtenir les {@link Utilisateur} en retard
 	 */
 	@Override
 	public List<UtilisateurType> obtenirRetardataires() {
@@ -156,8 +149,7 @@ public class LivreEmpruntManagerImpl extends AbstractManager implements LivreEmp
 		cal.add(Calendar.DATE, -28);
 		logger.debug("date emprunt en retard : " + cal.getTime());
 		for (Utilisateur u : this.getDaoFactory().getLivreEmpruntDao().findRetardataires(cal.getTime())) {
-			System.out.println("taille liste retard : " + u.getEmprunts().size());
-			// u.setEmprunts(this.getDaoFactory().getLivreEmpruntDao().);
+			logger.debug("taille liste retard : " + u.getEmprunts().size());
 			retardataires.add(MapperUtilisateur.fromUtilisateurToUtilisateurType(u));
 		}
 		return retardataires;

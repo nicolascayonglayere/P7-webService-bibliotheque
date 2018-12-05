@@ -11,15 +11,17 @@ import javax.xml.ws.soap.SOAPFaultException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import fr.yogj.bibliows.BiblioWS_Service;
+import fr.yogj.bibliows.BiblioWS;
 import fr.yogj.bibliows.ObtenirEmpruntUtilisateurFault_Exception;
 import fr.yogj.bibliows.types.CoordonneeUtilisateurType;
 import fr.yogj.bibliows.types.LivreEmpruntType;
 import fr.yogj.bibliows.types.UtilisateurType;
+import oc.webApp.nicolas.configurations.BiblioWebAppConfiguration;
 
 /**
  * Classe Action MonCompte qui permet la construction de la jsp monCompte
@@ -32,7 +34,7 @@ public class MonCompte extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
 	static final Logger logger = LogManager.getLogger();
-	private BiblioWS_Service biblioWS = new BiblioWS_Service();
+	private BiblioWebAppConfiguration webAppConfig;
 	private Map<String, Object> session;
 	private UtilisateurType utilisateur;
 	private Map<LivreEmpruntType, Date> listEmprunt = new HashMap<LivreEmpruntType, Date>();
@@ -44,13 +46,11 @@ public class MonCompte extends ActionSupport implements SessionAware {
 	 */
 	@Override
 	public String execute() {
+		BiblioWS biblioWS = this.webAppConfig.accesWS();
 		this.utilisateur = ((UtilisateurType) this.session.get("utilisateur"));
 		logger.debug("Compte de " + this.utilisateur.getPseudo());
 		try {
-			List<LivreEmpruntType> vEmprunts = this.biblioWS.getBiblioWSSOAP()
-					.obtenirEmpruntUtilisateur(this.utilisateur.getId());
-			// this.listEmprunt =
-			// this.biblioWS.getBiblioWSSOAP().obtenirEmpruntUtilisateur(this.utilisateur.getId());
+			List<LivreEmpruntType> vEmprunts = biblioWS.obtenirEmpruntUtilisateur(this.utilisateur.getId());
 			this.coordonneeUtilisateur.setAdresse(this.utilisateur.getCoordonnee().get(0).getAdresse());
 			this.coordonneeUtilisateur.setEmail(this.utilisateur.getCoordonnee().get(0).getEmail());
 			for (int i = 0; i < vEmprunts.size(); i++) {
@@ -87,14 +87,6 @@ public class MonCompte extends ActionSupport implements SessionAware {
 		this.utilisateur = utilisateur;
 	}
 
-	public BiblioWS_Service getBiblioWS() {
-		return this.biblioWS;
-	}
-
-	public void setBiblioWS(BiblioWS_Service biblioWS) {
-		this.biblioWS = biblioWS;
-	}
-
 	public CoordonneeUtilisateurType getCoordonneeUtilisateur() {
 		return this.coordonneeUtilisateur;
 	}
@@ -109,6 +101,15 @@ public class MonCompte extends ActionSupport implements SessionAware {
 
 	public void setListEmprunt(Map<LivreEmpruntType, Date> listEmprunt) {
 		this.listEmprunt = listEmprunt;
+	}
+
+	public BiblioWebAppConfiguration getWebAppConfig() {
+		return this.webAppConfig;
+	}
+
+	@Autowired
+	public void setWebAppConfig(BiblioWebAppConfiguration webAppConfig) {
+		this.webAppConfig = webAppConfig;
 	}
 
 }

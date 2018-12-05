@@ -7,17 +7,19 @@ import javax.xml.ws.soap.SOAPFaultException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import fr.yogj.bibliows.BiblioWS_Service;
+import fr.yogj.bibliows.BiblioWS;
 import fr.yogj.bibliows.EmpruntOuvrageFault_Exception;
 import fr.yogj.bibliows.ProlongationOuvrageFault1_Exception;
 import fr.yogj.bibliows.RetourOuvrageFault1_Exception;
 import fr.yogj.bibliows.types.LivreEmpruntType;
 import fr.yogj.bibliows.types.LivreType;
 import fr.yogj.bibliows.types.UtilisateurType;
+import oc.webApp.nicolas.configurations.BiblioWebAppConfiguration;
 
 /**
  * Classe action qui gère les {@link LivreEmpruntType}
@@ -30,7 +32,8 @@ public class GestionPret extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
 	static final Logger logger = LogManager.getLogger();
-	private BiblioWS_Service biblioWS = new BiblioWS_Service();
+	private BiblioWebAppConfiguration webAppConfig;
+
 	private String idLivre;
 	private String idEmprunt;
 	private LivreType livreType;
@@ -44,13 +47,12 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	 * @return le resultat de l'action
 	 */
 	public String emprunter() {
-
+		BiblioWS biblioWS = this.webAppConfig.accesWS();
 		this.utilisateur = ((UtilisateurType) this.session.get("utilisateur"));
 		logger.debug("emprunt : " + this.idLivre + " - user :" + this.utilisateur.getPseudo());
 		System.out.println("emprunt : " + this.idLivre + " - user :" + this.utilisateur.getPseudo());
 		try {
-			this.monEmprunt = this.biblioWS.getBiblioWSSOAP().empruntOuvrage(Integer.valueOf(this.idLivre),
-					this.utilisateur.getId());
+			this.monEmprunt = biblioWS.empruntOuvrage(Integer.valueOf(this.idLivre), this.utilisateur.getId());
 			this.addActionMessage("Votre emprunt a été enregistré avc le n° : " + this.monEmprunt.getId());
 			return ActionSupport.SUCCESS;
 		} catch (EmpruntOuvrageFault_Exception e) {
@@ -73,10 +75,10 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	 * @return le resultat de l'action
 	 */
 	public String retourner() {
-
+		BiblioWS biblioWS = this.webAppConfig.accesWS();
 		this.utilisateur = (UtilisateurType) this.session.get("utilisateur");
 		try {
-			this.livreType = this.biblioWS.getBiblioWSSOAP().retourOuvrage(Integer.valueOf(this.idEmprunt));
+			this.livreType = biblioWS.retourOuvrage(Integer.valueOf(this.idEmprunt));
 			this.addActionMessage("Vous avez rendu le livre : " + this.livreType.getTitre());
 			return ActionSupport.SUCCESS;
 		} catch (RetourOuvrageFault1_Exception e) {
@@ -94,10 +96,10 @@ public class GestionPret extends ActionSupport implements SessionAware {
 	 * @return le resultat de l'action
 	 */
 	public String prolonger() {
-
+		BiblioWS biblioWS = this.webAppConfig.accesWS();
 		this.utilisateur = (UtilisateurType) this.session.get("utilisateur");
 		try {
-			this.monEmprunt = this.biblioWS.getBiblioWSSOAP().prolongationOuvrage(Integer.valueOf(this.idEmprunt));
+			this.monEmprunt = biblioWS.prolongationOuvrage(Integer.valueOf(this.idEmprunt));
 			this.addActionMessage("Vous avez prolongé l'emprunt n° : " + this.idEmprunt);
 			return ActionSupport.SUCCESS;
 		} catch (ProlongationOuvrageFault1_Exception e) {
@@ -106,14 +108,6 @@ public class GestionPret extends ActionSupport implements SessionAware {
 			e.printStackTrace();
 			return ActionSupport.INPUT;
 		}
-	}
-
-	public BiblioWS_Service getBiblioWS() {
-		return this.biblioWS;
-	}
-
-	public void setBiblioWS(BiblioWS_Service biblioWS) {
-		this.biblioWS = biblioWS;
 	}
 
 	public LivreType getLivreType() {
@@ -159,6 +153,15 @@ public class GestionPret extends ActionSupport implements SessionAware {
 
 	public void setIdEmprunt(String idEmprunt) {
 		this.idEmprunt = idEmprunt;
+	}
+
+	public BiblioWebAppConfiguration getWebAppConfig() {
+		return this.webAppConfig;
+	}
+
+	@Autowired
+	public void setWebAppConfig(BiblioWebAppConfiguration webAppConfig) {
+		this.webAppConfig = webAppConfig;
 	}
 
 }

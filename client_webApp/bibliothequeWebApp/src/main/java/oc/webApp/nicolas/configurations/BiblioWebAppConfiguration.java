@@ -55,6 +55,13 @@ public class BiblioWebAppConfiguration {
 		return bean.create(BiblioWS.class);
 	}
 
+	public BiblioWS accesWS() {
+		JaxWsProxyFactoryBean bean = new JaxWsProxyFactoryBean();
+		bean.setAddress(this.url);
+		return bean.create(BiblioWS.class);
+
+	}
+
 	/**
 	 * Méthode pour configurer Struts2
 	 * 

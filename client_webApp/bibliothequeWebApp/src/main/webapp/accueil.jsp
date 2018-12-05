@@ -36,8 +36,7 @@
 									<s:param name="imageId" value="%{#livreType.id}"/>
 								</s:url>
 								<img src="<s:property value="#URLTag"/>" class="thumbnail, rounded" />			    			
-				            	<s:property value="#livreType.titre"/></br>
-				            	<s:property value="#livreType.auteurType.nom"/>
+				            	<figcaption><s:property value="#livreType.titre"/></figcaption>
 			                    <s:param name="idLivre" value="#livreType.id" />	
 			               	</s:a>
 				    	</div>

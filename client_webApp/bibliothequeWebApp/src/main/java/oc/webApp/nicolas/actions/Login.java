@@ -7,15 +7,17 @@ import javax.xml.ws.soap.SOAPFaultException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
-import fr.yogj.bibliows.BiblioWS_Service;
+import fr.yogj.bibliows.BiblioWS;
 import fr.yogj.bibliows.LoginFault_Exception;
 import fr.yogj.bibliows.types.UtilisateurType;
+import oc.webApp.nicolas.configurations.BiblioWebAppConfiguration;
 
 /**
  * Classe Action Login qui gère la connexion et la deconnexion d'un
@@ -29,10 +31,10 @@ public class Login extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
 	static final Logger logger = LogManager.getLogger();
+	private BiblioWebAppConfiguration webAppConfig;
 	private Map<String, Object> session;
 	private String pseudo;
 	private String motDePasse;
-	private BiblioWS_Service biblioWS = new BiblioWS_Service();
 
 	/**
 	 * Méthode pour connecter un {@link UtilisateurType}
@@ -40,13 +42,14 @@ public class Login extends ActionSupport implements SessionAware {
 	 * @return le resultat de l'action
 	 */
 	public String loginRegisterUser() {
+		BiblioWS biblioWS = this.webAppConfig.accesWS();
 		String vResult = "";
 		logger.debug(this.pseudo + " - " + this.motDePasse);
 		System.out.println(this.pseudo + " - " + this.motDePasse);
 		UtilisateurType vUser;
 		try {
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			vUser = this.biblioWS.getBiblioWSSOAP().login(this.pseudo);
+			vUser = biblioWS.login(this.pseudo);
 			logger.debug("mdp : " + vUser.getMotDePasse());
 
 			if ((this.pseudo.equals(vUser.getPseudo()))
@@ -78,15 +81,6 @@ public class Login extends ActionSupport implements SessionAware {
 		this.session = session;
 	}
 
-	public BiblioWS_Service getBiblioWS() {
-		return this.biblioWS;
-	}
-
-	// @Autowired
-	public void setBiblioWS(BiblioWS_Service biblioWS) {
-		this.biblioWS = biblioWS;
-	}
-
 	public String getMotDePasse() {
 		return this.motDePasse;
 	}
@@ -103,6 +97,15 @@ public class Login extends ActionSupport implements SessionAware {
 	@RequiredStringValidator(message = "Un pseudo est requis.")
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
+	}
+
+	public BiblioWebAppConfiguration getWebAppConfig() {
+		return this.webAppConfig;
+	}
+
+	@Autowired
+	public void setWebAppConfig(BiblioWebAppConfiguration webAppConfig) {
+		this.webAppConfig = webAppConfig;
 	}
 
 }

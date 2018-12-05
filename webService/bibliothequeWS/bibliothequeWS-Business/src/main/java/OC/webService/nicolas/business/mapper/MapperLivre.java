@@ -16,10 +16,9 @@ import fr.yogj.bibliows.types.LivreType;
  * @author nicolas
  *
  */
-// @Transactional
+
 public class MapperLivre {
 
-	// @Autowired
 	private static ConversionDate convDate = new ConversionDate();
 
 	/**
@@ -58,7 +57,6 @@ public class MapperLivre {
 		try {
 			lt.setDate(getConvDate().convertirDateXML(pLivre.getDateParution()));
 		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		for (Auteur a : pLivre.getAuteurs()) {
@@ -70,7 +68,6 @@ public class MapperLivre {
 			try {
 				au.setDateDeNaissance(getConvDate().convertirDateXML(a.getDateNaissance()));
 			} catch (DatatypeConfigurationException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			lt.getAuteurs().add(au);

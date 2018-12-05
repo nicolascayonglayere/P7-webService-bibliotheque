@@ -53,31 +53,7 @@ public class BiblioWSConfiguration extends WsConfigurerAdapter {
 		EndpointImpl endpoint = new EndpointImpl(this.springBus(), this.biblioService());
 		endpoint.publish("/biblioWS");
 		endpoint.setWsdlLocation("biblioWS.wsdl");
-		// endpoint.getInInterceptors();
 		return endpoint;
 	}
 
-	// @Bean
-	// public SimplePasswordValidationCallbackHandler securityCallbackHandler() {
-	// SimplePasswordValidationCallbackHandler callbackHandler = new
-	// SimplePasswordValidationCallbackHandler();
-	// Properties users = new Properties();
-	// users.setProperty("admin", "secret");
-	// callbackHandler.setUsers(users);
-	// return callbackHandler;
-	// }
-	//
-	// @Bean
-	// public Wss4jSecurityInterceptor securityInterceptor() {
-	// Wss4jSecurityInterceptor securityInterceptor = new
-	// Wss4jSecurityInterceptor();
-	// securityInterceptor.setValidationActions("Timestamp UsernameToken");
-	// securityInterceptor.setValidationCallbackHandler(this.securityCallbackHandler());
-	// return securityInterceptor;
-	// }
-	//
-	// @Override
-	// public void addInterceptors(List<EndpointInterceptor> interceptors) {
-	// interceptors.add(this.securityInterceptor());
-	// }
 }

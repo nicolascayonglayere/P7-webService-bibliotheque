@@ -2,7 +2,7 @@ version: "3"
 services: 
  
  db:
-         build: ./BDD_PostgreSQL
+         build: ../BDD_PostgreSQL
          container_name: db_P7
          restart: always
          ports: 
@@ -15,7 +15,7 @@ services:
           POSTGRES_PASSWORD: password
 
  web-service:
-         build: ./WS
+         build: ../WS
          container_name: ws_P7
          ports:
           - "8181:8181"
@@ -25,9 +25,11 @@ services:
           - db
          environment: 
           SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/P7_bibliothequeWS
+          SPRING_DATASOURCE_USERNAME: postgres
+          SPRING_DATASOURCE_PASSWORD: password          
 
  batch:
-         build: ./batch
+         build: ../batch
          container_name: batch_P7
          restart: always
          depends_on:

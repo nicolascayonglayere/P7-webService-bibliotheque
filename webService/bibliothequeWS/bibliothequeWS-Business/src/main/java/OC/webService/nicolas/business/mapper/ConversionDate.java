@@ -14,7 +14,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * @author nicolas
  *
  */
-// @Component
+
 public class ConversionDate {
 	/**
 	 * Constructeur sans paramètre

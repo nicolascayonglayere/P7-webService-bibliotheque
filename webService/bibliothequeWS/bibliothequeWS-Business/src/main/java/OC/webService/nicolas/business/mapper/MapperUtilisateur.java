@@ -14,7 +14,7 @@ import fr.yogj.bibliows.types.UtilisateurType;
  * @author nicolas
  *
  */
-// @Transactional
+
 public class MapperUtilisateur {
 
 	/**

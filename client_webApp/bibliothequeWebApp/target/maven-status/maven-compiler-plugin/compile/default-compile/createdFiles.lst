@@ -35,7 +35,6 @@ fr\yogj\bibliows\ProlongationOuvrageFault.class
 fr\yogj\bibliows\LoginFault.class
 fr\yogj\bibliows\RechercheOuvrage.class
 fr\yogj\bibliows\Deconnexion.class
-oc\webApp\nicolas\configurations\EmplacementWS.class
 fr\yogj\bibliows\ProlongationOuvrageFault1.class
 oc\webApp\nicolas\actions\RechercheMultiCritere.class
 fr\yogj\bibliows\EmpruntOuvrageFault.class

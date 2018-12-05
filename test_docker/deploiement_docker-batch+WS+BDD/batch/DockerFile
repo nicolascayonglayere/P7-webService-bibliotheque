@@ -1,5 +1,0 @@
-FROM java:8
-
-ADD bibliothequeBatch-1.0-SNAPSHOT.jar bibliothequeBatch-1.0-SNAPSHOT.jar
-
-ENTRYPOINT ["java","-jar","bibliothequeBatch-1.0-SNAPSHOT.jar"]

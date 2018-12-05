@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-				  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+				  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 				  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-				  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
-				  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
-				  xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" 
 				  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				  xsi:schemaLocation="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/ws-securitypolicy.xsd"
 				  xmlns:ybs="http://yogj.fr/biblioWS/" name="biblioWS" targetNamespace="http://yogj.fr/biblioWS/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://yogj.fr/biblioWS/" xmlns:Q1="http://www.yogj.fr/biblioWS/types">
